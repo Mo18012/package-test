@@ -1,8 +1,42 @@
 export default function HomePage() {
   return (
     <div className="min-h-screen flex flex-col bg-background/60 text-foreground transition-colors">
+      <header className="w-full border-b border-gray-700">
+        <div className="max-w-6xl mx-auto flex items-center justify-between py-4 px-6">
+          {/* Logo */}
+          <div className="text-xl font-bold">
+            <img
+              src="https://assets.orufy.com/Frame_3_1_9d0fda8f93_66e90516bc.svg"
+              alt="Logo"
+              width={50}
+              height={50}
+            />
+          </div>
+
+          {/* Nav Links */}
+          <nav className="hidden md:flex gap-6 text-gray-400">
+            <a href="#" className="hover:text-foreground transition">
+              Home
+            </a>
+            <a href="#features" className="hover:text-foreground transition">
+              Features
+            </a>
+            <a href="#pricing" className="hover:text-foreground transition">
+              Pricing
+            </a>
+            <a href="#contact" className="hover:text-foreground transition">
+              Contact
+            </a>
+          </nav>
+
+          {/* CTA Button */}
+          <button className="px-4 py-2 rounded-lg bg-foreground text-background font-medium hover:opacity-80 transition">
+            Sign Up
+          </button>
+        </div>
+      </header>
       {/* Hero Section */}
-      <section className="flex flex-col items-center justify-center text-center py-24 px-6">
+      <section className="flex flex-col items-center justify-center text-center pt-24 pb-16 px-6">
         <h1 className="text-5xl font-bold mb-6">Webtonative Package Testing</h1>
         <p className="text-lg max-w-2xl mb-8 text-gray-400">
           A modern web experience designed with React + Tailwind CSS. Fast,
@@ -16,10 +50,18 @@ export default function HomePage() {
             Learn More
           </button>
         </div>
+        <div className="pt-10">
+          <img
+            src="/sad-crying-cat-meme.gif"
+            alt="Logo"
+            width={120}
+            height={120}
+          />
+        </div>
       </section>
 
       {/* Features Section */}
-      <section className="py-20 px-6 max-w-6xl mx-auto grid gap-12 md:grid-cols-3">
+      <section className="py-16 px-6 max-w-6xl mx-auto grid gap-12 md:grid-cols-3">
         {[
           {
             title: 'Fast Performance',
