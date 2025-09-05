@@ -10,6 +10,12 @@ export default function FrontendPage() {
   const [deviceInfo, setDeviceInfo] = useState('Result: ');
   const [downloadUrl, setDownloadUrl] = useState('');
   const [darkMode, setDarkMode] = useState(true);
+  const [iapProductId, setIapProductId] = useState('com.example.product');
+  const [iapProductType, setIapProductType] = useState('inapp');
+  const [iapIsConsumable, setIapIsConsumable] = useState(true);
+  const [appsflyerCustomerId, setAppsflyerCustomerId] = useState('');
+  const [firebaseUserId, setFirebaseUserId] = useState('');
+  const [onesignalExternalUserId, setOnesignalExternalUserId] = useState('');
   
   // Add custom CSS for toggle switches
   const customStyles = `
@@ -88,29 +94,133 @@ export default function FrontendPage() {
       });
     }
   };
-
-  // Add global WTN type for TypeScript
-  declare global {
-    interface Window {
-      WTN: {
-        statusBar: (options: { style: string; color: string; overlay?: boolean }) => void;
-        enablePullToRefresh: (enable: boolean) => void;
-        deviceInfo: () => Promise<any>;
-        Biometric: {
-          show: (options: { prompt: string; callback: (data: any) => void }) => void;
-          checkStatus: (options: { callback: (data: any) => void }) => void;
-        };
-        permission: {
-          camera: () => void;
-          location: () => void;
-          notification: () => void;
-        };
-      };
-      WebToNativeInterface: {
-        disableScreenshotForPage: (disable: boolean) => void;
-      };
+  
+  // In-App Purchase functions
+  const makeInAppPurchase = () => {
+    if (typeof window !== 'undefined' && window.WTN) {
+      window.WTN.inAppPurchase({
+        productId: iapProductId,
+        productType: iapProductType,
+        isConsumable: iapIsConsumable,
+        callback: function(data) {
+          setDeviceInfo("Result: " + Object.values(data));
+        }
+      });
     }
+  };
+
+  const getAllPurchases = () => {
+    if (typeof window !== 'undefined' && window.WTN) {
+      window.WTN.getAllPurchases({
+        callback: function(data) {
+          setDeviceInfo("Result: " + Object.values(data));
+        }
+      });
+    }
+  };
+  
+  // AppsFlyer functions
+  const setAppsflyerCustomerUserId = () => {
+    if (typeof window !== 'undefined' && window.WTN && window.WTN.appsflyer) {
+      window.WTN.appsflyer.setCustomerUserId(appsflyerCustomerId);
+    }
+  };
+  
+  const logAppsflyerEvent = (eventName: string, params: any) => {
+    if (typeof window !== 'undefined' && window.WTN && window.WTN.appsflyer) {
+      window.WTN.appsflyer.logEvent(eventName, params);
+    }
+  };
+  
+  // Firebase functions
+  const setFirebaseUserId = (userId: string) => {
+    if (typeof window !== 'undefined' && window.WTN && window.WTN.Firebase && window.WTN.Firebase.Analytics) {
+      window.WTN.Firebase.Analytics.setUserId({ userId });
+    }
+  };
+  
+  // OneSignal functions
+  const setOneSignalExternalUserId = () => {
+    if (typeof window !== 'undefined' && window.WTN && window.WTN.OneSignal) {
+      window.WTN.OneSignal.setExternalUserId(onesignalExternalUserId);
+    }
+  };
+  
+  const removeOneSignalExternalUserId = () => {
+    if (typeof window !== 'undefined' && window.WTN && window.WTN.OneSignal) {
+      window.WTN.OneSignal.removeExternalUserId();
+    }
+  };
+
+// Add global WTN type for TypeScript
+declare global {
+  interface Window {
+    WTN: {
+      statusBar: {
+        setColor: (params: { color: string }) => void;
+      };
+      pullToRefresh: {
+        enable: (params: { enabled: boolean }) => void;
+      };
+      disableScreenshot: {
+        enable: (params: { enabled: boolean }) => void;
+      };
+      Biometric: {
+        authenticate: (params: { reason: string }) => Promise<{ success: boolean, message: string }>;
+        checkAvailability: () => Promise<{ available: boolean, biometryType: string }>;
+      };
+      permission: {
+        notification: {
+          openScreen: () => void;
+        };
+        camera: {
+          openScreen: () => void;
+        };
+        recordAudio: {
+          openScreen: () => void;
+        };
+        location: {
+          openScreen: () => void;
+        };
+      };
+      deviceInfo: {
+        get: () => Promise<{ deviceId: string, model: string, osVersion: string, appVersion: string }>;
+      };
+      downloadFile: {
+        download: (params: { url: string, filename: string }) => Promise<{ success: boolean, path: string }>;
+      };
+      inAppPurchase: {
+        purchase: (params: { productId: string, productType: string, isConsumable: boolean }) => Promise<{ success: boolean, message: string, data: any }>;
+        getAllPurchases: () => Promise<{ success: boolean, purchases: any[] }>;
+      };
+      appsflyer: {
+        setCustomerUserId: (params: { id: string }) => void;
+        logEvent: (params: { eventName: string, eventValues: any }) => void;
+      };
+      Firebase: {
+        Analytics: {
+          setCollection: (params: { enabled: boolean }) => void;
+          setUserId: (params: { userId: string }) => void;
+          setDefaultEventParameters: (params: { parameters: any }) => void;
+          setUserProperty: (params: { name: string, value: string }) => void;
+          logEvent: (params: { eventName: string, parameters: any }) => void;
+          logScreen: (params: { screenName: string, screenClass: string }) => void;
+        };
+      };
+      facebook: {
+        events: {
+          send: (params: { event: string, valueToSum?: number, parameters?: any }) => void;
+          sendPurchase: (params: { amount: string, currency: string, parameters?: any }) => void;
+        };
+      };
+      OneSignal: {
+        getPlayerId: () => Promise<string>;
+        setExternalUserId: (params: { externalUserId: string }) => Promise<{ success: boolean }>;
+        removeExternalUserId: () => Promise<{ success: boolean }>;
+      };
+    };
   }
+}
 
   return (
     <div className={`min-h-screen p-4 pb-24 ${darkMode ? 'bg-gray-900 text-white' : 'bg-gradient-to-br from-blue-50 to-indigo-100 text-gray-800'}`}>
@@ -473,6 +583,356 @@ export default function FrontendPage() {
               </svg>
               Download
             </button>
+          </div>
+        </div>
+        
+        {/* In-App Purchase */}
+        <div className={`${darkMode ? 'bg-gradient-to-br from-green-900 to-emerald-800' : 'bg-gradient-to-br from-green-500 to-emerald-500'} p-6 rounded-xl shadow-lg mb-6 transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl`}>
+          <h3 className="text-xl font-bold mb-4 text-white flex items-center">
+            <span className="bg-white text-green-600 p-2 rounded-full mr-3 inline-flex items-center justify-center w-8 h-8">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-5 h-5">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
+              </svg>
+            </span>
+            In-App Purchase
+          </h3>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 bg-white/10 p-4 rounded-lg mb-4">
+            <div className="flex flex-col gap-3">
+              <div className="flex flex-col gap-1">
+                <label className="text-white font-medium">Product ID:</label>
+                <input 
+                  type="text" 
+                  value={iapProductId}
+                  onChange={(e) => setIapProductId(e.target.value)}
+                  placeholder="Enter product ID" 
+                  className="w-full p-3 rounded-lg bg-white/20 text-white placeholder-white/70 border border-white/30 focus:outline-none focus:ring-2 focus:ring-white/50"
+                />
+              </div>
+              
+              <div className="flex flex-col gap-1">
+                <label className="text-white font-medium">Product Type:</label>
+                <select
+                  value={iapProductType}
+                  onChange={(e) => setIapProductType(e.target.value)}
+                  className="w-full p-3 rounded-lg bg-white/20 text-white border border-white/30 focus:outline-none focus:ring-2 focus:ring-white/50"
+                >
+                  <option value="inapp">In-App</option>
+                  <option value="subs">Subscription</option>
+                </select>
+              </div>
+              
+              <div className="flex items-center gap-4 mt-2">
+                <label className="text-white font-medium">Is Consumable:</label>
+                <div className="relative inline-block w-12 align-middle select-none transition duration-200 ease-in">
+                  <input 
+                    type="checkbox" 
+                    checked={iapIsConsumable}
+                    onChange={() => setIapIsConsumable(!iapIsConsumable)}
+                    className="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"
+                    style={{
+                      right: iapIsConsumable ? '0' : 'auto',
+                      left: iapIsConsumable ? 'auto' : '0',
+                      transition: 'all 0.3s ease'
+                    }}
+                  />
+                  <label 
+                    className="toggle-label block overflow-hidden h-6 rounded-full cursor-pointer"
+                    style={{
+                      backgroundColor: iapIsConsumable ? '#10B981' : '#D1D5DB'
+                    }}
+                  ></label>
+                </div>
+              </div>
+            </div>
+            
+            <div className="flex flex-col gap-4 justify-end">
+              <button 
+                onClick={makeInAppPurchase} 
+                className="bg-white text-green-600 font-bold px-5 py-3 rounded-lg hover:bg-opacity-90 transition-all duration-300 shadow-md flex items-center justify-center gap-2"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-5 h-5">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+                Make Purchase
+              </button>
+              
+              <button 
+                onClick={getAllPurchases} 
+                className="bg-white/20 text-white font-bold px-5 py-3 rounded-lg hover:bg-white/30 transition-all duration-300 shadow-md flex items-center justify-center gap-2"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-5 h-5">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                </svg>
+                Get All Purchases
+              </button>
+            </div>
+          </div>
+          
+          <div className="mt-4 p-4 bg-white/10 rounded-lg">
+            <p className="text-white font-medium mb-2">Result:</p>
+            <div className="bg-white/20 p-3 rounded-lg text-white/90 min-h-12">
+              {deviceInfo}
+            </div>
+          </div>
+        </div>
+        
+        {/* Analytics Integration */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          {/* AppsFlyer */}
+          <div className={`${darkMode ? 'bg-gradient-to-br from-purple-900 to-indigo-800' : 'bg-gradient-to-br from-purple-500 to-indigo-500'} p-6 rounded-xl shadow-lg transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl`}>
+            <h3 className="text-xl font-bold mb-4 text-white flex items-center">
+              <span className="bg-white text-purple-600 p-2 rounded-full mr-3 inline-flex items-center justify-center w-8 h-8">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-5 h-5">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+              </span>
+              AppsFlyer
+            </h3>
+            
+            <div className="flex flex-col gap-4 bg-white/10 p-4 rounded-lg">
+              <div className="flex flex-col gap-1">
+                <label className="text-white font-medium">Customer ID:</label>
+                <input 
+                  type="text" 
+                  value={appsflyerCustomerId}
+                  onChange={(e) => setAppsflyerCustomerId(e.target.value)}
+                  placeholder="Enter customer ID" 
+                  className="w-full p-3 rounded-lg bg-white/20 text-white placeholder-white/70 border border-white/30 focus:outline-none focus:ring-2 focus:ring-white/50"
+                />
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <button 
+                  onClick={setAppsflyerCustomerUserId} 
+                  className="bg-white text-purple-600 font-bold px-5 py-2 rounded-lg hover:bg-opacity-90 transition-all duration-300 shadow-md flex items-center justify-center gap-2"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-5 h-5">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
+                  Set Customer ID
+                </button>
+                
+                <button 
+                  onClick={() => logAppsflyerEvent("af_purchase", {price: 9.99, currency: "USD"})} 
+                  className="bg-white/20 text-white font-bold px-5 py-2 rounded-lg hover:bg-white/30 transition-all duration-300 shadow-md flex items-center justify-center gap-2"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-5 h-5">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2z" />
+                  </svg>
+                  Log Purchase Event
+                </button>
+              </div>
+            </div>
+          </div>
+          
+          {/* OneSignal */}
+          <div className={`${darkMode ? 'bg-gradient-to-br from-red-900 to-rose-800' : 'bg-gradient-to-br from-red-500 to-rose-500'} p-6 rounded-xl shadow-lg transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl`}>
+            <h3 className="text-xl font-bold mb-4 text-white flex items-center">
+              <span className="bg-white text-red-600 p-2 rounded-full mr-3 inline-flex items-center justify-center w-8 h-8">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-5 h-5">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                </svg>
+              </span>
+              OneSignal
+            </h3>
+            
+            <div className="flex flex-col gap-4 bg-white/10 p-4 rounded-lg">
+              <div className="flex flex-col gap-1">
+                <label className="text-white font-medium">External User ID:</label>
+                <input 
+                  type="text" 
+                  value={onesignalExternalUserId}
+                  onChange={(e) => setOnesignalExternalUserId(e.target.value)}
+                  placeholder="Enter external user ID" 
+                  className="w-full p-3 rounded-lg bg-white/20 text-white placeholder-white/70 border border-white/30 focus:outline-none focus:ring-2 focus:ring-white/50"
+                />
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <button 
+                  onClick={setOneSignalExternalUserId} 
+                  className="bg-white text-red-600 font-bold px-5 py-2 rounded-lg hover:bg-opacity-90 transition-all duration-300 shadow-md flex items-center justify-center gap-2"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-5 h-5">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
+                  </svg>
+                  Set External User ID
+                </button>
+                
+                <button 
+                  onClick={removeOneSignalExternalUserId} 
+                  className="bg-white/20 text-white font-bold px-5 py-2 rounded-lg hover:bg-white/30 transition-all duration-300 shadow-md flex items-center justify-center gap-2"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-5 h-5">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7a4 4 0 11-8 0 4 4 0 018 0zM9 14a6 6 0 00-6 6v1h12v-1a6 6 0 00-6-6zM21 12h-6" />
+                  </svg>
+                  Remove External User ID
+                </button>
+              </div>
+              
+              <button 
+                onClick={() => {
+                  if (typeof window !== 'undefined' && window.WTN && window.WTN.OneSignal) {
+                    window.WTN.OneSignal.getPlayerId().then((playerId) => {
+                      setDeviceInfo("Result: Player ID - " + playerId);
+                    });
+                  }
+                }} 
+                className="bg-white text-red-600 font-bold px-5 py-2 rounded-lg hover:bg-opacity-90 transition-all duration-300 shadow-md flex items-center justify-center gap-2"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-5 h-5">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2" />
+                </svg>
+                Get Player ID
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Firebase Analytics and Facebook Events */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          {/* Firebase Analytics */}
+          <div className={`${darkMode ? 'bg-gradient-to-br from-amber-900 to-yellow-800' : 'bg-gradient-to-br from-amber-500 to-yellow-500'} p-6 rounded-xl shadow-lg transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl`}>
+            <h3 className="text-xl font-bold mb-4 text-white flex items-center">
+              <span className="bg-white text-amber-600 p-2 rounded-full mr-3 inline-flex items-center justify-center w-8 h-8">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-5 h-5">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+              </span>
+              Firebase Analytics
+            </h3>
+            
+            <div className="flex flex-col gap-4 bg-white/10 p-4 rounded-lg">
+              <div className="flex flex-col gap-1">
+                <label className="text-white font-medium">User ID:</label>
+                <input 
+                  type="text" 
+                  value={firebaseUserId}
+                  onChange={(e) => setFirebaseUserId(e.target.value)}
+                  placeholder="Enter user ID" 
+                  className="w-full p-3 rounded-lg bg-white/20 text-white placeholder-white/70 border border-white/30 focus:outline-none focus:ring-2 focus:ring-white/50"
+                />
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <button 
+                  onClick={() => setFirebaseUserId(firebaseUserId)} 
+                  className="bg-white text-amber-600 font-bold px-5 py-2 rounded-lg hover:bg-opacity-90 transition-all duration-300 shadow-md flex items-center justify-center gap-2"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-5 h-5">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
+                  Set User ID
+                </button>
+                
+                <button 
+                  onClick={() => {
+                    if (typeof window !== 'undefined' && window.WTN && window.WTN.Firebase && window.WTN.Firebase.Analytics) {
+                      window.WTN.Firebase.Analytics.setCollection({ enabled: true });
+                    }
+                  }} 
+                  className="bg-white/20 text-white font-bold px-5 py-2 rounded-lg hover:bg-white/30 transition-all duration-300 shadow-md flex items-center justify-center gap-2"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-5 h-5">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  Enable Collection
+                </button>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <button 
+                  onClick={() => {
+                    if (typeof window !== 'undefined' && window.WTN && window.WTN.Firebase && window.WTN.Firebase.Analytics) {
+                      window.WTN.Firebase.Analytics.logEvent({
+                        eventName: "purchase", 
+                        parameters: {value: 9.99, currency: "USD"}
+                      });
+                    }
+                  }} 
+                  className="bg-white text-amber-600 font-bold px-5 py-2 rounded-lg hover:bg-opacity-90 transition-all duration-300 shadow-md flex items-center justify-center gap-2"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-5 h-5">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2z" />
+                  </svg>
+                  Log Purchase Event
+                </button>
+                
+                <button 
+                  onClick={() => {
+                    if (typeof window !== 'undefined' && window.WTN && window.WTN.Firebase && window.WTN.Firebase.Analytics) {
+                      window.WTN.Firebase.Analytics.logScreen({
+                        screenName: "home_screen", 
+                        screenClass: "HomeActivity"
+                      });
+                    }
+                  }} 
+                  className="bg-white/20 text-white font-bold px-5 py-2 rounded-lg hover:bg-white/30 transition-all duration-300 shadow-md flex items-center justify-center gap-2"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-5 h-5">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                  Log Screen View
+                </button>
+              </div>
+            </div>
+          </div>
+          
+          {/* Facebook App Events */}
+          <div className={`${darkMode ? 'bg-gradient-to-br from-blue-900 to-sky-800' : 'bg-gradient-to-br from-blue-500 to-sky-500'} p-6 rounded-xl shadow-lg transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl`}>
+            <h3 className="text-xl font-bold mb-4 text-white flex items-center">
+              <span className="bg-white text-blue-600 p-2 rounded-full mr-3 inline-flex items-center justify-center w-8 h-8">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-5 h-5">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
+                </svg>
+              </span>
+              Facebook App Events
+            </h3>
+            
+            <div className="flex flex-col gap-4 bg-white/10 p-4 rounded-lg">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <button 
+                  onClick={() => {
+                    if (typeof window !== 'undefined' && window.WTN && window.WTN.facebook && window.WTN.facebook.events) {
+                      window.WTN.facebook.events.send({
+                        event: "fb_mobile_purchase",
+                        valueToSum: 9.99,
+                        parameters: {currency: "USD"}
+                      });
+                    }
+                  }} 
+                  className="bg-white text-blue-600 font-bold px-5 py-2 rounded-lg hover:bg-opacity-90 transition-all duration-300 shadow-md flex items-center justify-center gap-2"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-5 h-5">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2z" />
+                  </svg>
+                  Send Event
+                </button>
+                
+                <button 
+                  onClick={() => {
+                    if (typeof window !== 'undefined' && window.WTN && window.WTN.facebook && window.WTN.facebook.events) {
+                      window.WTN.facebook.events.sendPurchase({
+                        amount: "9.99",
+                        currency: "USD",
+                        parameters: {item_name: "Premium Subscription"}
+                      });
+                    }
+                  }} 
+                  className="bg-white/20 text-white font-bold px-5 py-2 rounded-lg hover:bg-white/30 transition-all duration-300 shadow-md flex items-center justify-center gap-2"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-5 h-5">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                  </svg>
+                  Send Purchase Event
+                </button>
+              </div>
+              
+              <div className="mt-2 p-3 bg-white/20 rounded-lg text-white/90 min-h-12 text-center">
+                <p>Facebook App Events allow you to track user actions in your app</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
