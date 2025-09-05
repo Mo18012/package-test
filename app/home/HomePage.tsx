@@ -15,16 +15,16 @@ export default function HomePage() {
 
           {/* Nav Links */}
           <nav className="hidden md:flex gap-6 text-gray-400">
-            <a href="#" className="hover:text-foreground transition">
-              Home
+            <a href="/test" className="hover:text-foreground transition">
+              Test
             </a>
-            <a href="#features" className="hover:text-foreground transition">
-              Features
+            <a href="/frontend" className="hover:text-foreground transition">
+              Frontend
             </a>
-            <a href="#pricing" className="hover:text-foreground transition">
+            <a href="/test" className="hover:text-foreground transition">
               Pricing
             </a>
-            <a href="#contact" className="hover:text-foreground transition">
+            <a href="/test" className="hover:text-foreground transition">
               Contact
             </a>
           </nav>
@@ -42,13 +42,17 @@ export default function HomePage() {
           A modern web experience designed with React + Tailwind CSS. Fast,
           responsive, and beautiful by default.
         </p>
-        <div className="flex gap-4">
-          <button className="px-6 py-3 rounded-xl bg-foreground text-background font-semibold shadow-md hover:opacity-80 transition">
-            Get Started
-          </button>
-          <button className="px-6 py-3 rounded-xl border border-foreground text-foreground font-semibold hover:bg-foreground hover:text-background transition">
-            Learn More
-          </button>
+        <div className="flex gap-4 justify-center">
+          <a href="/test">
+            <button className="px-10 py-3 rounded-xl bg-foreground text-background font-semibold shadow-md hover:opacity-80 transition">
+              Get Started
+            </button>
+          </a>
+          <a href="/frontend">
+            <button className="px-10 py-3 rounded-xl bg-blue-600 text-white font-semibold shadow-md hover:opacity-80 transition">
+              Frontend Demo
+            </button>
+          </a>
         </div>
         <div className="pt-10">
           <img
@@ -92,9 +96,11 @@ export default function HomePage() {
         <p className="mb-6 text-gray-400">
           Join thousands of developers building with modern tools.
         </p>
-        <button className="px-6 py-3 rounded-xl bg-foreground text-background font-semibold shadow-md hover:opacity-80 transition">
-          Start Free Trial
-        </button>
+        <a href="/test" className=" gap-4">
+          <button className="px-6 py-3 rounded-xl bg-foreground text-background font-semibold shadow-md hover:opacity-80 transition">
+            Get Started
+          </button>
+        </a>
       </section>
 
       {/* Footer */}
