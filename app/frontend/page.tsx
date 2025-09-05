@@ -133,7 +133,7 @@ export default function FrontendPage() {
   };
   
   // Firebase functions
-  const setFirebaseUserId = (userId: string) => {
+  const handleSetFirebaseUserId = (userId: string) => {
     if (typeof window !== 'undefined' && window.WTN && window.WTN.Firebase && window.WTN.Firebase.Analytics) {
       window.WTN.Firebase.Analytics.setUserId({ userId });
     }
@@ -817,7 +817,7 @@ declare global {
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                 <button 
-                  onClick={() => setFirebaseUserId(firebaseUserId)} 
+                  onClick={() => handleSetFirebaseUserId(firebaseUserId)} 
                   className="bg-white text-amber-600 font-bold px-5 py-2 rounded-lg hover:bg-opacity-90 transition-all duration-300 shadow-md flex items-center justify-center gap-2"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-5 h-5">
