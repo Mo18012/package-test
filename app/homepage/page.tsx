@@ -100,7 +100,7 @@ export default function HomePage() {
       {/* Footer */}
       <footer className="py-8 px-6 text-center border-t border-gray-700">
         <p className="text-gray-500">
-          © {new Date().getFullYear()} YourCompany. All rights reserved.
+          © {new Date().getFullYear()} All rights reserved.
         </p>
       </footer>
     </div>
