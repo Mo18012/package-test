@@ -11,7 +11,8 @@
     "@netlify/blobs": "^10.0.8",
     "next": "15.5.2",
     "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react-dom": "19.1.0",
+    "webtonative": "^1.0.75-beta.4"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
