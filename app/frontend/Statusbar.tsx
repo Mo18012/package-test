@@ -15,7 +15,7 @@ const Statusbar: FC<IStatusbarProps> = ({ darkMode }) => {
     statusBar({
       style: theme,
       color: statusBarColor,
-      overlay: true,
+      overlay: false, //only true if 8 digit for opacity
     });
     toast.success('trigger Statusbar');
   };
