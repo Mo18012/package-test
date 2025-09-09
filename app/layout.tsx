@@ -30,7 +30,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Script
-          src="https://unpkg.com/webtonative@1.0.75-beta.4/webtonative.min.js"
+          src="https://unpkg.com/webtonative@1.0.75-beta.5/webtonative.min.js"
           strategy="beforeInteractive" // ensures it's available before app runs
         />
         <Toaster
