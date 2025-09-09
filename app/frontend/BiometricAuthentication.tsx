@@ -1,6 +1,11 @@
 import React, { FC, useState } from 'react';
 import toast from 'react-hot-toast';
-import { show, checkStatus } from 'webtonative/Biometric';
+import {
+  show,
+  checkStatus,
+  saveSecret,
+  deleteSecret,
+} from 'webtonative/Biometric';
 
 export interface IBiometricAuthenticationProps {
   darkMode?: boolean;
@@ -12,6 +17,7 @@ const BiometricAuthentication: FC<IBiometricAuthenticationProps> = ({
   onResult = () => {},
 }) => {
   const [promptMessage, setPromptMessage] = useState('Verify your identity');
+  const [secretMessage, setSecretMessage] = useState('Meoww');
 
   const authenticate = () => {
     show({
@@ -30,6 +36,26 @@ const BiometricAuthentication: FC<IBiometricAuthenticationProps> = ({
         const result = 'Result: ' + Object.values(data);
         onResult(result);
         toast.success('Biometric status checked');
+      },
+    });
+  };
+
+  const handleSaveSecret = () => {
+    saveSecret({
+      secret: secretMessage,
+      callback: function (data) {
+        const result = 'Result: ' + Object.values(data);
+        onResult(result);
+        toast.success('Biometric saveSecret triggered');
+      },
+    });
+  };
+  const handleDeleteSecret = () => {
+    deleteSecret({
+      callback: function (data) {
+        const result = 'Result: ' + Object.values(data);
+        onResult(result);
+        toast.success('Biometric deleteSecret triggered');
       },
     });
   };
@@ -107,6 +133,32 @@ const BiometricAuthentication: FC<IBiometricAuthenticationProps> = ({
           >
             Check Status
           </button>
+        </div>
+      </div>
+      <div>
+        <label>Secret</label>
+        <div className="flex sm:flex-row flex-col gap-4">
+          <input
+            type="text"
+            value={secretMessage}
+            onChange={(e) => setSecretMessage(e.target.value)}
+            placeholder="Enter prompt message"
+            className="mt-2 w-full p-3 rounded-lg bg-white/20 text-white placeholder-white/70 border border-white/30 focus:outline-none focus:ring-2 focus:ring-white/50"
+          />
+          <div className="flex gap-2 text-sm w-full">
+            <button
+              onClick={handleSaveSecret}
+              className="bg-white/20 text-white font-bold px-5 py-3 rounded-lg hover:bg-white/30 transition-all duration-300 shadow-md flex items-center justify-center gap-2 w-full"
+            >
+              Add secret
+            </button>
+            <button
+              onClick={handleDeleteSecret}
+              className="bg-white/20 text-white font-bold px-5 py-3 rounded-lg hover:bg-white/30 transition-all duration-300 shadow-md flex items-center justify-center gap-2 w-full"
+            >
+              Delete secret
+            </button>
+          </div>
         </div>
       </div>
     </div>
