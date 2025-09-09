@@ -69,11 +69,14 @@ export default function FrontendPage() {
         </div>
 
         {/* Biometric Authentication */}
-        <BiometricAuthentication darkMode={darkMode} onResult={handleResultUpdate} />
+        <BiometricAuthentication
+          darkMode={darkMode}
+          onResult={handleResultUpdate}
+        />
 
         {/* Permission Screens */}
         <Permissions darkMode={darkMode} />
-        
+
         {/* Device Info */}
         <DeviceInfo darkMode={darkMode} onResult={handleResultUpdate} />
 
@@ -119,13 +122,13 @@ export default function FrontendPage() {
             </span>
             Results
           </h3>
-          
+
           <div className="p-4 bg-white/10 rounded-lg">
-             <p className="text-white font-medium mb-2">Result:</p>
-             <div className="bg-white/20 p-3 rounded-lg text-white/90 min-h-12">
-               {resultInfo}
-             </div>
-           </div>
+            <p className="text-white font-medium mb-2">Result:</p>
+            <div className="bg-white/20 p-3 rounded-lg text-white/90 min-h-12">
+              {resultInfo}
+            </div>
+          </div>
         </div>
       </div>
     </div>

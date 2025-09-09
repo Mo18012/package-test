@@ -1,41 +1,37 @@
 import React, { FC, useState } from 'react';
 import toast from 'react-hot-toast';
-import { Biometric } from 'webtonative';
+import { show, checkStatus } from 'webtonative/Biometric';
 
 export interface IBiometricAuthenticationProps {
   darkMode?: boolean;
   onResult?: (result: string) => void;
 }
 
-const BiometricAuthentication: FC<IBiometricAuthenticationProps> = ({ 
+const BiometricAuthentication: FC<IBiometricAuthenticationProps> = ({
   darkMode,
-  onResult = () => {}
+  onResult = () => {},
 }) => {
   const [promptMessage, setPromptMessage] = useState('Verify your identity');
 
   const authenticate = () => {
-    if (typeof window !== 'undefined' && Biometric) {
-      Biometric.show({
-        prompt: promptMessage,
-        callback: function (data: any) {
-          const result = 'Result: ' + Object.values(data);
-          onResult(result);
-          toast.success('Biometric authentication triggered');
-        },
-      });
-    }
+    show({
+      prompt: promptMessage,
+      callback: function (data) {
+        const result = 'Result: ' + Object.values(data);
+        onResult(result);
+        toast.success('Biometric authentication triggered');
+      },
+    });
   };
 
-  const checkStatus = () => {
-    if (typeof window !== 'undefined' && Biometric) {
-      Biometric.checkStatus({
-        callback: function (data: any) {
-          const result = 'Result: ' + Object.values(data);
-          onResult(result);
-          toast.success('Biometric status checked');
-        },
-      });
-    }
+  const handleCheckStatus = () => {
+    checkStatus({
+      callback: function (data) {
+        const result = 'Result: ' + Object.values(data);
+        onResult(result);
+        toast.success('Biometric status checked');
+      },
+    });
   };
 
   return (
@@ -69,8 +65,7 @@ const BiometricAuthentication: FC<IBiometricAuthenticationProps> = ({
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 bg-white/10 p-4 rounded-lg mb-4">
         <div className="flex flex-col gap-2">
           <p className="text-white/80">
-            Authenticate using device biometrics (fingerprint, face
-            recognition)
+            Authenticate using device biometrics (fingerprint, face recognition)
           </p>
           <div className="text-white/70 text-sm">
             <p>• Secure authentication</p>
@@ -107,7 +102,7 @@ const BiometricAuthentication: FC<IBiometricAuthenticationProps> = ({
             Authenticate
           </button>
           <button
-            onClick={checkStatus}
+            onClick={handleCheckStatus}
             className="bg-white/20 text-white font-bold px-5 py-3 rounded-lg hover:bg-white/30 transition-all duration-300 shadow-md flex items-center justify-center gap-2 w-full"
           >
             Check Status
