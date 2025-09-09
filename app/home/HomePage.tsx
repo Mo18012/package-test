@@ -54,14 +54,14 @@ export default function HomePage() {
             </button>
           </a>
         </div>
-        <div className="pt-10">
+        {/* <div className="pt-10">
           <img
             src="/sad-crying-cat-meme.gif"
             alt="Logo"
             width={120}
             height={120}
           />
-        </div>
+        </div> */}
       </section>
 
       {/* Features Section */}

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import Script from 'next/script';
+import { Toaster } from 'react-hot-toast';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -32,6 +33,7 @@ export default function RootLayout({
           src="https://unpkg.com/webtonative@1.0.75-beta.4/webtonative.min.js"
           strategy="beforeInteractive" // ensures it's available before app runs
         />
+        <Toaster />
         {children}
       </body>
     </html>
