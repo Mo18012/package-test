@@ -150,7 +150,7 @@ export default function FrontendPage() {
 
   return (
     <div
-      className={`min-h-screen p-4 pb-24 ${
+      className={`min-h-[100dvh] p-4 pb-24 ${
         darkMode
           ? 'bg-gray-900 text-white'
           : 'bg-gradient-to-br from-blue-50 to-indigo-100 text-gray-800'
@@ -175,7 +175,7 @@ export default function FrontendPage() {
 
         <div className="flex flex-col gap-4 py-10">
           <Statusbar />
-          <div className="flex gap-4 w-full">
+          <div className="flex sm:flex-row flex-col gap-8 w-full">
             <PullToRefresh />
             <DisableScreenshot />
           </div>

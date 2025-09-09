@@ -33,7 +33,11 @@ export default function RootLayout({
           src="https://unpkg.com/webtonative@1.0.75-beta.4/webtonative.min.js"
           strategy="beforeInteractive" // ensures it's available before app runs
         />
-        <Toaster />
+        <Toaster
+          toastOptions={{
+            position: 'bottom-right',
+          }}
+        />
         {children}
       </body>
     </html>

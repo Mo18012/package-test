@@ -11,6 +11,7 @@ const Statusbar: FC<IStatusbarProps> = ({ darkMode }) => {
 
   const setStatusBarColorFn = () => {
     const theme = statusBarDarkMode ? 'dark' : 'light';
+    console.log('statusBarColor', statusBarColor, theme);
     statusBar({
       style: theme,
       color: statusBarColor,
