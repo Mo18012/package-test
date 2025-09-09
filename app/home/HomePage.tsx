@@ -53,6 +53,11 @@ export default function HomePage() {
               Frontend Demo
             </button>
           </a>
+          <a href="/https://webtonetive.netlify.app">
+            <button className="px-10 py-3 rounded-xl bg-blue-600 text-white font-semibold shadow-md hover:opacity-80 transition">
+              Go to html website Demo
+            </button>
+          </a>
         </div>
         {/* <div className="pt-10">
           <img
