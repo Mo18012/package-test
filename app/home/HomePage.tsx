@@ -42,18 +42,20 @@ export default function HomePage() {
           A modern web experience designed with React + Tailwind CSS. Fast,
           responsive, and beautiful by default.
         </p>
-        <div className="flex gap-4 justify-center">
-          <a href="/test">
-            <button className="px-10 py-3 rounded-xl bg-foreground text-background font-semibold shadow-md hover:opacity-80 transition">
-              Get Started
-            </button>
-          </a>
-          <a href="/frontend">
-            <button className="px-10 py-3 rounded-xl bg-blue-600 text-white font-semibold shadow-md hover:opacity-80 transition">
-              Frontend Demo
-            </button>
-          </a>
-          <a href="/https://webtonetive.netlify.app">
+        <div className="flex gap-4 justify-center flex-col">
+          <div className="flex gap-4 justify-center">
+            <a href="/test">
+              <button className="px-10 py-3 rounded-xl bg-foreground text-background font-semibold shadow-md hover:opacity-80 transition">
+                Get Started
+              </button>
+            </a>
+            <a href="/frontend">
+              <button className="px-10 py-3 rounded-xl bg-blue-600 text-white font-semibold shadow-md hover:opacity-80 transition">
+                Frontend Demo
+              </button>
+            </a>
+          </div>
+          <a href="https://webtonetive.netlify.app">
             <button className="px-10 py-3 rounded-xl bg-blue-600 text-white font-semibold shadow-md hover:opacity-80 transition">
               Go to html website Demo
             </button>
