@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react';
 import toast from 'react-hot-toast';
-
+import { setExternalUserId, removeExternalUserId } from 'webtonative/OneSignal';
 export interface IOneSignalProps {
   darkMode?: boolean;
 }
@@ -9,17 +9,13 @@ const OneSignal: FC<IOneSignalProps> = ({ darkMode }) => {
   const [onesignalExternalUserId, setOnesignalExternalUserId] = useState('');
 
   const setOneSignalExternalUserId = () => {
-    if (typeof window !== 'undefined' && window.WTN && window.WTN.OneSignal) {
-      window.WTN.OneSignal.setExternalUserId(onesignalExternalUserId);
-      toast.success('OneSignal external user ID set');
-    }
+    setExternalUserId(onesignalExternalUserId);
+    toast.success('OneSignal external user ID set');
   };
 
   const removeOneSignalExternalUserId = () => {
-    if (typeof window !== 'undefined' && window.WTN && window.WTN.OneSignal) {
-      window.WTN.OneSignal.removeExternalUserId();
-      toast.success('OneSignal external user ID removed');
-    }
+    removeExternalUserId();
+    toast.success('OneSignal external user ID removed');
   };
 
   return (
