@@ -13,6 +13,7 @@ import InAppPurchase from './InAppPurchase';
 import AppsFlyer from './AppsFlyer';
 import Firebase from './Firebase';
 import OneSignal from './OneSignal';
+import Screens from './Screens';
 
 export default function FrontendPage() {
   // State variables
@@ -76,6 +77,8 @@ export default function FrontendPage() {
 
         {/* Permission Screens */}
         <Permissions darkMode={darkMode} />
+
+        <Screens darkMode={darkMode} />
 
         {/* Device Info */}
         <DeviceInfo darkMode={darkMode} onResult={handleResultUpdate} />
