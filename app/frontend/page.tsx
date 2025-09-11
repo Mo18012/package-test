@@ -15,6 +15,7 @@ import Firebase from './Firebase';
 import OneSignal from './OneSignal';
 import Screens from './Screens';
 import Result from './Result';
+import { closeApp } from 'webtonative';
 
 export default function FrontendPage() {
   // State variables
@@ -129,7 +130,10 @@ export default function FrontendPage() {
           <Result resultInfo={resultInfo} />
         </div>
 
-        <button className="bg-red-500 w-fit text-white font-bold px-5 py-3 rounded-lg hover:bg-opacity-90 transition-all duration-300 shadow-md flex items-center justify-center gap-2">
+        <button
+          onClick={() => closeApp()}
+          className="bg-red-500 w-fit text-white font-bold px-5 py-3 rounded-lg hover:bg-opacity-90 transition-all duration-300 shadow-md flex items-center justify-center gap-2"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
