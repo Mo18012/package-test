@@ -128,6 +128,24 @@ export default function FrontendPage() {
           </h3>
           <Result resultInfo={resultInfo} />
         </div>
+
+        <button className="bg-red-500 w-fit text-white font-bold px-5 py-3 rounded-lg hover:bg-opacity-90 transition-all duration-300 shadow-md flex items-center justify-center gap-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            className="w-5 h-5"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+          Close App{' '}
+        </button>
       </div>
     </div>
   );
