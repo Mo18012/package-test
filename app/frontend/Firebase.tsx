@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react';
 import toast from 'react-hot-toast';
-import { events } from 'webtonative/FirebaseAnalytics';
+import { setUserId } from 'webtonative/Firebase/Analytics';
 export interface IFirebaseProps {
   darkMode?: boolean;
 }
@@ -9,7 +9,7 @@ const Firebase: FC<IFirebaseProps> = ({ darkMode }) => {
   const [firebaseUserId, setFirebaseUserId] = useState('');
 
   const handleSetFirebaseUserId = () => {
-    events?.setUserId({ userId: firebaseUserId });
+    setUserId({ userId: firebaseUserId });
     toast.success('Firebase user ID set');
   };
 
