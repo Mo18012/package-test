@@ -14,6 +14,7 @@ import AppsFlyer from './AppsFlyer';
 import Firebase from './Firebase';
 import OneSignal from './OneSignal';
 import Screens from './Screens';
+import Result from './Result';
 
 export default function FrontendPage() {
   // State variables
@@ -125,13 +126,7 @@ export default function FrontendPage() {
             </span>
             Results
           </h3>
-
-          <div className="p-4 bg-white/10 rounded-lg">
-            <p className="text-white font-medium mb-2">Result:</p>
-            <div className="bg-white/20 p-3 rounded-lg text-white/90 min-h-12">
-              {resultInfo}
-            </div>
-          </div>
+          <Result resultInfo={resultInfo} />
         </div>
       </div>
     </div>

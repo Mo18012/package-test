@@ -1,21 +1,19 @@
 import React, { FC, useState } from 'react';
 import toast from 'react-hot-toast';
 import { deviceInfo } from 'webtonative';
+import Result from './Result';
 
 export interface IDeviceInfoProps {
   darkMode?: boolean;
-  onResult?: (result: string) => void;
 }
 
-const DeviceInfo: FC<IDeviceInfoProps> = ({ 
-  darkMode,
-  onResult = () => {}
-}) => {
+const DeviceInfo: FC<IDeviceInfoProps> = ({ darkMode }) => {
+  const [result, setResult] = useState('');
   const getDeviceInfoFn = () => {
     if (typeof window !== 'undefined' && deviceInfo) {
       deviceInfo().then(function (value: any) {
         const result = 'Result: ' + Object.values(value);
-        onResult(result);
+        setResult(result);
         toast.success('Device info retrieved');
       });
     }
@@ -51,7 +49,8 @@ const DeviceInfo: FC<IDeviceInfoProps> = ({
 
       <div className="bg-white/10 p-4 rounded-lg mb-4">
         <p className="text-white/80 mb-4">
-          Get detailed information about the user's device, including platform, model, and operating system.
+          Get detailed information about the user's device, including platform,
+          model, and operating system.
         </p>
         <button
           onClick={getDeviceInfoFn}
@@ -73,6 +72,7 @@ const DeviceInfo: FC<IDeviceInfoProps> = ({
           </svg>
           Get Device Info
         </button>
+        <Result resultInfo={result} />
       </div>
     </div>
   );
