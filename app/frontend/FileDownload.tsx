@@ -8,15 +8,6 @@ export interface IFileDownloadProps {
 const FileDownload: FC<IFileDownloadProps> = ({ darkMode }) => {
   const [downloadUrl, setDownloadUrl] = useState('');
 
-  const downloadFileFn = () => {
-    if (typeof window !== 'undefined' && downloadUrl) {
-      window.location.href = downloadUrl + '?wtn-download-file=true';
-      toast.success('Download initiated');
-    } else {
-      toast.error('Please enter a valid URL');
-    }
-  };
-
   return (
     <div
       className={`${
@@ -47,7 +38,8 @@ const FileDownload: FC<IFileDownloadProps> = ({ darkMode }) => {
 
       <div className="bg-white/10 p-4 rounded-lg mb-4">
         <p className="text-white/80 mb-4">
-          Download files directly to the device's storage using WebToNative's file download capability.
+          Download files directly to the device's storage using WebToNative's
+          file download capability.
         </p>
         <div className="flex flex-col md:flex-row gap-4">
           <input
@@ -57,26 +49,25 @@ const FileDownload: FC<IFileDownloadProps> = ({ darkMode }) => {
             placeholder="Enter file URL to download"
             className="flex-grow p-3 rounded-lg bg-white/20 text-white placeholder-white/70 border border-white/30 focus:outline-none focus:ring-2 focus:ring-white/50"
           />
-          <button
-            onClick={downloadFileFn}
-            className="bg-white text-amber-600 font-bold px-5 py-3 rounded-lg hover:bg-opacity-90 transition-all duration-300 shadow-md flex items-center justify-center gap-2 whitespace-nowrap"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              className="w-5 h-5"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
-              />
-            </svg>
-            Download
-          </button>
+          <a href={downloadUrl + '?wtn-download-file=true'}>
+            <button className="bg-white text-amber-600 font-bold px-5 py-3 rounded-lg hover:bg-opacity-90 transition-all duration-300 shadow-md flex items-center justify-center gap-2 whitespace-nowrap">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                className="w-5 h-5"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                />
+              </svg>
+              Download
+            </button>
+          </a>
         </div>
       </div>
     </div>

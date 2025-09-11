@@ -82,7 +82,7 @@ export default function FrontendPage() {
         <Screens darkMode={darkMode} />
 
         {/* Device Info */}
-        <DeviceInfo darkMode={darkMode} onResult={handleResultUpdate} />
+        <DeviceInfo darkMode={darkMode} />
 
         {/* File Download */}
         <FileDownload darkMode={darkMode} />
