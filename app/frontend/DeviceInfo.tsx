@@ -10,13 +10,11 @@ export interface IDeviceInfoProps {
 const DeviceInfo: FC<IDeviceInfoProps> = ({ darkMode }) => {
   const [result, setResult] = useState('');
   const getDeviceInfoFn = () => {
-    if (typeof window !== 'undefined' && deviceInfo) {
-      deviceInfo().then(function (value: any) {
-        const result = 'Result: ' + Object.values(value);
-        setResult(result);
-        toast.success('Device info retrieved');
-      });
-    }
+    deviceInfo().then(function (value: any) {
+      const result = 'Result: ' + Object.values(value);
+      setResult(result);
+      toast.success('Device info retrieved');
+    });
   };
 
   return (

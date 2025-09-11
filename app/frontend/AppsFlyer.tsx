@@ -1,5 +1,6 @@
 import React, { FC, useState } from 'react';
 import toast from 'react-hot-toast';
+import { logEvent, setCustomerUserId } from 'webtonative/AppsFlyer';
 
 export interface IAppsFlyerProps {
   darkMode?: boolean;
@@ -13,21 +14,17 @@ const AppsFlyer: FC<IAppsFlyerProps> = ({ darkMode }) => {
   );
 
   const setAppsflyerCustomerUserId = () => {
-    if (typeof window !== 'undefined' && window.WTN && window.WTN.appsflyer) {
-      window.WTN.appsflyer.setCustomerUserId(appsflyerCustomerId);
-      toast.success('AppsFlyer customer ID set');
-    }
+    setCustomerUserId(appsflyerCustomerId);
+    toast.success('AppsFlyer customer ID set');
   };
 
   const logAppsflyerEvent = () => {
-    if (typeof window !== 'undefined' && window.WTN && window.WTN.appsflyer) {
-      try {
-        const params = JSON.parse(eventParams);
-        window.WTN.appsflyer.logEvent(eventName, params);
-        toast.success('AppsFlyer event logged');
-      } catch (error) {
-        toast.error('Invalid JSON parameters');
-      }
+    try {
+      const params = JSON.parse(eventParams);
+      logEvent(eventName, params);
+      toast.success('AppsFlyer event logged');
+    } catch (error) {
+      toast.error('Invalid JSON parameters');
     }
   };
 
