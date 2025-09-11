@@ -30,6 +30,7 @@ const InAppPurchase: FC<IInAppPurchaseProps> = ({ darkMode }) => {
     getAllPurchases({
       callback: function (data) {
         const result = 'Result: ' + Object.values(data);
+
         setResultInfo(result);
         toast.success('Retrieved all purchases');
       },

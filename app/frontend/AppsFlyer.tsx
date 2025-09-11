@@ -8,7 +8,9 @@ export interface IAppsFlyerProps {
 const AppsFlyer: FC<IAppsFlyerProps> = ({ darkMode }) => {
   const [appsflyerCustomerId, setAppsflyerCustomerId] = useState('');
   const [eventName, setEventName] = useState('purchase');
-  const [eventParams, setEventParams] = useState('{ "price": 9.99, "currency": "USD" }');
+  const [eventParams, setEventParams] = useState(
+    '{ "price": 9.99, "currency": "USD" }',
+  );
 
   const setAppsflyerCustomerUserId = () => {
     if (typeof window !== 'undefined' && window.WTN && window.WTN.appsflyer) {
@@ -62,7 +64,7 @@ const AppsFlyer: FC<IAppsFlyerProps> = ({ darkMode }) => {
           <div className="flex flex-col gap-3">
             <div>
               <label className="text-white/80 block mb-1">Customer ID:</label>
-              <div className="flex gap-2">
+              <div className="flex flex-col sm:flex-row gap-2">
                 <input
                   type="text"
                   value={appsflyerCustomerId}
@@ -93,7 +95,9 @@ const AppsFlyer: FC<IAppsFlyerProps> = ({ darkMode }) => {
 
           <div className="flex flex-col gap-3">
             <div>
-              <label className="text-white/80 block mb-1">Event Parameters (JSON):</label>
+              <label className="text-white/80 block mb-1">
+                Event Parameters (JSON):
+              </label>
               <textarea
                 value={eventParams}
                 onChange={(e) => setEventParams(e.target.value)}
