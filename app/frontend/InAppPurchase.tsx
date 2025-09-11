@@ -1,45 +1,39 @@
 import React, { FC, useState } from 'react';
 import toast from 'react-hot-toast';
-import { inAppPurchase, getAllPurchases } from 'webtonative';
+import { inAppPurchase, getAllPurchases } from 'webtonative/InAppPurchase';
+import Result from './Result';
 
 export interface IInAppPurchaseProps {
   darkMode?: boolean;
-  onResult?: (result: string) => void;
 }
 
-const InAppPurchase: FC<IInAppPurchaseProps> = ({ 
-  darkMode,
-  onResult = () => {}
-}) => {
+const InAppPurchase: FC<IInAppPurchaseProps> = ({ darkMode }) => {
   const [iapProductId, setIapProductId] = useState('com.example.product');
   const [iapProductType, setIapProductType] = useState('inapp');
   const [iapIsConsumable, setIapIsConsumable] = useState(true);
+  const [resultInfo, setResultInfo] = useState('');
 
   const makeInAppPurchase = () => {
-    if (typeof window !== 'undefined' && inAppPurchase) {
-      inAppPurchase({
-        productId: iapProductId,
-        productType: iapProductType,
-        isConsumable: iapIsConsumable,
-        callback: function (data) {
-          const result = 'Result: ' + Object.values(data);
-          onResult(result);
-          toast.success('In-app purchase initiated');
-        },
-      });
-    }
+    inAppPurchase({
+      productId: iapProductId,
+      productType: iapProductType,
+      isConsumable: iapIsConsumable,
+      callback: function (data) {
+        const result = 'Result: ' + Object.values(data);
+        setResultInfo(result);
+        toast.success('In-app purchase initiated');
+      },
+    });
   };
 
   const getAllPurchasesFn = () => {
-    if (typeof window !== 'undefined' && getAllPurchases) {
-      getAllPurchases({
-        callback: function (data) {
-          const result = 'Result: ' + Object.values(data);
-          onResult(result);
-          toast.success('Retrieved all purchases');
-        },
-      });
-    }
+    getAllPurchases({
+      callback: function (data) {
+        const result = 'Result: ' + Object.values(data);
+        setResultInfo(result);
+        toast.success('Retrieved all purchases');
+      },
+    });
   };
 
   return (
@@ -82,19 +76,17 @@ const InAppPurchase: FC<IInAppPurchaseProps> = ({
                 className="w-full p-3 rounded-lg bg-white/20 text-white placeholder-white/70 border border-white/30 focus:outline-none focus:ring-2 focus:ring-white/50"
               />
             </div>
-            
+
             <div>
               <label className="text-white/80 block mb-1">Product Type:</label>
-              <select
+              <input
+                type="text"
                 value={iapProductType}
                 onChange={(e) => setIapProductType(e.target.value)}
-                className="w-full p-3 rounded-lg bg-white/20 text-white border border-white/30 focus:outline-none focus:ring-2 focus:ring-white/50"
-              >
-                <option value="inapp">In-App Purchase</option>
-                <option value="subs">Subscription</option>
-              </select>
+                className="w-full p-3 rounded-lg bg-white/20 text-white placeholder-white/70 border border-white/30 focus:outline-none focus:ring-2 focus:ring-white/50"
+              />
             </div>
-            
+
             <div className="flex items-center gap-2 mt-2">
               <label className="text-white/80">Consumable:</label>
               <div className="relative inline-block w-12 align-middle select-none transition duration-200 ease-in">
@@ -118,7 +110,7 @@ const InAppPurchase: FC<IInAppPurchaseProps> = ({
               </div>
             </div>
           </div>
-          
+
           <div className="flex flex-col gap-4 justify-end">
             <button
               onClick={makeInAppPurchase}
@@ -140,7 +132,7 @@ const InAppPurchase: FC<IInAppPurchaseProps> = ({
               </svg>
               Make Purchase
             </button>
-            
+
             <button
               onClick={getAllPurchasesFn}
               className="bg-white/20 text-white font-bold px-5 py-3 rounded-lg hover:bg-white/30 transition-all duration-300 shadow-md flex items-center justify-center gap-2 w-full"
@@ -149,6 +141,7 @@ const InAppPurchase: FC<IInAppPurchaseProps> = ({
             </button>
           </div>
         </div>
+        <Result resultInfo={resultInfo} />
       </div>
     </div>
   );
