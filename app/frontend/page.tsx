@@ -16,6 +16,9 @@ import OneSignal from './OneSignal';
 import Screens from './Screens';
 import Result from './Result';
 import { closeApp } from 'webtonative';
+import ClearAppCacheCard from './ClearCache';
+import GeoLocationCard from './GeoLocation';
+import ScanBarcodeCard from './Barcodescan';
 
 export default function FrontendPage() {
   // State variables
@@ -99,6 +102,12 @@ export default function FrontendPage() {
 
         {/* OneSignal Integration */}
         <OneSignal darkMode={darkMode} />
+
+        <ClearAppCacheCard />
+
+        <GeoLocationCard />
+
+        <ScanBarcodeCard />
 
         {/* Results Display */}
         <div
