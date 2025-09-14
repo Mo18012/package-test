@@ -19,6 +19,13 @@ import { closeApp } from 'webtonative';
 import ClearAppCacheCard from './ClearCache';
 import GeoLocationCard from './GeoLocation';
 import ScanBarcodeCard from './Barcodescan';
+import ClipboardCard from './Clipboard';
+import ScreenControlCard from './ScreenControl';
+import AppReviewCard from './AppReview';
+import MediaPlayerCard from './MediaPlayerCard';
+import HideBottomNavCard from './BottomNavCard';
+import FirebaseNotificationCard from './NotificationCard';
+import HapticFeedbackCard from './HapticFeedbackCard';
 
 export default function FrontendPage() {
   // State variables
@@ -108,6 +115,20 @@ export default function FrontendPage() {
         <GeoLocationCard />
 
         <ScanBarcodeCard />
+
+        <ClipboardCard />
+
+        <ScreenControlCard />
+
+        <AppReviewCard />
+
+        <MediaPlayerCard />
+
+        <HideBottomNavCard />
+
+        <FirebaseNotificationCard />
+
+        <HapticFeedbackCard />
 
         {/* Results Display */}
         <div
