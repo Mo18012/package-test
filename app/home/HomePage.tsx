@@ -55,7 +55,7 @@ export default function HomePage() {
               </button>
             </a>
           </div>
-          <a href="https://webtonetive.netlify.app">
+          <a target="_blank" href="https://webtonetive.netlify.app">
             <button className="px-10 py-3 rounded-xl bg-blue-600 text-white font-semibold shadow-md hover:opacity-80 transition">
               Go to html website Demo
             </button>
@@ -103,11 +103,38 @@ export default function HomePage() {
         <p className="mb-6 text-gray-400">
           Join thousands of developers building with modern tools.
         </p>
-        <a href="/test" className=" gap-4">
+        <div className="flex gap-4 items-center">
+          <a href="/Orientation" className=" gap-4">
+            <button className="px-6 py-3 rounded-xl bg-foreground text-background font-semibold shadow-md hover:opacity-80 transition">
+              Orientation
+            </button>
+          </a>
+          <a href="/app-open" className=" gap-4">
+            <button className="px-6 py-3 rounded-xl bg-foreground text-background font-semibold shadow-md hover:opacity-80 transition">
+              AppOpen
+            </button>
+          </a>
+          <a href="/date" className=" gap-4">
+            <button className="px-6 py-3 rounded-xl bg-foreground text-background font-semibold shadow-md hover:opacity-80 transition">
+              Date
+            </button>
+          </a>
+          <a href="/beacon-icon" className=" gap-4">
+            <button className="px-6 py-3 rounded-xl bg-foreground text-background font-semibold shadow-md hover:opacity-80 transition">
+              Beacon Icon
+            </button>
+          </a>
+          <a href="/beacon-android" className=" gap-4">
+            <button className="px-6 py-3 rounded-xl bg-foreground text-background font-semibold shadow-md hover:opacity-80 transition">
+              Beacon android
+            </button>
+          </a>
+        </div>
+        {/* <a href="/test" className=" gap-4">
           <button className="px-6 py-3 rounded-xl bg-foreground text-background font-semibold shadow-md hover:opacity-80 transition">
             Get Started
           </button>
-        </a>
+        </a> */}
       </section>
 
       {/* Footer */}
