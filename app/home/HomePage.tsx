@@ -1,3 +1,4 @@
+'use client';
 export default function HomePage() {
   return (
     <div className="min-h-screen flex flex-col bg-background/60 text-foreground transition-colors">
@@ -103,38 +104,18 @@ export default function HomePage() {
         <p className="mb-6 text-gray-400">
           Join thousands of developers building with modern tools.
         </p>
-        <div className="flex gap-4 items-center">
-          <a href="/Orientation" className=" gap-4">
-            <button className="px-6 py-3 rounded-xl bg-foreground text-background font-semibold shadow-md hover:opacity-80 transition">
-              Orientation
-            </button>
-          </a>
-          <a href="/app-open" className=" gap-4">
-            <button className="px-6 py-3 rounded-xl bg-foreground text-background font-semibold shadow-md hover:opacity-80 transition">
-              AppOpen
-            </button>
-          </a>
-          <a href="/date" className=" gap-4">
-            <button className="px-6 py-3 rounded-xl bg-foreground text-background font-semibold shadow-md hover:opacity-80 transition">
-              Date
-            </button>
-          </a>
-          <a href="/beacon-icon" className=" gap-4">
-            <button className="px-6 py-3 rounded-xl bg-foreground text-background font-semibold shadow-md hover:opacity-80 transition">
-              Beacon Icon
-            </button>
-          </a>
-          <a href="/beacon-android" className=" gap-4">
-            <button className="px-6 py-3 rounded-xl bg-foreground text-background font-semibold shadow-md hover:opacity-80 transition">
-              Beacon android
-            </button>
-          </a>
+        <div className="flex gap-4 items-center flex-wrap text-nowrap">
+          {navLinks.map(({ to, label }) => (
+            <a key={to} href={to}>
+              <button
+                className="px-6 py-3 rounded-xl bg-foreground text-background font-semibold shadow-md hover:opacity-80 transition focus:outline-none focus:ring-2 focus:ring-primary"
+                type="button"
+              >
+                {label}
+              </button>
+            </a>
+          ))}
         </div>
-        {/* <a href="/test" className=" gap-4">
-          <button className="px-6 py-3 rounded-xl bg-foreground text-background font-semibold shadow-md hover:opacity-80 transition">
-            Get Started
-          </button>
-        </a> */}
       </section>
 
       {/* Footer */}
@@ -146,3 +127,19 @@ export default function HomePage() {
     </div>
   );
 }
+
+const navLinks = [
+  { to: '/orientation', label: 'Orientation' },
+  { to: '/app-open', label: 'App Open' },
+  { to: '/date', label: 'Date' },
+  { to: '/beacon-icon', label: 'Beacon Icon' },
+  { to: '/beacon-load', label: 'Beacon on load' },
+  { to: '/siri', label: 'Siri' },
+  { to: '/offer-card', label: 'Offer Card' },
+  { to: '/dynamic-icon', label: 'Dynamic Icon' },
+  { to: '/bluetooth', label: 'Bluetooth Control' },
+  { to: '/addon-safearea', label: 'Addon safearea' },
+  { to: '/stripe', label: 'Stripe' },
+  { to: '/permission', label: 'Permission' },
+  { to: '/custom-back', label: 'Custom back' },
+];
