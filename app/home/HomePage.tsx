@@ -50,17 +50,25 @@ export default function HomePage() {
                 Get Started
               </button>
             </a>
-            <a href="/frontend">
+
+            <a target="_blank" href="https://webtonetive.netlify.app">
               <button className="px-10 py-3 rounded-xl bg-blue-600 text-white font-semibold shadow-md hover:opacity-80 transition">
-                Frontend Demo
+                Go to html website Demo
               </button>
             </a>
           </div>
-          <a target="_blank" href="https://webtonetive.netlify.app">
-            <button className="px-10 py-3 rounded-xl bg-blue-600 text-white font-semibold shadow-md hover:opacity-80 transition">
-              Go to html website Demo
-            </button>
-          </a>
+          <div className="flex gap-4">
+            <a href="/typescript/frontend">
+              <button className="px-10 py-3 rounded-xl bg-amber-600 text-white font-semibold shadow-md hover:opacity-80 transition">
+                Frontend Demo Ts
+              </button>
+            </a>
+            <a href="/javascript/frontend">
+              <button className="px-10 py-3 rounded-xl bg-gray-700 text-white font-semibold shadow-md hover:opacity-80 transition">
+                Frontend Demo JS
+              </button>
+            </a>
+          </div>
         </div>
         {/* <div className="pt-10">
           <img
@@ -104,17 +112,37 @@ export default function HomePage() {
         <p className="mb-6 text-gray-400">
           Join thousands of developers building with modern tools.
         </p>
-        <div className="flex gap-4 items-center flex-wrap text-nowrap">
-          {navLinks.map(({ to, label }) => (
-            <a key={to} href={to}>
-              <button
-                className="px-6 py-3 rounded-xl bg-foreground text-background font-semibold shadow-md hover:opacity-80 transition focus:outline-none focus:ring-2 focus:ring-primary"
-                type="button"
-              >
-                {label}
-              </button>
-            </a>
-          ))}
+        <div className="flex flex-col gap-6">
+          <div className="flex gap-4 flex-col items-start">
+            <p className="text-xl font-medium">Ts Links</p>
+            <div className="flex gap-4 items-center flex-wrap text-nowrap">
+              {navLinks.map(({ to, label }) => (
+                <a key={to} href={'/typescript' + to}>
+                  <button
+                    className="px-6 py-3 rounded-xl bg-foreground text-background font-semibold shadow-md hover:opacity-80 transition focus:outline-none focus:ring-2 focus:ring-primary"
+                    type="button"
+                  >
+                    {label}
+                  </button>
+                </a>
+              ))}
+            </div>
+          </div>
+          <div className="flex gap-4 flex-col items-start">
+            <p className="text-xl font-medium">Js links</p>
+            <div className="flex gap-4 items-center flex-wrap text-nowrap">
+              {navLinks.map(({ to, label }) => (
+                <a key={to} href={'/javascript' + to}>
+                  <button
+                    className="px-6 py-3 rounded-xl bg-foreground text-background font-semibold shadow-md hover:opacity-80 transition focus:outline-none focus:ring-2 focus:ring-primary"
+                    type="button"
+                  >
+                    {label}
+                  </button>
+                </a>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
