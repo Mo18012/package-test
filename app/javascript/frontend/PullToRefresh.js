@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 import { enablePullToRefresh } from 'webtonative';
 
@@ -44,15 +44,15 @@ const PullToRefresh = ({}) => {
             onChange={(e) => setPullToRefresh(e.target.checked)}
             className="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"
             style={{
-              right: right ? '0' : 'auto',
-              left: left ? 'auto' : '0',
+              right ? '0' : 'auto',
+              left ? 'auto' : '0',
               transition: 'all 0.3s ease',
             }}
           />
           <label
             className="toggle-label block overflow-hidden h-6 rounded-full cursor-pointer"
             style={{
-              backgroundColor: backgroundColor ? '#EC4899' : '#D1D5DB',
+              backgroundColor ? '#EC4899' : '#D1D5DB',
             }}
           ></label>
         </div>

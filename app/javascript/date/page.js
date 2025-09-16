@@ -10,7 +10,7 @@ const DateTimePickerPage = () => {
     showDateTimePicker({
       showDate,
       showTime,
-      callback(data) => {
+      callback: (data) => {
         console.log('Date Data ->', data);
         setResult(JSON.stringify(data));
       },

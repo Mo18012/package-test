@@ -8,12 +8,12 @@ import {
 } from 'webtonative/Bluetooth';
 const buttonStyle = {
   padding: '15px 30px',
-  margin,
-  fontSize,
+  margin: '10px',
+  fontSize: '16px',
   color: 'white',
   backgroundColor: '#0d6efd',
   border: 'none',
-  borderRadius,
+  borderRadius: '5px',
   cursor: 'pointer',
   transition: 'background-color 0.3s',
 };
@@ -28,13 +28,13 @@ const containerStyle = {
   backgroundColor: '#121212',
   color: '#e0e0e0',
   minHeight: '100vh',
-  padding,
+  padding: "20px",
 };
 
 const tableStyle = {
   borderCollapse: 'collapse',
   width: '100%',
-  marginTop,
+  marginTop: "20px",
   color: '#e0e0e0',
 };
 
@@ -45,23 +45,23 @@ const thTdStyle = {
 
 const BluetoothControl = () => {
   const [scanResultHtml, setScanResultHtml] = useState(
-    : 'Start Bluetooth Scan to see results',
+    'Start Bluetooth Scan to see results'
   );
   const [pairResult, setPairResult] = useState('');
   const [unpairResult, setUnpairResult] = useState('');
 
   const formatBluetoothData = (data) => {
     let table = `
-      <table border="1" style="border-collapse; width%; color#e0e0e0;">
+      <table border="1" style="border-collapse: collapse; width: 100%; color: #e0e0e0;">
         <thead>
           <tr>
-            <th style="padding; border solid #444;">MAC Address</th>
-            <th style="padding; border solid #444;">Name</th>
-            <th style="padding; border solid #444;">Connected</th>
-            <th style="padding; border solid #444;">Paired</th>
-            <th style="padding; border solid #444;">Discovered</th>
-            <th style="padding; border solid #444;">Device Class</th>
-            <th style="padding; border solid #444;">RSSI</th>
+            <th style="padding: 8px; border: 1px solid #444;">MAC Address</th>
+            <th style="padding: 8px; border: 1px solid #444;">Name</th>
+            <th style="padding: 8px; border: 1px solid #444;">Connected</th>
+            <th style="padding: 8px; border: 1px solid #444;">Paired</th>
+            <th style="padding: 8px; border: 1px solid #444;">Discovered</th>
+            <th style="padding: 8px; border: 1px solid #444;">Device Class</th>
+            <th style="padding: 8px; border: 1px solid #444;">RSSI</th>
           </tr>
         </thead>
         <tbody>
@@ -70,25 +70,25 @@ const BluetoothControl = () => {
     data.result.forEach((device) => {
       table += `
         <tr>
-          <td style="padding; border solid #444;">${
+          <td style="padding: 8px; border: 1px solid #444;">${
             device.mac_address
           }</td>
-          <td style="padding; border solid #444;">${
-            device.name || : 'Unknown'
+          <td style="padding: 8px; border: 1px solid #444;">${
+            device.name || 'Unknown'
           }</td>
-          <td style="padding; border solid #444;">${
+          <td style="padding: 8px; border: 1px solid #444;">${
             device.connected ? '✅' : '❌'
           }</td>
-          <td style="padding; border solid #444;">${
+          <td style="padding: 8px; border: 1px solid #444;">${
             device.paired ? '✅' : '❌'
           }</td>
-          <td style="padding; border solid #444;">${
+          <td style="padding: 8px; border: 1px solid #444;">${
             device.discovered ? '✅' : '❌'
           }</td>
-          <td style="padding; border solid #444;">${
+          <td style="padding: 8px; border: 1px solid #444;">${
             device.device_class
           }</td>
-          <td style="padding; border solid #444;">${device.rssi}</td>
+          <td style="padding: 8px; border: 1px solid #444;">${device.rssi}</td>
         </tr>
       `;
     });
@@ -99,32 +99,32 @@ const BluetoothControl = () => {
 
   const handleScan = () => {
     startBluetoothScan({
-      callback(value) => {
+      callback: (value) => {
         toast.success('triggered');
 
-        setScanResultHtml(: 'Scan Result' + formatBluetoothData(value));
+        setScanResultHtml('Scan Result' + formatBluetoothData(value));
       },
     });
   };
 
   const handlePair = () => {
-    const address = prompt(: 'Enter device address to pair:');
+    const address = prompt('Enter device address to pair:');
     pairDevice({
-      address || : '',
-      callback(value) => {
+      address: address || '',
+      callback: (value) => {
         toast.success('triggered');
-        setPairResult(: 'Pair Result' + JSON.stringify(value));
+        setPairResult('Pair Result' + JSON.stringify(value));
       },
     });
   };
 
   const handleUnpair = () => {
-    const address = prompt(: 'Enter device address to unpair:');
+    const address = prompt('Enter device address to unpair:');
     unpairDevice({
-      address || : '',
-      callback(value) => {
+      address: address || '',
+      callback: (value) => {
         toast.success('triggered');
-        setUnpairResult(: 'Unpair Result' + JSON.stringify(value));
+        setUnpairResult('Unpair Result' + JSON.stringify(value));
       },
     });
   };
@@ -134,8 +134,9 @@ const BluetoothControl = () => {
       <button
         style={buttonStyle}
         onClick={handleScan}
-        dangerouslySetInnerHTML={{ __html }}
-      />
+      >
+        Start Bluetooth Scan
+      </button>
 
       <div>
         <button style={buttonStyle} onClick={handlePair}>

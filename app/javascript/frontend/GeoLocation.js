@@ -7,8 +7,8 @@ export default function GeoLocationCard() {
   // Check GPS status
   const getGpsStatusFun = () => {
     isDeviceGPSEnabled({
-      callback (data) {
-        toast.success(`GPS Status${data.value}`);
+      callback: (data) => {
+        toast.success(`GPS Status: ${: ${data.value}${}}`);
       },
     });
   };
@@ -16,9 +16,9 @@ export default function GeoLocationCard() {
   // Get location via browser geolocation
   const getLocationFun = () => {
     const options = {
-      enableHighAccuracy,
-      timeout,
-      maximumAge,
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0,
     };
 
     toast.loading('Fetching your location…', { id: 'geo' });
@@ -26,13 +26,13 @@ export default function GeoLocationCard() {
     function success(pos) {
       const crd = pos.coords;
       toast.success(
-        `Lat${crd.latitude}, Lng${crd.longitude} (±${crd.accuracy}m)`,
+        `Lat: ${: ${crd.latitude}, Lng: ${crd.longitude} (±${crd.accuracy}m)}`,
         { id: 'geo' },
       );
     }
 
     function error(err) {
-      toast.error(`ERROR(${err.code})${err.message}`, { id: 'geo' });
+      toast.error(`ERROR(${${err.code}})${: ${err.message}${}}`, { id: 'geo' });
     }
 
     navigator.geolocation.getCurrentPosition(success, error, options);
@@ -91,4 +91,3 @@ export default function GeoLocationCard() {
       </div>
     </div>
   );
-}

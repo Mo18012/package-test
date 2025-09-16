@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 import {
   show,
@@ -7,9 +7,7 @@ import {
   deleteSecret,
 } from 'webtonative/Biometric';
 
-  darkMode?;
   onResult?(result) => void;
-}
 
 const BiometricAuthentication = ({
   darkMode,
@@ -21,7 +19,7 @@ const BiometricAuthentication = ({
   const authenticate = () => {
     show({
       prompt,
-      callback (data) {
+      callback: (data) => {
         const result = 'Result' + Object.values(data);
         onResult(result);
         toast.success('Biometric authentication triggered');
@@ -31,7 +29,7 @@ const BiometricAuthentication = ({
 
   const handleCheckStatus = () => {
     checkStatus({
-      callback (data) {
+      callback: (data) => {
         const result = 'Result' + Object.values(data);
         onResult(result);
         toast.success('Biometric status checked');
@@ -42,7 +40,7 @@ const BiometricAuthentication = ({
   const handleSaveSecret = () => {
     saveSecret({
       secret,
-      callback (data) {
+      callback: (data) => {
         const result = 'Result' + Object.values(data);
         onResult(result);
         toast.success('Biometric saveSecret triggered');
@@ -51,7 +49,7 @@ const BiometricAuthentication = ({
   };
   const handleDeleteSecret = () => {
     deleteSecret({
-      callback (data) {
+      callback: (data) => {
         const result = 'Result' + Object.values(data);
         onResult(result);
         toast.success('Biometric deleteSecret triggered');

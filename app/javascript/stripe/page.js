@@ -7,7 +7,7 @@ const containerStyle = {
   backgroundColor: '#121212',
   color: '#e0e0e0',
   minHeight: '100vh',
-  padding,
+  padding: "20px",
   maxWidth,
   margin: '0 auto',
 };
@@ -21,8 +21,8 @@ const labelStyle = {
 const inputStyle = {
   width: '100%',
   padding: '8px',
-  fontSize,
-  borderRadius,
+  fontSize: "16px",
+  borderRadius: "5px",
   border: '1px solid #444',
   backgroundColor: '#1e1e1e',
   color: '#e0e0e0',
@@ -31,20 +31,20 @@ const inputStyle = {
 
 const buttonStyle = {
   padding: '10px 24px',
-  fontSize,
+  fontSize: "16px",
   backgroundColor: '#0d6efd',
   color: 'white',
   border: 'none',
-  borderRadius,
+  borderRadius: "5px",
   cursor: 'pointer',
   transition: 'background-color 0.3s',
 };
 
 const callbackBoxStyle = {
-  marginTop,
+  marginTop: "20px",
   backgroundColor: '#1e1e1e',
-  padding,
-  borderRadius,
+  padding: "20px",
+  borderRadius: "5px",
   whiteSpace: 'pre-wrap',
   minHeight,
   fontFamily: 'monospace',
@@ -100,7 +100,7 @@ const StripeTapToPayDemo = () => {
       isSimulated,
       amount,
       currency: 'INR',
-      callback(data) => {
+      callback: (data) => {
         const jsonData = JSON.stringify(data, null, 2);
         setCallbackData(jsonData);
         alert(jsonData);

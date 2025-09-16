@@ -1,7 +1,6 @@
-import React, { FC } from 'react';
+import React } from 'react';
 
   resultInfo?;
-}
 
 const Result = ({ resultInfo }) => {
   return (

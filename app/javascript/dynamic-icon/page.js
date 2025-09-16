@@ -49,7 +49,7 @@ const DynamicAppIcon = () => {
           py,
           textAlign: 'center',
           bgcolor: 'background.paper',
-          borderRadius,
+          borderRadius: "5px",
           boxShadow,
         }}
       >

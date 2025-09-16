@@ -12,16 +12,16 @@ const containerStyle = {
   backgroundColor: '#121212',
   color: '#e0e0e0',
   minHeight: '100vh',
-  padding,
+  padding: "20px",
   maxWidth,
   margin: '0 auto',
 };
 
 const buttonStyle = {
   padding: '10px 24px',
-  fontSize,
+  fontSize: "16px",
   margin: '10px 10px 10px 0',
-  borderRadius,
+  borderRadius: "5px",
   border: 'none',
   cursor: 'pointer',
   backgroundColor: '#0d6efd',
@@ -30,18 +30,18 @@ const buttonStyle = {
 };
 
 const labelStyle = {
-  fontSize,
-  marginTop,
+  fontSize: "16px",
+  marginTop: "20px",
   display: 'flex',
   alignItems: 'center',
   gap,
 };
 
 const updateStatusStyle = {
-  marginTop,
-  padding,
+  marginTop: "20px",
+  padding: "20px",
   backgroundColor: '#1e1e1e',
-  borderRadius,
+  borderRadius: "5px",
   fontFamily: 'monospace',
   whiteSpace: 'pre-wrap',
   minHeight,
@@ -61,7 +61,7 @@ const CustomBackAndUpdate = () => {
     customBackHandling({ enable });
 
     checkIfAppUpdateAvailable({
-      callback(data) => {
+      callback: (data) => {
         toast.success('checkIfAppUpdateAvailable' + JSON.stringify(data));
         setUpdateStatus(JSON.stringify(data, null, 2));
       },
@@ -70,7 +70,7 @@ const CustomBackAndUpdate = () => {
 
   const checkIfAppUpdateAvailableFn = () => {
     checkIfAppUpdateAvailable({
-      callback(data) => {
+      callback: (data) => {
         toast.success('checkIfAppUpdateAvailable' + JSON.stringify(data));
         setUpdateStatus(JSON.stringify(data, null, 2));
       },
@@ -80,7 +80,7 @@ const CustomBackAndUpdate = () => {
   const updateApplicationImmediate = () => {
     updateApplication({
       updateType: 'immediate',
-      callback(data) => {
+      callback: (data) => {
         toast.success('updateApplicationImmediate' + JSON.stringify(data));
         setUpdateStatus(JSON.stringify(data, null, 2));
       },
@@ -90,7 +90,7 @@ const CustomBackAndUpdate = () => {
   const updateApplicationFlexible = () => {
     updateApplication({
       updateType: 'flexible',
-      callback(data) => {
+      callback: (data) => {
         toast.success('updateApplicationFlexible' + JSON.stringify(data));
         setUpdateStatus(JSON.stringify(data, null, 2));
       },

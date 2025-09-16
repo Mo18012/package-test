@@ -1,7 +1,4 @@
-import React, { FC } from 'react';
-
-  darkMode?;
-}
+import React from 'react';
 
 const Permissions = ({ darkMode }) => {
   return (

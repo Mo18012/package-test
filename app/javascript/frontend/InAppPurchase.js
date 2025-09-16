@@ -1,10 +1,7 @@
-import React, { FC, useState } from 'react';
+import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 import { inAppPurchase, getAllPurchases } from 'webtonative/InAppPurchase';
 import Result from './Result';
-
-  darkMode?;
-}
 
 const InAppPurchase = ({ darkMode }) => {
   const [iapProductId, setIapProductId] = useState('com.example.product');
@@ -14,11 +11,11 @@ const InAppPurchase = ({ darkMode }) => {
 
   const makeInAppPurchase = () => {
     inAppPurchase({
-      productId,
-      productType,
-      isConsumable,
-      callback (data) {
-        const result = 'Result' + Object.values(data);
+      productId: iapProductId,
+      productType: iapProductType,
+      isConsumable: iapIsConsumable,
+      callback: (data) => {
+        const result = 'Result: ' + Object.values(data);
         setResultInfo(result);
         toast.success('In-app purchase initiated');
       },
@@ -27,8 +24,8 @@ const InAppPurchase = ({ darkMode }) => {
 
   const getAllPurchasesFn = () => {
     getAllPurchases({
-      callback (data) {
-        const result = 'Result' + Object.values(data);
+      callback: (data) => {
+        const result = 'Result: ' + Object.values(data);
 
         setResultInfo(result);
         toast.success('Retrieved all purchases');

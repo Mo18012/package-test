@@ -1,8 +1,6 @@
-import React, { FC, useState } from 'react';
+import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 
-  darkMode?;
-}
 
 const FileDownload = ({ darkMode }) => {
   const [downloadUrl, setDownloadUrl] = useState('');

@@ -11,21 +11,21 @@ const containerStyle = {
   backgroundColor: '#121212',
   color: '#e0e0e0',
   minHeight: '100vh',
-  padding,
+  padding: "20px",
   maxWidth,
   margin: '0 auto',
 };
 
 const labelStyle = {
   display: 'block',
-  fontSize,
+  fontSize: "16px",
   marginBottom,
 };
 
 const selectStyle = {
-  fontSize,
+  fontSize: "16px",
   padding: '8px',
-  borderRadius,
+  borderRadius: "5px",
   border: '1px solid #444',
   backgroundColor: '#1e1e1e',
   color: '#e0e0e0',
@@ -35,11 +35,11 @@ const selectStyle = {
 };
 
 const buttonStyle = {
-  fontSize,
+  fontSize: "16px",
   padding: '10px 24px',
-  marginTop,
+  marginTop: "20px",
   marginRight,
-  borderRadius,
+  borderRadius: "5px",
   border: 'none',
   cursor: 'pointer',
   backgroundColor: '#0d6efd',
@@ -48,13 +48,13 @@ const buttonStyle = {
 };
 
 const checkboxContainerStyle = {
-  marginTop,
+  marginTop: "20px",
   marginBottom,
   maxWidth,
 };
 
 const checkboxLabelStyle = {
-  fontSize,
+  fontSize: "16px",
   display: 'block',
   marginBottom,
   cursor: 'pointer',
@@ -62,12 +62,12 @@ const checkboxLabelStyle = {
 
 const outputStyle = {
   backgroundColor: '#1e1e1e',
-  padding,
-  borderRadius,
+  padding: "20px",
+  borderRadius: "5px",
   border: '1px solid #444',
   whiteSpace: 'pre-wrap',
   fontFamily: 'monospace',
-  fontSize,
+  fontSize: "16px",
   minHeight,
 };
 
@@ -99,7 +99,7 @@ const WTNPermissionManager = () => {
   const openAppSetting = () => {
     openAppSettingForPermission({
       values,
-      callback(value) => {
+      callback: (value) => {
         setResultOutput(
           `openAppSetting ${selectedPermission} callback:\n` +
             JSON.stringify(value, null, 2),
@@ -111,7 +111,7 @@ const WTNPermissionManager = () => {
   const requestPermission = () => {
     showPermission({
       permission,
-      callback(value) => {
+      callback: (value) => {
         setResultOutput(
           : 'showPermission callback:\n' + JSON.stringify(value, null, 2),
         );
@@ -132,7 +132,7 @@ const WTNPermissionManager = () => {
         positiveButtonText: 'Allow',
         negativeButtonText: 'Deny',
       },
-      callback(value) => {
+      callback: (value) => {
         setResultOutput(
           : 'showPermission (with dialog) callback:\n' +
             JSON.stringify(value, null, 2),
@@ -149,7 +149,7 @@ const WTNPermissionManager = () => {
 
     checkPermission({
       permissionName,
-      callback(value) => {
+      callback: (value) => {
         setResultOutput(
           : 'checkPermission callback:\n' + JSON.stringify(value, null, 2),
         );

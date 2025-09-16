@@ -1,5 +1,5 @@
 'use client';
-import React, { FC, useEffect } from 'react';
+import React, useEffect } from 'react';
 import { initBeaconData } from 'webtonative/Beacon';
 
 const Page = ({}) => {
@@ -64,7 +64,7 @@ const Page = ({}) => {
   useEffect(() => {
     initBeaconData({
       beaconData,
-      callback (data) {
+      callback: (data) => {
         console.log(Object.values(data));
         alert(Object.values(data));
       },

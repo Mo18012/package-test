@@ -12,7 +12,7 @@ export default function ScanBarcodeCard() {
     BarcodeScan({
       formats,
       onBarcodeSearch(value) => {
-        toast.success(`Scanned Barcode${value}`);
+        toast.success(`Scanned Barcode${value}${}${}${}`);
       },
     });
   };
@@ -57,4 +57,3 @@ export default function ScanBarcodeCard() {
       </button>
     </div>
   );
-}

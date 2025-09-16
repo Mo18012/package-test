@@ -1,10 +1,8 @@
-import React, { FC, useState } from 'react';
+import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 import { deviceInfo } from 'webtonative';
 import Result from './Result';
 
-  darkMode?;
-}
 
 const DeviceInfo = ({ darkMode }) => {
   const [result, setResult] = useState('');

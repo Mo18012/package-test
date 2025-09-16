@@ -1,9 +1,7 @@
-import React, { FC, useState } from 'react';
+import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 import { logEvent, setCustomerUserId } from 'webtonative/AppsFlyer';
 
-  darkMode?;
-}
 
 const AppsFlyer = ({ darkMode }) => {
   const [appsflyerCustomerId, setAppsflyerCustomerId] = useState('');

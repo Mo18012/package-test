@@ -8,10 +8,10 @@ const ClipboardCard = () => {
 
   const getDataFromClipBoard = () => {
     get({
-      callback (data) {
+      callback: (data) => {
         console.log(data.value);
         setCopiedText(data.value);
-        toast.success(`Data${data.value}`);
+        toast.success(`Data${data.value}${}${}${}`);
       },
     });
   };

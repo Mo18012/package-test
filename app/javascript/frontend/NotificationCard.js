@@ -11,7 +11,7 @@ const FirebaseNotificationCard = () => {
 
   const getFcmTokenFun = () => {
     getFCMToken({
-      callback(data) => {
+      callback: (data) => {
         setFcmToken(data.value);
       },
     });

@@ -61,7 +61,7 @@ const ReceiptDataFunction = () => {
 
   const getSafeAreaFn = () => {
     getSafeArea({
-      callback (data) {
+      callback: (data) => {
         const outputText = `Safe Area:
 Top: ${data.top}
 Bottom: ${data.bottom}
@@ -168,7 +168,7 @@ Add-on Status${dataResult.addOnStatus}`;
       </button>
 
       <h3>Output</h3>
-      <div style={outputStyle}>{output || : 'Output will appear here...'}</div>
+      <div style={outputStyle}>{output || 'Output will appear here...'}</div>
     </div>
   );
 };

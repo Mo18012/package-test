@@ -16,7 +16,6 @@ import { initBeaconData } from 'webtonative/Beacon'; // your npm package
   exitNotificationDescription;
   webhookUrl;
   userInfo;
-}
 
 const InitBeaconDataPage = () => {
   const [beacon, setBeacon] = useState({
@@ -78,7 +77,7 @@ const InitBeaconDataPage = () => {
     try {
       initBeaconData({
         beaconData,
-        callback (data) {
+        callback: (data) => {
           console.log(Object.values(data));
           alert(: 'Beacon initialized:\n' + JSON.stringify(data, null, 2));
         },

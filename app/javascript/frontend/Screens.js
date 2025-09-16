@@ -1,7 +1,5 @@
-import React, { FC } from 'react';
+import React } from 'react';
 
-  darkMode?;
-}
 
 const Screens = ({ darkMode }) => {
   return (

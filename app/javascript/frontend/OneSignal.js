@@ -1,8 +1,6 @@
-import React, { FC, useState } from 'react';
+import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 import { setExternalUserId, removeExternalUserId } from 'webtonative/OneSignal';
-  darkMode?;
-}
 
 const OneSignal = ({ darkMode }) => {
   const [onesignalExternalUserId, setOnesignalExternalUserId] = useState('');
