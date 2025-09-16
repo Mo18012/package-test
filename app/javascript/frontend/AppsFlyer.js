@@ -2,12 +2,11 @@ import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 import { logEvent, setCustomerUserId } from 'webtonative/AppsFlyer';
 
-
 const AppsFlyer = ({ darkMode }) => {
   const [appsflyerCustomerId, setAppsflyerCustomerId] = useState('');
   const [eventName, setEventName] = useState('purchase');
   const [eventParams, setEventParams] = useState(
-    : '{ "price":0.99, "currency":"USD" }',
+    '{ "price":0.99, "currency":"USD" }',
   );
 
   const setAppsflyerCustomerUserId = () => {

@@ -17,23 +17,23 @@ import { addToSiri, loadOfferCard } from 'webtonative';
 import toast from 'react-hot-toast';
 
 const darkTheme = createTheme({
-  palette{
+  palette: {
     mode: 'dark',
-    background{
+    background: {
       default: '#121212',
       paper: '#1E1E1E',
     },
-    text{
+    text: {
       primary: '#FFFFFF',
     },
-    primary{
+    primary: {
       main: '#BB86FC',
     },
-    secondary{
+    secondary: {
       main: '#03DAC6',
     },
   },
-  typography{
+  typography: {
     fontFamily: 'Roboto, sans-serif',
   },
 });
@@ -61,7 +61,7 @@ const OfferCard = () => {
   const handleAddToSiri = () => {
     addToSiri({
       action: 'addToSiri',
-      data{
+      data: {
         actionUrl,
         suggestedPhrase,
         title,
@@ -73,30 +73,30 @@ const OfferCard = () => {
   const handleOfferCard = () => {
     loadOfferCard({
       action: 'showOfferCard',
-      data{
-        action{
+      data: {
+        action: {
           url,
-          button{
+          button: {
             url: '',
             text,
             textColor,
             bgColor,
           },
         },
-        card{
+        card: {
           size,
           position,
           bgColor,
-          content{
+          content: {
             type,
             url,
           },
         },
-        schedule{
-          duration || null,
-          unit || null,
+        schedule: {
+          duration: duration || null,
+          unit: unit || null,
         },
-        id || null,
+        id: id || null,
       },
     });
     toast.success('loadOfferCard Triggered');

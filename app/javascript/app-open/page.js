@@ -1,26 +1,24 @@
 // AppFirstLoadPage.js
-: 'use client';
+'use client';
 import React, { useEffect, useState } from 'react';
 // Replace with the actual import from your npm package:
 import { appFirstLoad } from 'webtonative'; // or whatever package name you use
 
 const AppFirstLoadPage = () => {
-  const [status, setStatus] = useState(
-    : 'checking',
-  );
+  const [status, setStatus] = useState('checking');
   const [result, setResult] = useState(null);
 
   useEffect(() => {
     // Call the API when the component mounts
     appFirstLoad()
       .then((value) => {
-        console.log(: 'Is first load:', value);
+        console.log('Is first load:', value);
         setResult(value);
-        setStatus(: 'done');
+        setStatus('done');
       })
       .catch((err) => {
-        console.error(: 'Error:', err);
-        setStatus(: 'error');
+        console.error('Error:', err);
+        setStatus('error');
       });
   }, []);
 
@@ -31,17 +29,17 @@ const AppFirstLoadPage = () => {
           Check if App is First Loaded
         </h2>
 
-        {status === : 'checking' && (
+        {status === 'checking' && (
           <p className="text-gray-400 animate-pulse">Checking…</p>
         )}
 
-        {status === : 'done' && (
+        {status === 'done' && (
           <p className="text-green-400">
             Is this the app’s first load? → {JSON.stringify(result)}
           </p>
         )}
 
-        {status === : 'error' && (
+        {status === 'error' && (
           <p className="text-red-400">Error checking first load.</p>
         )}
       </div>

@@ -1,26 +1,26 @@
 'use client';
-import React, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { initBeaconData } from 'webtonative/Beacon';
 
 const Page = ({}) => {
   const beaconData = {
-    beaconConfig[
+    beaconConfig: [
       {
         uuid: 'FEEFFEA6-11C9-4AE5-A54D-D15A75B54509',
         major,
         minor,
-        settings{
+        settings: {
           showNotificationOnEntry,
           showNotificationOnExit,
           notificationInterval,
           notificationContentSource: 'API_FETCHED',
-          defaultNotificationEnterData{
+          defaultNotificationEnterData: {
             title: 'New Iphone Beacon Entered',
             image: '',
             body: 'Beacon is active',
             deepLink: 'https://www.orufy.com',
           },
-          defaultNotificationExitData{
+          defaultNotificationExitData: {
             title: 'New Iphone Beacon Exited',
             image: '',
             body: 'Beacon is inactive',
@@ -33,18 +33,18 @@ const Page = ({}) => {
         uuid: 'DEEFFEA6-11C9-4AE5-A54D-D15A75B54509',
         major,
         minor,
-        settings{
+        settings: {
           showNotificationOnEntry,
           showNotificationOnExit,
           notificationInterval,
           notificationContentSource: 'API_FETCHED',
-          defaultNotificationEnterData{
+          defaultNotificationEnterData: {
             title: 'Old Iphone Beacon Entered',
             image: '',
             body: 'Beacon is active',
             deepLink: 'https://www.orufy.com',
           },
-          defaultNotificationExitData{
+          defaultNotificationExitData: {
             title: 'Old Iphone Beacon Exited',
             image: '',
             body: 'Beacon is inactive',
@@ -54,7 +54,7 @@ const Page = ({}) => {
         webhookUrl: 'https://hdioigjkfdkdngdd.free.beeceptor.com',
       },
     ],
-    userInfo{
+    userInfo: {
       userId: 'user123',
       userName: 'Ravi Saharan',
       userEmail: 'ravi.saharan@orufy.com',

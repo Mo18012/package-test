@@ -7,7 +7,7 @@ const containerStyle = {
   backgroundColor: '#121212',
   color: '#e0e0e0',
   minHeight: '100vh',
-  padding: "20px",
+  padding: '20px',
   maxWidth,
   margin: '0 auto',
 };
@@ -21,8 +21,8 @@ const labelStyle = {
 const inputStyle = {
   width: '100%',
   padding: '8px',
-  fontSize: "16px",
-  borderRadius: "5px",
+  fontSize: '16px',
+  borderRadius: '5px',
   border: '1px solid #444',
   backgroundColor: '#1e1e1e',
   color: '#e0e0e0',
@@ -31,33 +31,32 @@ const inputStyle = {
 
 const buttonStyle = {
   padding: '10px 24px',
-  fontSize: "16px",
+  fontSize: '16px',
   backgroundColor: '#0d6efd',
   color: 'white',
   border: 'none',
-  borderRadius: "5px",
+  borderRadius: '5px',
   cursor: 'pointer',
   transition: 'background-color 0.3s',
 };
 
 const callbackBoxStyle = {
-  marginTop: "20px",
+  marginTop: '20px',
   backgroundColor: '#1e1e1e',
-  padding: "20px",
-  borderRadius: "5px",
+  padding: '20px',
+  borderRadius: '5px',
   whiteSpace: 'pre-wrap',
   minHeight,
   fontFamily: 'monospace',
 };
 
 const StripeTapToPayDemo = () => {
-  const [connectionToken, setConnectionToken] =
-    useState('Fetching token...');
+  const [connectionToken, setConnectionToken] = useState('Fetching token...');
   const [clientSecret, setClientSecret] = useState('');
   const [stripeLocationId, setStripeLocationId] =
     useState('tml_GD4XLAIu9ajhoD');
   const [callbackData, setCallbackData] = useState(
-    : 'Callback data will appear here.',
+    'Callback data will appear here.',
   );
 
   useEffect(() => {
@@ -65,19 +64,19 @@ const StripeTapToPayDemo = () => {
     async function fetchConnectionToken() {
       try {
         const response = await fetch(
-          : 'http://192.168.1.40:4242/connection_token',
+          'http://192.168.1.40:4242/connection_token',
           {
             method: 'POST',
-            headers{ 'Content-Type': 'application/json' },
+            headers: { 'Content-Type': 'application/json' },
           },
         );
-        if (!response.ok) throw new Error(: 'Failed to fetch token');
+        if (!response.ok) throw new Error('Failed to fetch token');
         const data = await response.json();
         setConnectionToken(data.secret);
         console.log('Fetched connection token:', data.secret);
       } catch (error) {
-        console.error(: 'Error fetching connection token:', error);
-        setConnectionToken(: 'Error fetching token');
+        console.error('Error fetching connection token:', error);
+        setConnectionToken('Error fetching token');
       }
     }
     fetchConnectionToken();
@@ -85,11 +84,11 @@ const StripeTapToPayDemo = () => {
 
   const makePayment = () => {
     console.log(
-      : 'ConnectionToken:',
+      'ConnectionToken:',
       connectionToken,
-      : 'ClientSecret:',
+      'ClientSecret:',
       clientSecret,
-      : 'LocationId:',
+      'LocationId:',
       stripeLocationId,
     );
 

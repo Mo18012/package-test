@@ -3,19 +3,17 @@
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 // import the real npm package you’re using here:
-import { setOrientation;
+import { setOrientation as wtnSetOrientation } from 'webtonative';
 
 const SetOrientationPage = () => {
-  const [orientation, setOrientation] = useState(
-    : 'portrait',
-  );
+  const [orientation, setOrientation] = useState('portrait');
   const [force, setForce] = useState(false);
   const [status, setStatus] = useState('');
 
   const handleSubmit = () => {
     wtnSetOrientation({
       orientation,
-      forceOrientation,
+      forceOrientation: force,
     });
     toast.success('orient');
     setStatus(`Orientation set to ${orientation} (force${force})`);
@@ -34,9 +32,7 @@ const SetOrientationPage = () => {
         <select
           id="orientation"
           value={orientation}
-          onChange={(e) =>
-            setOrientation(e.target.value)
-          }
+          onChange={(e) => setOrientation(e.target.value)}
           className="w-full mb-4 p-2 rounded bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring focus:ring-blue-500"
         >
           <option value="portrait">Portrait</option>

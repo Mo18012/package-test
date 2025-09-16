@@ -12,16 +12,16 @@ const containerStyle = {
   backgroundColor: '#121212',
   color: '#e0e0e0',
   minHeight: '100vh',
-  padding: "20px",
+  padding: '20px',
   maxWidth,
   margin: '0 auto',
 };
 
 const buttonStyle = {
   padding: '10px 24px',
-  fontSize: "16px",
+  fontSize: '16px',
   margin: '10px 10px 10px 0',
-  borderRadius: "5px",
+  borderRadius: '5px',
   border: 'none',
   cursor: 'pointer',
   backgroundColor: '#0d6efd',
@@ -30,18 +30,18 @@ const buttonStyle = {
 };
 
 const labelStyle = {
-  fontSize: "16px",
-  marginTop: "20px",
+  fontSize: '16px',
+  marginTop: '20px',
   display: 'flex',
   alignItems: 'center',
   gap,
 };
 
 const updateStatusStyle = {
-  marginTop: "20px",
-  padding: "20px",
+  marginTop: '20px',
+  padding: '20px',
   backgroundColor: '#1e1e1e',
-  borderRadius: "5px",
+  borderRadius: '5px',
   fontFamily: 'monospace',
   whiteSpace: 'pre-wrap',
   minHeight,
@@ -50,13 +50,11 @@ const updateStatusStyle = {
 const CustomBackAndUpdate = () => {
   const [backHandlingEnabled, setBackHandlingEnabled] = useState(false);
   const [updateStatus, setUpdateStatus] = useState(
-    : 'Update status will appear here',
+    'Update status will appear here',
   );
 
   const sendCustomBackHandling = () => {
-    toast.success(
-      : 'Sending to Android' + JSON.stringify({ enable }),
-    );
+    toast.success('Sending to Android' + JSON.stringify({ enable }));
 
     customBackHandling({ enable });
 

@@ -10,9 +10,9 @@ export default function ScanBarcodeCard() {
     const storeFormat = barcodeFormat ?? 1; // default 1
 
     BarcodeScan({
-      formats,
-      onBarcodeSearch(value) => {
-        toast.success(`Scanned Barcode${value}${}${}${}`);
+      format: storeFormat,
+      onBarcodeSearch: (value) => {
+        toast.success(`Scanned Barcode${value}`);
       },
     });
   };
@@ -57,3 +57,4 @@ export default function ScanBarcodeCard() {
       </button>
     </div>
   );
+}

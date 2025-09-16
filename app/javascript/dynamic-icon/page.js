@@ -12,32 +12,32 @@ import {
 import { updateAppIcon } from 'webtonative';
 
 const darkTheme = createTheme({
-  palette{
+  palette: {
     mode: 'dark',
-    background{
+    background: {
       default: '#121212',
       paper: '#1E1E1E',
     },
-    text{
+    text: {
       primary: '#FFFFFF',
     },
-    primary{
+    primary: {
       main: '#BB86FC',
     },
-    secondary{
+    secondary: {
       main: '#03DAC6',
     },
   },
-  typography{
+  typography: {
     fontFamily: 'Roboto, sans-serif',
   },
 });
 
 const DynamicAppIcon = () => {
-  const handleIconChange = (iconName?) => {
+  const handleIconChange = (iconName) => {
     updateAppIcon({
-      iconName ?? null,
-      active!!iconName,
+      iconName: iconName ?? null,
+      active: !!iconName,
     });
   };
 
@@ -49,7 +49,7 @@ const DynamicAppIcon = () => {
           py,
           textAlign: 'center',
           bgcolor: 'background.paper',
-          borderRadius: "5px",
+          borderRadius: '5px',
           boxShadow,
         }}
       >

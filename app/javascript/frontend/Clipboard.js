@@ -11,7 +11,7 @@ const ClipboardCard = () => {
       callback: (data) => {
         console.log(data.value);
         setCopiedText(data.value);
-        toast.success(`Data${data.value}${}${}${}`);
+        toast.success(`Data${data.value}`);
       },
     });
   };

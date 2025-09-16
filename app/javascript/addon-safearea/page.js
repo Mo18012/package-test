@@ -56,7 +56,7 @@ const ReceiptDataFunction = () => {
   const [output, setOutput] = useState('');
 
   const appendOutput = (text) => {
-    setOutput((prev) => (prev ? prev + '\n\n' + text ));
+    setOutput((prev) => (prev ? prev + '\n\n' + text : ''));
   };
 
   const getSafeAreaFn = () => {
@@ -76,13 +76,13 @@ BottomSafeArea: ${data.bottomSafeArea}`;
 
   const getAddOnStatusFn = () => {
     if (!addonInput.trim()) {
-      appendOutput(: '❗ Please enter an add-on name.');
+      appendOutput('❗ Please enter an add-on name.');
       return;
     }
 
     getAddOnStatus({
       addOnName,
-      callback (dataResult) {
+      callback(dataResult) {
         const outputText = `Add-on Name${addonInput}
 Add-on Added${dataResult.addOnAdded}
 Add-on Status${dataResult.addOnStatus}`;
@@ -95,7 +95,7 @@ Add-on Status${dataResult.addOnStatus}`;
   const checkAddOn = (addonName) => {
     getAddOnStatus({
       addOnName,
-      callback (dataResult) {
+      callback(dataResult) {
         const outputText = `Add-on Name${addonName}
 Add-on Added${dataResult.addOnAdded}
 Add-on Status${dataResult.addOnStatus}`;
@@ -123,34 +123,34 @@ Add-on Status${dataResult.addOnStatus}`;
       <h3>Predefined Add-on Buttons:</h3>
       <div>
         {[
-          : 'stickyFooter',
-          : 'socialLogin',
-          : 'enableInAppPurchase',
-          : 'appsflyer',
-          : 'enableFBAppEvents',
-          : 'enableFirebaseEvents',
-          : 'enableFirebaseNotification',
-          : 'enableNativeContacts',
-          : 'enableBackgroundLocation',
-          : 'enableInAppReview',
-          : 'enableBarcode',
-          : 'enableLocalSetting',
-          : 'interComm',
-          : 'offerCard',
-          : 'customMediaPlayer',
-          : 'downloadFileManager',
-          : 'secondaryFooter',
-          : 'disableScreenshot',
-          : 'multipleAppIcon',
-          : 'floatingActionButtonData',
-          : 'appShortcuts',
-          : 'connectData',
-          : 'admobAds',
-          : 'onboarding',
-          : 'stripe',
-          : 'background_app_as_a_service',
-          : 'bluetoothPermission',
-          : 'enableHapticEffect',
+          'stickyFooter',
+          'socialLogin',
+          'enableInAppPurchase',
+          'appsflyer',
+          'enableFBAppEvents',
+          'enableFirebaseEvents',
+          'enableFirebaseNotification',
+          'enableNativeContacts',
+          'enableBackgroundLocation',
+          'enableInAppReview',
+          'enableBarcode',
+          'enableLocalSetting',
+          'interComm',
+          'offerCard',
+          'customMediaPlayer',
+          'downloadFileManager',
+          'secondaryFooter',
+          'disableScreenshot',
+          'multipleAppIcon',
+          'floatingActionButtonData',
+          'appShortcuts',
+          'connectData',
+          'admobAds',
+          'onboarding',
+          'stripe',
+          'background_app_as_a_service',
+          'bluetoothPermission',
+          'enableHapticEffect',
         ].map((name) => (
           <button
             key={name}

@@ -11,21 +11,21 @@ const containerStyle = {
   backgroundColor: '#121212',
   color: '#e0e0e0',
   minHeight: '100vh',
-  padding: "20px",
+  padding: '20px',
   maxWidth,
   margin: '0 auto',
 };
 
 const labelStyle = {
   display: 'block',
-  fontSize: "16px",
+  fontSize: '16px',
   marginBottom,
 };
 
 const selectStyle = {
-  fontSize: "16px",
+  fontSize: '16px',
   padding: '8px',
-  borderRadius: "5px",
+  borderRadius: '5px',
   border: '1px solid #444',
   backgroundColor: '#1e1e1e',
   color: '#e0e0e0',
@@ -35,11 +35,11 @@ const selectStyle = {
 };
 
 const buttonStyle = {
-  fontSize: "16px",
+  fontSize: '16px',
   padding: '10px 24px',
-  marginTop: "20px",
+  marginTop: '20px',
   marginRight,
-  borderRadius: "5px",
+  borderRadius: '5px',
   border: 'none',
   cursor: 'pointer',
   backgroundColor: '#0d6efd',
@@ -48,13 +48,13 @@ const buttonStyle = {
 };
 
 const checkboxContainerStyle = {
-  marginTop: "20px",
+  marginTop: '20px',
   marginBottom,
   maxWidth,
 };
 
 const checkboxLabelStyle = {
-  fontSize: "16px",
+  fontSize: '16px',
   display: 'block',
   marginBottom,
   cursor: 'pointer',
@@ -62,22 +62,22 @@ const checkboxLabelStyle = {
 
 const outputStyle = {
   backgroundColor: '#1e1e1e',
-  padding: "20px",
-  borderRadius: "5px",
+  padding: '20px',
+  borderRadius: '5px',
   border: '1px solid #444',
   whiteSpace: 'pre-wrap',
   fontFamily: 'monospace',
-  fontSize: "16px",
+  fontSize: '16px',
   minHeight,
 };
 
 const permissionsList = [
-  : 'location',
-  : 'record_audio',
-  : 'notification',
-  : 'bluetooth',
-  : 'contact',
-  : 'camera',
+  'location',
+  'record_audio',
+  'notification',
+  'bluetooth',
+  'contact',
+  'camera',
 ];
 
 const WTNPermissionManager = () => {
@@ -85,7 +85,7 @@ const WTNPermissionManager = () => {
   const [checkedPermissions, setCheckedPermissions] = useState([]);
   const [resultOutput, setResultOutput] = useState('No result yet.');
 
-  const handleSelectChange = (e.ChangeEvent<HTMLSelectElement>) => {
+  const handleSelectChange = (e) => {
     setSelectedPermission(e.target.value);
   };
 
@@ -113,7 +113,7 @@ const WTNPermissionManager = () => {
       permission,
       callback: (value) => {
         setResultOutput(
-          : 'showPermission callback:\n' + JSON.stringify(value, null, 2),
+          'showPermission callback:\n' + JSON.stringify(value, null, 2),
         );
       },
     });
@@ -123,18 +123,18 @@ const WTNPermissionManager = () => {
     showPermission({
       permission,
       openAppSetting,
-      alertDialogStyle{
-        title.toUpperCase() + ' Permission',
+      alertDialogStyle: {
+        title: title.toUpperCase() + ' Permission',
         message:
-          : 'This app needs access to ' +
-          selectedPermission.replace('_', : ' ') +
-          : '.',
+          'This app needs access to ' +
+          selectedPermission.replace('_', ' ') +
+          '.',
         positiveButtonText: 'Allow',
         negativeButtonText: 'Deny',
       },
       callback: (value) => {
         setResultOutput(
-          : 'showPermission (with dialog) callback:\n' +
+          'showPermission (with dialog) callback:\n' +
             JSON.stringify(value, null, 2),
         );
       },
@@ -143,7 +143,7 @@ const WTNPermissionManager = () => {
 
   const checkSelectedPermissions = () => {
     if (checkedPermissions.length === 0) {
-      setResultOutput(: '❗ No permissions selected.');
+      setResultOutput('❗ No permissions selected.');
       return;
     }
 
@@ -151,7 +151,7 @@ const WTNPermissionManager = () => {
       permissionName,
       callback: (value) => {
         setResultOutput(
-          : 'checkPermission callback:\n' + JSON.stringify(value, null, 2),
+          'checkPermission callback:\n' + JSON.stringify(value, null, 2),
         );
       },
     });
@@ -206,7 +206,7 @@ const WTNPermissionManager = () => {
               onChange={(e) => handleCheckboxChange(perm, e.target.checked)}
               checked={checkedPermissions.includes(perm)}
             />{' '}
-            {perm.charAt(0).toUpperCase() + perm.slice(1).replace('_', : ' ')}
+            {perm.charAt(0).toUpperCase() + perm.slice(1).replace('_', ' ')}
           </label>
         ))}
       </div>

@@ -1,6 +1,4 @@
-import React } from 'react';
-
-  resultInfo?;
+import { React } from 'react';
 
 const Result = ({ resultInfo }) => {
   return (

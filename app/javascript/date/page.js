@@ -37,8 +37,8 @@ const DateTimePickerPage = () => {
               <span className="text-green-400">Selected</span>
               {result}
             </>
-          ) (
-            : 'Result will appear here.'
+          ) : (
+            'Result will appear here.'
           )}
         </p>
       </div>

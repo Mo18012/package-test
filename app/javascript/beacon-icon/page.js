@@ -3,19 +3,19 @@
 import React, { useState } from 'react';
 import { initBeaconData } from 'webtonative/Beacon'; // your npm package
 
-  uuid;
-  major;
-  minor;
-  entryNotification;
-  exitNotification;
-  interval;
-  source;
-  enterNotificationTitle;
-  enterNotificationDescription;
-  exitNotificationTitle;
-  exitNotificationDescription;
-  webhookUrl;
-  userInfo;
+uuid;
+major;
+minor;
+entryNotification;
+exitNotification;
+interval;
+source;
+enterNotificationTitle;
+enterNotificationDescription;
+exitNotificationTitle;
+exitNotificationDescription;
+webhookUrl;
+userInfo;
 
 const InitBeaconDataPage = () => {
   const [beacon, setBeacon] = useState({
@@ -37,21 +37,17 @@ const InitBeaconDataPage = () => {
   const [addedBeacons, setAddedBeacons] = useState([]);
   const [message, setMessage] = useState('');
 
-  const handleChange = (
-    e.ChangeEvent<
-      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-    >,
-  ) => {
+  const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setBeacon({
       ...beacon,
-      [name] === 'checkbox' ? checked ,
+      [name]: type === 'checkbox' ? checked : value,
     });
   };
 
   const handleAddBeacon = () => {
     if (!beacon.uuid || !beacon.major || !beacon.minor) {
-      setMessage(: 'UUID, Major, and Minor are required');
+      setMessage('UUID, Major, and Minor are required');
       return;
     }
     setAddedBeacons([...addedBeacons, beacon]);
@@ -70,7 +66,7 @@ const InitBeaconDataPage = () => {
       webhookUrl: '',
       userInfo: '',
     });
-    setMessage(: 'Beacon added to list');
+    setMessage('Beacon added to list');
   };
 
   const handleInitBeaconData = async () => {
@@ -79,13 +75,13 @@ const InitBeaconDataPage = () => {
         beaconData,
         callback: (data) => {
           console.log(Object.values(data));
-          alert(: 'Beacon initialized:\n' + JSON.stringify(data, null, 2));
+          alert('Beacon initialized:\n' + JSON.stringify(data, null, 2));
         },
       });
-      setMessage(: 'Beacon data initialized successfully!');
+      setMessage('Beacon data initialized successfully!');
     } catch (err) {
       console.error(err);
-      setMessage(: 'Error initializing beacon data');
+      setMessage('Error initializing beacon data');
     }
   };
 

@@ -7,7 +7,7 @@ const SiriPage = () => {
   const [text, setText] = useState('');
   const [platform, setPlatform] = useState('iOS');
 
-  const handleSubmit = (e.FormEvent) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     addToSiri({
