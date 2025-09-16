@@ -38,7 +38,7 @@ const buttonStyle = {
   fontSize: '16px',
   padding: '10px 24px',
   marginTop: '20px',
-  marginRight,
+  marginRight: '20px',
   borderRadius: '5px',
   border: 'none',
   cursor: 'pointer',
@@ -49,14 +49,14 @@ const buttonStyle = {
 
 const checkboxContainerStyle = {
   marginTop: '20px',
-  marginBottom,
-  maxWidth,
+  marginBottom: '20px',
+  maxWidth: '20px',
 };
 
 const checkboxLabelStyle = {
   fontSize: '16px',
   display: 'block',
-  marginBottom,
+  marginBottom: '20px',
   cursor: 'pointer',
 };
 
@@ -68,7 +68,7 @@ const outputStyle = {
   whiteSpace: 'pre-wrap',
   fontFamily: 'monospace',
   fontSize: '16px',
-  minHeight,
+  minHeight: 100,
 };
 
 const permissionsList = [
@@ -195,7 +195,7 @@ const WTNPermissionManager = () => {
         Request with Dialog
       </button>
 
-      <h3 style={{ marginTop }}>Check Multiple Permissions:</h3>
+      <h3 style={{ marginTop: '20px' }}>Check Multiple Permissions:</h3>
       <div style={checkboxContainerStyle}>
         {permissionsList.map((perm) => (
           <label key={perm} style={checkboxLabelStyle}>
@@ -219,7 +219,7 @@ const WTNPermissionManager = () => {
         Check Selected Permissions
       </button>
 
-      <h3 style={{ marginTop }}>Permission Result:</h3>
+      <h3 style={{ marginTop: '20px' }}>Permission Result:</h3>
       <pre id="resultOutput" style={outputStyle}>
         {resultOutput}
       </pre>
