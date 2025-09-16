@@ -7,12 +7,7 @@ import {
   deleteSecret,
 } from 'webtonative/Biometric';
 
-  onResult?(result) => void;
-
-const BiometricAuthentication = ({
-  darkMode,
-  onResult = () => {},
-}) => {
+const BiometricAuthentication = ({ darkMode, onResult = () => {} }) => {
   const [promptMessage, setPromptMessage] = useState('Verify your identity');
   const [secretMessage, setSecretMessage] = useState('Meoww');
 
