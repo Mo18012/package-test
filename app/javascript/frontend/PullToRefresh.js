@@ -43,15 +43,15 @@ const PullToRefresh = ({}) => {
             onChange={(e) => setPullToRefresh(e.target.checked)}
             className="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"
             style={{
-              right: right ? '0' : 'auto',
-              left: left ? 'auto' : '0',
+              right: pullToRefresh ? '0' : 'auto',
+              left: pullToRefresh ? 'auto' : '0',
               transition: 'all 0.3s ease',
             }}
           />
           <label
             className="toggle-label block overflow-hidden h-6 rounded-full cursor-pointer"
             style={{
-              backgroundColor: backgroundColor ? '#EC4899' : '#D1D5DB',
+              backgroundColor: pullToRefresh ? '#EC4899' : '#D1D5DB',
             }}
           ></label>
         </div>
