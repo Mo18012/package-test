@@ -104,7 +104,7 @@ const OfferCard = () => {
 
   return (
     <ThemeProvider theme={darkTheme}>
-      <Container maxWidth="sm" sx={{ py }}>
+      <Container maxWidth="sm" sx={{ py: 5 }}>
         <Typography variant="h4" gutterBottom>
           Add To Siri
         </Typography>
@@ -134,7 +134,7 @@ const OfferCard = () => {
         <Button
           variant="contained"
           color="primary"
-          sx={{ mt, mb }}
+          sx={{ mt: 5, mb: 8 }}
           onClick={handleAddToSiri}
         >
           Add To Siri
@@ -251,7 +251,7 @@ const OfferCard = () => {
         <Button
           variant="contained"
           color="secondary"
-          sx={{ mt }}
+          sx={{ mt: 5 }}
           onClick={handleOfferCard}
         >
           Load Offer Card

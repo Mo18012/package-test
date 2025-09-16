@@ -13,7 +13,7 @@ const containerStyle = {
   color: '#e0e0e0',
   minHeight: '100vh',
   padding: '20px',
-  maxWidth,
+  maxWidth: 600,
   margin: '0 auto',
 };
 
@@ -34,7 +34,7 @@ const labelStyle = {
   marginTop: '20px',
   display: 'flex',
   alignItems: 'center',
-  gap,
+  gap: 4,
 };
 
 const updateStatusStyle = {
@@ -44,7 +44,7 @@ const updateStatusStyle = {
   borderRadius: '5px',
   fontFamily: 'monospace',
   whiteSpace: 'pre-wrap',
-  minHeight,
+  minHeight: 100,
 };
 
 const CustomBackAndUpdate = () => {
@@ -135,7 +135,7 @@ const CustomBackAndUpdate = () => {
         Visit W3Schools.com!
       </a>
 
-      <h2 style={{ marginTop }}>App Update Options</h2>
+      <h2 style={{ marginTop: 40 }}>App Update Options</h2>
       <button style={buttonStyle} onClick={checkIfAppUpdateAvailableFn}>
         Check For Update
       </button>

@@ -8,13 +8,13 @@ const containerStyle = {
   color: '#e0e0e0',
   minHeight: '100vh',
   padding: '20px',
-  maxWidth,
+  maxWidth: 600,
   margin: '0 auto',
 };
 
 const labelStyle = {
   display: 'block',
-  marginBottom,
+  marginBottom: 40,
   fontWeight: '600',
 };
 
@@ -26,7 +26,7 @@ const inputStyle = {
   border: '1px solid #444',
   backgroundColor: '#1e1e1e',
   color: '#e0e0e0',
-  marginBottom,
+  marginBottom: 4,
 };
 
 const buttonStyle = {
@@ -46,7 +46,7 @@ const callbackBoxStyle = {
   padding: '20px',
   borderRadius: '5px',
   whiteSpace: 'pre-wrap',
-  minHeight,
+  minHeight: 100,
   fontFamily: 'monospace',
 };
 

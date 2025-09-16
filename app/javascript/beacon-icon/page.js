@@ -3,27 +3,13 @@
 import React, { useState } from 'react';
 import { initBeaconData } from 'webtonative/Beacon'; // your npm package
 
-uuid;
-major;
-minor;
-entryNotification;
-exitNotification;
-interval;
-source;
-enterNotificationTitle;
-enterNotificationDescription;
-exitNotificationTitle;
-exitNotificationDescription;
-webhookUrl;
-userInfo;
-
 const InitBeaconDataPage = () => {
   const [beacon, setBeacon] = useState({
     uuid: '',
     major: '',
     minor: '',
-    entryNotification,
-    exitNotification,
+    entryNotification: false,
+    exitNotification: false,
     interval: '',
     source: '',
     enterNotificationTitle: '',
@@ -55,8 +41,8 @@ const InitBeaconDataPage = () => {
       uuid: '',
       major: '',
       minor: '',
-      entryNotification,
-      exitNotification,
+      entryNotification: false,
+      exitNotification: false,
       interval: '',
       source: '',
       enterNotificationTitle: '',

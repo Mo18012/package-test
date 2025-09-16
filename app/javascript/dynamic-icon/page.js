@@ -46,11 +46,11 @@ const DynamicAppIcon = () => {
       <Container
         maxWidth="sm"
         sx={{
-          py,
+          py: 5,
           textAlign: 'center',
           bgcolor: 'background.paper',
           borderRadius: '5px',
-          boxShadow,
+          boxShadow: '',
         }}
       >
         <Typography variant="h4" gutterBottom>

@@ -7,12 +7,12 @@ const Page = ({}) => {
     beaconConfig: [
       {
         uuid: 'FEEFFEA6-11C9-4AE5-A54D-D15A75B54509',
-        major,
-        minor,
+        major: 1,
+        minor: 1,
         settings: {
-          showNotificationOnEntry,
-          showNotificationOnExit,
-          notificationInterval,
+          showNotificationOnEntry: true,
+          showNotificationOnExit: true,
+          notificationInterval: 3,
           notificationContentSource: 'API_FETCHED',
           defaultNotificationEnterData: {
             title: 'New Iphone Beacon Entered',
@@ -31,12 +31,12 @@ const Page = ({}) => {
       },
       {
         uuid: 'DEEFFEA6-11C9-4AE5-A54D-D15A75B54509',
-        major,
-        minor,
+        major: 1,
+        minor: 1,
         settings: {
-          showNotificationOnEntry,
-          showNotificationOnExit,
-          notificationInterval,
+          showNotificationOnEntry: true,
+          showNotificationOnExit: true,
+          notificationInterval: 3,
           notificationContentSource: 'API_FETCHED',
           defaultNotificationEnterData: {
             title: 'Old Iphone Beacon Entered',

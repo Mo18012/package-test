@@ -12,14 +12,14 @@ const containerStyle = {
   color: '#e0e0e0',
   minHeight: '100vh',
   padding: '20px',
-  maxWidth,
+  maxWidth: 600,
   margin: '0 auto',
 };
 
 const labelStyle = {
   display: 'block',
   fontSize: '16px',
-  marginBottom,
+  marginBottom: 40,
 };
 
 const selectStyle = {
@@ -30,8 +30,8 @@ const selectStyle = {
   backgroundColor: '#1e1e1e',
   color: '#e0e0e0',
   width: '100%',
-  maxWidth,
-  marginBottom,
+  maxWidth: 600,
+  marginBottom: 40,
 };
 
 const buttonStyle = {
