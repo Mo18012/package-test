@@ -1,4 +1,4 @@
-: 'use client';
+'use client';
 
 import React, { useState } from 'react';
 import { initBeaconData } from 'webtonative/Beacon'; // your npm package
@@ -46,7 +46,7 @@ const InitBeaconDataPage = () => {
     const { name, value, type, checked } = e.target;
     setBeacon({
       ...beacon,
-      [name] === : 'checkbox' ? checked ,
+      [name] === 'checkbox' ? checked ,
     });
   };
 

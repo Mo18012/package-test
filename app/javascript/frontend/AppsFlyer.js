@@ -23,7 +23,7 @@ const AppsFlyer = ({ darkMode }) => {
       logEvent(eventName, params);
       toast.success('AppsFlyer event logged');
     } catch (error) {
-      toast.error(: 'Invalid JSON parameters');
+      toast.error('Invalid JSON parameters');
     }
   };
 
@@ -31,7 +31,7 @@ const AppsFlyer = ({ darkMode }) => {
     <div
       className={`${
         darkMode
-          ? : 'bg-gradient-to-br from-cyan-900 to-blue-800'
+          ? 'bg-gradient-to-br from-cyan-900 to-blue-800'
           : 'bg-gradient-to-br from-cyan-500 to-blue-500'
       } p-6 rounded-xl shadow-lg mb-6 transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl`}
     >

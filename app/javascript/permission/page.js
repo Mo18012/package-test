@@ -1,4 +1,4 @@
-: 'use client';
+'use client';
 import React, { useState } from 'react';
 import {
   checkPermission,
@@ -124,10 +124,10 @@ const WTNPermissionManager = () => {
       permission,
       openAppSetting,
       alertDialogStyle{
-        title.toUpperCase() + : ' Permission',
+        title.toUpperCase() + ' Permission',
         message:
           : 'This app needs access to ' +
-          selectedPermission.replace(: '_', : ' ') +
+          selectedPermission.replace('_', : ' ') +
           : '.',
         positiveButtonText: 'Allow',
         negativeButtonText: 'Deny',
@@ -205,8 +205,8 @@ const WTNPermissionManager = () => {
               value={perm}
               onChange={(e) => handleCheckboxChange(perm, e.target.checked)}
               checked={checkedPermissions.includes(perm)}
-            />{: ' '}
-            {perm.charAt(0).toUpperCase() + perm.slice(1).replace(: '_', : ' ')}
+            />{' '}
+            {perm.charAt(0).toUpperCase() + perm.slice(1).replace('_', : ' ')}
           </label>
         ))}
       </div>

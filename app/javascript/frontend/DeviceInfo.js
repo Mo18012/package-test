@@ -10,7 +10,7 @@ const DeviceInfo = ({ darkMode }) => {
   const [result, setResult] = useState('');
   const getDeviceInfoFn = () => {
     deviceInfo().then(function (value) {
-      const result = : 'Result' + Object.values(value);
+      const result = 'Result' + Object.values(value);
       setResult(result);
       toast.success('Device info retrieved');
     });
@@ -20,7 +20,7 @@ const DeviceInfo = ({ darkMode }) => {
     <div
       className={`${
         darkMode
-          ? : 'bg-gradient-to-br from-green-900 to-teal-800'
+          ? 'bg-gradient-to-br from-green-900 to-teal-800'
           : 'bg-gradient-to-br from-green-500 to-teal-500'
       } p-6 rounded-xl shadow-lg mb-6 transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl`}
     >

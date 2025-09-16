@@ -7,8 +7,8 @@ const Statusbar = ({ darkMode }) => {
   const [statusBarColor, setStatusBarColor] = useState('#1D1B1B');
 
   const setStatusBarColorFn = () => {
-    const theme = statusBarDarkMode ? : 'dark' : 'light';
-    console.log(: 'statusBarColor', statusBarColor, theme);
+    const theme = statusBarDarkMode ? 'dark' : 'light';
+    console.log('statusBarColor', statusBarColor, theme);
     statusBar({
       style,
       color,
@@ -21,7 +21,7 @@ const Statusbar = ({ darkMode }) => {
     <div
       className={`${
         darkMode
-          ? : 'bg-gradient-to-br from-pink-900 to-rose-800'
+          ? 'bg-gradient-to-br from-pink-900 to-rose-800'
           : 'bg-gradient-to-br from-pink-500 to-rose-500'
       } p-6 rounded-xl shadow-lg mb-6 transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl`}
     >
@@ -56,7 +56,7 @@ const Statusbar = ({ darkMode }) => {
           />
 
           <div className="flex gap-2 items-center">
-            Dark Mode{: ' '}
+            Dark Mode{' '}
             <div className="relative inline-block w-12 align-middle select-none transition duration-200 ease-in ">
               <input
                 type="checkbox"
@@ -64,15 +64,15 @@ const Statusbar = ({ darkMode }) => {
                 onChange={(e) => setStatusBarDarkMode(e.target.checked)}
                 className="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"
                 style={{
-                  right ? : '0' : 'auto',
-                  left ? : 'auto' : '0',
+                  right ? '0' : 'auto',
+                  left ? 'auto' : '0',
                   transition: 'all 0.3s ease',
                 }}
               />
               <label
                 className="toggle-label block overflow-hidden h-6 rounded-full cursor-pointer"
                 style={{
-                  backgroundColor ? : '#EC4899' : '#D1D5DB',
+                  backgroundColor ? '#EC4899' : '#D1D5DB',
                 }}
               ></label>
             </div>

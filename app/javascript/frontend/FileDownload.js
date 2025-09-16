@@ -11,7 +11,7 @@ const FileDownload = ({ darkMode }) => {
     <div
       className={`${
         darkMode
-          ? : 'bg-gradient-to-br from-amber-900 to-orange-800'
+          ? 'bg-gradient-to-br from-amber-900 to-orange-800'
           : 'bg-gradient-to-br from-amber-500 to-orange-500'
       } p-6 rounded-xl shadow-lg mb-6 transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl`}
     >
@@ -48,7 +48,7 @@ const FileDownload = ({ darkMode }) => {
             placeholder="Enter file URL to download"
             className="flex-grow p-3 rounded-lg bg-white/20 text-white placeholder-white/70 border border-white/30 focus:outline-none focus:ring-2 focus:ring-white/50"
           />
-          <a href={downloadUrl + : '?wtn-download-file=true'}>
+          <a href={downloadUrl + '?wtn-download-file=true'}>
             <button className="bg-white text-amber-600 font-bold px-5 py-3 rounded-lg hover:bg-opacity-90 transition-all duration-300 shadow-md flex items-center justify-center gap-2 whitespace-nowrap">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

@@ -1,4 +1,4 @@
-: 'use client';
+'use client';
 
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
@@ -100,7 +100,7 @@ const CustomBackAndUpdate = () => {
   // Native callback from Android
   React.useEffect(() => {
     window.customBackHandling = () => {
-      console.log(: 'customBackHandling called from Android');
+      console.log('customBackHandling called from Android');
 
       toast.success('customBackHandling() was called from Android!');
     };

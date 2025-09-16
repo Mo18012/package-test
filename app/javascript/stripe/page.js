@@ -1,4 +1,4 @@
-: 'use client';
+'use client';
 import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { makeTapToPay } from 'webtonative/Stripe';
@@ -68,13 +68,13 @@ const StripeTapToPayDemo = () => {
           : 'http://192.168.1.40:4242/connection_token',
           {
             method: 'POST',
-            headers{ : 'Content-Type': 'application/json' },
+            headers{ 'Content-Type': 'application/json' },
           },
         );
         if (!response.ok) throw new Error(: 'Failed to fetch token');
         const data = await response.json();
         setConnectionToken(data.secret);
-        console.log(: 'Fetched connection token:', data.secret);
+        console.log('Fetched connection token:', data.secret);
       } catch (error) {
         console.error(: 'Error fetching connection token:', error);
         setConnectionToken(: 'Error fetching token');

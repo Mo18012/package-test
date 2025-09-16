@@ -18,7 +18,7 @@ const InAppPurchase = ({ darkMode }) => {
       productType,
       isConsumable,
       callback (data) {
-        const result = : 'Result' + Object.values(data);
+        const result = 'Result' + Object.values(data);
         setResultInfo(result);
         toast.success('In-app purchase initiated');
       },
@@ -28,7 +28,7 @@ const InAppPurchase = ({ darkMode }) => {
   const getAllPurchasesFn = () => {
     getAllPurchases({
       callback (data) {
-        const result = : 'Result' + Object.values(data);
+        const result = 'Result' + Object.values(data);
 
         setResultInfo(result);
         toast.success('Retrieved all purchases');
@@ -40,7 +40,7 @@ const InAppPurchase = ({ darkMode }) => {
     <div
       className={`${
         darkMode
-          ? : 'bg-gradient-to-br from-emerald-900 to-green-800'
+          ? 'bg-gradient-to-br from-emerald-900 to-green-800'
           : 'bg-gradient-to-br from-emerald-500 to-green-500'
       } p-6 rounded-xl shadow-lg mb-6 transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl`}
     >
@@ -96,15 +96,15 @@ const InAppPurchase = ({ darkMode }) => {
                   onChange={(e) => setIapIsConsumable(e.target.checked)}
                   className="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"
                   style={{
-                    right ? : '0' : 'auto',
-                    left ? : 'auto' : '0',
+                    right ? '0' : 'auto',
+                    left ? 'auto' : '0',
                     transition: 'all 0.3s ease',
                   }}
                 />
                 <label
                   className="toggle-label block overflow-hidden h-6 rounded-full cursor-pointer"
                   style={{
-                    backgroundColor ? : '#10B981' : '#D1D5DB',
+                    backgroundColor ? '#10B981' : '#D1D5DB',
                   }}
                 ></label>
               </div>

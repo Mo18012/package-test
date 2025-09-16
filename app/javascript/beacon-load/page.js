@@ -1,4 +1,4 @@
-: 'use client';
+'use client';
 import React, { FC, useEffect } from 'react';
 import { initBeaconData } from 'webtonative/Beacon';
 

@@ -21,7 +21,7 @@ const OneSignal = ({ darkMode }) => {
     <div
       className={`${
         darkMode
-          ? : 'bg-gradient-to-br from-red-900 to-rose-800'
+          ? 'bg-gradient-to-br from-red-900 to-rose-800'
           : 'bg-gradient-to-br from-red-500 to-rose-500'
       } p-6 rounded-xl shadow-lg mb-6 transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl`}
     >

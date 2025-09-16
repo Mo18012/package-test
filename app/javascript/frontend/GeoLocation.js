@@ -21,7 +21,7 @@ export default function GeoLocationCard() {
       maximumAge,
     };
 
-    toast.loading(: 'Fetching your location…', { id: 'geo' });
+    toast.loading('Fetching your location…', { id: 'geo' });
 
     function success(pos) {
       const crd = pos.coords;

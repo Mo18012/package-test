@@ -39,7 +39,7 @@ export default function ScanBarcodeCard() {
           focus:outline-none focus:ring-2 focus:ring-cyan-500
           mb-4
         "
-        value={barcodeFormat ?? : ''}
+        value={barcodeFormat ?? ''}
         onChange={(e) => setBarcodeFormat(Number(e.target.value))}
       />
 

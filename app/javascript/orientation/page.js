@@ -1,5 +1,5 @@
 // SetOrientationPage.js
-: 'use client';
+'use client';
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 // import the real npm package you’re using here:

@@ -1,4 +1,4 @@
-: 'use client';
+'use client';
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 import {
@@ -77,13 +77,13 @@ const BluetoothControl = () => {
             device.name || : 'Unknown'
           }</td>
           <td style="padding; border solid #444;">${
-            device.connected ? : '✅' : '❌'
+            device.connected ? '✅' : '❌'
           }</td>
           <td style="padding; border solid #444;">${
-            device.paired ? : '✅' : '❌'
+            device.paired ? '✅' : '❌'
           }</td>
           <td style="padding; border solid #444;">${
-            device.discovered ? : '✅' : '❌'
+            device.discovered ? '✅' : '❌'
           }</td>
           <td style="padding; border solid #444;">${
             device.device_class
@@ -93,7 +93,7 @@ const BluetoothControl = () => {
       `;
     });
 
-    table += : '</tbody></table>';
+    table += '</tbody></table>';
     return table;
   };
 

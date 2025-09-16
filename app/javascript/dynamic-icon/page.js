@@ -1,4 +1,4 @@
-: 'use client';
+'use client';
 
 import React from 'react';
 import {
@@ -60,21 +60,21 @@ const DynamicAppIcon = () => {
           <Button
             variant="contained"
             color="primary"
-            onClick={() => handleIconChange(: 'icon1')}
+            onClick={() => handleIconChange('icon1')}
           >
             Set Icon 1
           </Button>
           <Button
             variant="contained"
             color="primary"
-            onClick={() => handleIconChange(: 'icon2')}
+            onClick={() => handleIconChange('icon2')}
           >
             Set Icon 2
           </Button>
           <Button
             variant="contained"
             color="primary"
-            onClick={() => handleIconChange(: 'icon3')}
+            onClick={() => handleIconChange('icon3')}
           >
             Set Icon 3
           </Button>
