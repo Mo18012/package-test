@@ -9,7 +9,7 @@ const AppsFlyer = ({ darkMode }) => {
   const [appsflyerCustomerId, setAppsflyerCustomerId] = useState('');
   const [eventName, setEventName] = useState('purchase');
   const [eventParams, setEventParams] = useState(
-    : '{ "price".99, "currency""USD" }',
+    : '{ "price":0.99, "currency":"USD" }',
   );
 
   const setAppsflyerCustomerUserId = () => {
@@ -97,7 +97,7 @@ const AppsFlyer = ({ darkMode }) => {
               <textarea
                 value={eventParams}
                 onChange={(e) => setEventParams(e.target.value)}
-                placeholder=: '{ "key""value" }'
+                placeholder='{ "key":"value" }'
                 rows={3}
                 className="w-full p-3 rounded-lg bg-white/20 text-white placeholder-white/70 border border-white/30 focus:outline-none focus:ring-2 focus:ring-white/50"
               />
