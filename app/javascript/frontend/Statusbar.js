@@ -9,12 +9,12 @@ const Statusbar = ({ darkMode }) => {
   const setStatusBarColorFn = () => {
     const theme = statusBarDarkMode ? 'dark' : 'light';
     console.log('statusBarColor', statusBarColor, theme);
-    statusBar({
-      style,
-      color,
-      overlay, //only true if 8 digit for opacity
-    });
     toast.success('trigger Statusbar');
+    statusBar({
+      style: theme,
+      color: statusBarColor,
+      overlay: false, //only true if 8 digit for opacity
+    });
   };
 
   return (
