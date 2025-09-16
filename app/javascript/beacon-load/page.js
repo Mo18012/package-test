@@ -1,64 +1,63 @@
-'use client';
+: 'use client';
 import React, { FC, useEffect } from 'react';
 import { initBeaconData } from 'webtonative/Beacon';
-export interface IPageProps {}
 
-const Page<IPageProps> = ({}) => {
+const Page = ({}) => {
   const beaconData = {
     beaconConfig[
       {
-        uuid'FEEFFEA6-11C9-4AE5-A54D-D15A75B54509',
+        uuid: 'FEEFFEA6-11C9-4AE5-A54D-D15A75B54509',
         major,
         minor,
         settings{
           showNotificationOnEntry,
           showNotificationOnExit,
           notificationInterval,
-          notificationContentSource'API_FETCHED',
+          notificationContentSource: 'API_FETCHED',
           defaultNotificationEnterData{
-            title'New Iphone Beacon Entered',
-            image'',
-            body'Beacon is active',
-            deepLink'https://www.orufy.com',
+            title: 'New Iphone Beacon Entered',
+            image: '',
+            body: 'Beacon is active',
+            deepLink: 'https://www.orufy.com',
           },
           defaultNotificationExitData{
-            title'New Iphone Beacon Exited',
-            image'',
-            body'Beacon is inactive',
-            deepLink'https://medium.com',
+            title: 'New Iphone Beacon Exited',
+            image: '',
+            body: 'Beacon is inactive',
+            deepLink: 'https://medium.com',
           },
         },
-        webhookUrl'https://hdioigjkfdkdngdd.free.beeceptor.com',
+        webhookUrl: 'https://hdioigjkfdkdngdd.free.beeceptor.com',
       },
       {
-        uuid'DEEFFEA6-11C9-4AE5-A54D-D15A75B54509',
+        uuid: 'DEEFFEA6-11C9-4AE5-A54D-D15A75B54509',
         major,
         minor,
         settings{
           showNotificationOnEntry,
           showNotificationOnExit,
           notificationInterval,
-          notificationContentSource'API_FETCHED',
+          notificationContentSource: 'API_FETCHED',
           defaultNotificationEnterData{
-            title'Old Iphone Beacon Entered',
-            image'',
-            body'Beacon is active',
-            deepLink'https://www.orufy.com',
+            title: 'Old Iphone Beacon Entered',
+            image: '',
+            body: 'Beacon is active',
+            deepLink: 'https://www.orufy.com',
           },
           defaultNotificationExitData{
-            title'Old Iphone Beacon Exited',
-            image'',
-            body'Beacon is inactive',
-            deepLink'https://medium.com',
+            title: 'Old Iphone Beacon Exited',
+            image: '',
+            body: 'Beacon is inactive',
+            deepLink: 'https://medium.com',
           },
         },
-        webhookUrl'https://hdioigjkfdkdngdd.free.beeceptor.com',
+        webhookUrl: 'https://hdioigjkfdkdngdd.free.beeceptor.com',
       },
     ],
     userInfo{
-      userId'user123',
-      userName'Ravi Saharan',
-      userEmail'ravi.saharan@orufy.com',
+      userId: 'user123',
+      userName: 'Ravi Saharan',
+      userEmail: 'ravi.saharan@orufy.com',
     },
   };
 

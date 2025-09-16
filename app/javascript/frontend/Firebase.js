@@ -1,15 +1,12 @@
-import React, { FC, useState } from 'react';
+import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 import { setUserId } from 'webtonative/Firebase/Analytics';
-export interface IFirebaseProps {
-  darkMode?;
-}
 
-const Firebase<IFirebaseProps> = ({ darkMode }) => {
+const Firebase = ({ darkMode }) => {
   const [firebaseUserId, setFirebaseUserId] = useState('');
 
   const handleSetFirebaseUserId = () => {
-    setUserId({ userId });
+    setUserId({ userId: firebaseUserId });
     toast.success('Firebase user ID set');
   };
 
@@ -18,7 +15,7 @@ const Firebase<IFirebaseProps> = ({ darkMode }) => {
       className={`${
         darkMode
           ? 'bg-gradient-to-br from-yellow-900 to-amber-800'
-          'bg-gradient-to-br from-yellow-500 to-amber-500'
+          : 'bg-gradient-to-br from-yellow-500 to-amber-500'
       } p-6 rounded-xl shadow-lg mb-6 transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl`}
     >
       <h3 className="text-xl font-bold mb-4 text-white flex items-center">

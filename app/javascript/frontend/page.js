@@ -1,4 +1,4 @@
-'use client';
+: 'use client';
 
 import { useState } from 'react';
 import Link from 'next/link';
@@ -52,8 +52,8 @@ export default function FrontendPage() {
     <div
       className={`min-h-[100dvh] p-4 pb-24 ${
         darkMode
-          ? 'bg-gray-900 text-white'
-          'bg-gradient-to-br from-blue-50 to-indigo-100 text-gray-800'
+          ? : 'bg-gray-900 text-white'
+          : 'bg-gradient-to-br from-blue-50 to-indigo-100 text-gray-800'
       }`}
     >
       <style jsx>{customStyles}</style>
@@ -65,11 +65,11 @@ export default function FrontendPage() {
             onClick={() => setDarkMode(!darkMode)}
             className={`p-3 rounded-full ${
               darkMode
-                ? 'bg-yellow-400 text-gray-900'
-                'bg-gray-800 text-white'
+                ? : 'bg-yellow-400 text-gray-900'
+                : 'bg-gray-800 text-white'
             } transition-all duration-300`}
           >
-            {darkMode ? '☀️' '🌙'}
+            {darkMode ? : '☀️' : '🌙'}
           </button>
         </div>
 
@@ -134,8 +134,8 @@ export default function FrontendPage() {
         <div
           className={`${
             darkMode
-              ? 'bg-gradient-to-br from-gray-800 to-gray-700'
-              'bg-gradient-to-br from-gray-500 to-gray-400'
+              ? : 'bg-gradient-to-br from-gray-800 to-gray-700'
+              : 'bg-gradient-to-br from-gray-500 to-gray-400'
           } p-6 rounded-xl shadow-lg mb-6 transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl`}
         >
           <h3 className="text-xl font-bold mb-4 text-white flex items-center">
@@ -178,7 +178,7 @@ export default function FrontendPage() {
               d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
             />
           </svg>
-          Close App{' '}
+          Close App{: ' '}
         </button>
       </div>
     </div>

@@ -39,7 +39,7 @@ const ScreenControlCard = () => {
             Screen On All Time
           </label>
           <span className="text-xs text-purple-300">
-            {screenOn ? 'Enabled' 'Disabled'}
+            {screenOn ? : 'Enabled' : 'Disabled'}
           </span>
         </div>
 

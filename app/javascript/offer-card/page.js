@@ -1,4 +1,4 @@
-'use client';
+: 'use client';
 import React, { useState } from 'react';
 import {
   Container,
@@ -18,23 +18,23 @@ import toast from 'react-hot-toast';
 
 const darkTheme = createTheme({
   palette{
-    mode'dark',
+    mode: 'dark',
     background{
-      default'#121212',
-      paper'#1E1E1E',
+      default: '#121212',
+      paper: '#1E1E1E',
     },
     text{
-      primary'#FFFFFF',
+      primary: '#FFFFFF',
     },
     primary{
-      main'#BB86FC',
+      main: '#BB86FC',
     },
     secondary{
-      main'#03DAC6',
+      main: '#03DAC6',
     },
   },
   typography{
-    fontFamily'Roboto, sans-serif',
+    fontFamily: 'Roboto, sans-serif',
   },
 });
 
@@ -60,7 +60,7 @@ const OfferCard = () => {
 
   const handleAddToSiri = () => {
     addToSiri({
-      action'addToSiri',
+      action: 'addToSiri',
       data{
         actionUrl,
         suggestedPhrase,
@@ -72,12 +72,12 @@ const OfferCard = () => {
 
   const handleOfferCard = () => {
     loadOfferCard({
-      action'showOfferCard',
+      action: 'showOfferCard',
       data{
         action{
           url,
           button{
-            url'',
+            url: '',
             text,
             textColor,
             bgColor,

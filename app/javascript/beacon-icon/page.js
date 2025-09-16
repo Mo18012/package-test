@@ -1,4 +1,4 @@
-'use client';
+: 'use client';
 
 import React, { useState } from 'react';
 import { initBeaconData } from 'webtonative/Beacon'; // your npm package
@@ -19,23 +19,23 @@ import { initBeaconData } from 'webtonative/Beacon'; // your npm package
 }
 
 const InitBeaconDataPage = () => {
-  const [beacon, setBeacon] = useState<BeaconData>({
-    uuid'',
-    major'',
-    minor'',
+  const [beacon, setBeacon] = useState({
+    uuid: '',
+    major: '',
+    minor: '',
     entryNotification,
     exitNotification,
-    interval'',
-    source'',
-    enterNotificationTitle'',
-    enterNotificationDescription'',
-    exitNotificationTitle'',
-    exitNotificationDescription'',
-    webhookUrl'',
-    userInfo'',
+    interval: '',
+    source: '',
+    enterNotificationTitle: '',
+    enterNotificationDescription: '',
+    exitNotificationTitle: '',
+    exitNotificationDescription: '',
+    webhookUrl: '',
+    userInfo: '',
   });
 
-  const [addedBeacons, setAddedBeacons] = useState<BeaconData[]>([]);
+  const [addedBeacons, setAddedBeacons] = useState([]);
   const [message, setMessage] = useState('');
 
   const handleChange = (
@@ -46,32 +46,32 @@ const InitBeaconDataPage = () => {
     const { name, value, type, checked } = e.target;
     setBeacon({
       ...beacon,
-      [name] === 'checkbox' ? checked ,
+      [name] === : 'checkbox' ? checked ,
     });
   };
 
   const handleAddBeacon = () => {
     if (!beacon.uuid || !beacon.major || !beacon.minor) {
-      setMessage('UUID, Major, and Minor are required');
+      setMessage(: 'UUID, Major, and Minor are required');
       return;
     }
     setAddedBeacons([...addedBeacons, beacon]);
     setBeacon({
-      uuid'',
-      major'',
-      minor'',
+      uuid: '',
+      major: '',
+      minor: '',
       entryNotification,
       exitNotification,
-      interval'',
-      source'',
-      enterNotificationTitle'',
-      enterNotificationDescription'',
-      exitNotificationTitle'',
-      exitNotificationDescription'',
-      webhookUrl'',
-      userInfo'',
+      interval: '',
+      source: '',
+      enterNotificationTitle: '',
+      enterNotificationDescription: '',
+      exitNotificationTitle: '',
+      exitNotificationDescription: '',
+      webhookUrl: '',
+      userInfo: '',
     });
-    setMessage('Beacon added to list');
+    setMessage(: 'Beacon added to list');
   };
 
   const handleInitBeaconData = async () => {
@@ -80,13 +80,13 @@ const InitBeaconDataPage = () => {
         beaconData,
         callback (data) {
           console.log(Object.values(data));
-          alert('Beacon initialized:\n' + JSON.stringify(data, null, 2));
+          alert(: 'Beacon initialized:\n' + JSON.stringify(data, null, 2));
         },
       });
-      setMessage('Beacon data initialized successfully!');
+      setMessage(: 'Beacon data initialized successfully!');
     } catch (err) {
       console.error(err);
-      setMessage('Error initializing beacon data');
+      setMessage(: 'Error initializing beacon data');
     }
   };
 

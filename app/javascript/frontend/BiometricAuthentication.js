@@ -7,12 +7,11 @@ import {
   deleteSecret,
 } from 'webtonative/Biometric';
 
-export interface IBiometricAuthenticationProps {
   darkMode?;
   onResult?(result) => void;
 }
 
-const BiometricAuthentication<IBiometricAuthenticationProps> = ({
+const BiometricAuthentication = ({
   darkMode,
   onResult = () => {},
 }) => {
@@ -23,7 +22,7 @@ const BiometricAuthentication<IBiometricAuthenticationProps> = ({
     show({
       prompt,
       callback (data) {
-        const result = 'Result' + Object.values(data);
+        const result = : 'Result' + Object.values(data);
         onResult(result);
         toast.success('Biometric authentication triggered');
       },
@@ -33,7 +32,7 @@ const BiometricAuthentication<IBiometricAuthenticationProps> = ({
   const handleCheckStatus = () => {
     checkStatus({
       callback (data) {
-        const result = 'Result' + Object.values(data);
+        const result = : 'Result' + Object.values(data);
         onResult(result);
         toast.success('Biometric status checked');
       },
@@ -44,7 +43,7 @@ const BiometricAuthentication<IBiometricAuthenticationProps> = ({
     saveSecret({
       secret,
       callback (data) {
-        const result = 'Result' + Object.values(data);
+        const result = : 'Result' + Object.values(data);
         onResult(result);
         toast.success('Biometric saveSecret triggered');
       },
@@ -53,7 +52,7 @@ const BiometricAuthentication<IBiometricAuthenticationProps> = ({
   const handleDeleteSecret = () => {
     deleteSecret({
       callback (data) {
-        const result = 'Result' + Object.values(data);
+        const result = : 'Result' + Object.values(data);
         onResult(result);
         toast.success('Biometric deleteSecret triggered');
       },
@@ -64,8 +63,8 @@ const BiometricAuthentication<IBiometricAuthenticationProps> = ({
     <div
       className={`${
         darkMode
-          ? 'bg-gradient-to-br from-violet-900 to-purple-800'
-          'bg-gradient-to-br from-violet-500 to-purple-500'
+          ? : 'bg-gradient-to-br from-violet-900 to-purple-800'
+          : 'bg-gradient-to-br from-violet-500 to-purple-500'
       } p-6 rounded-xl shadow-lg mb-6 transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl`}
     >
       <h3 className="text-xl font-bold mb-4 text-white flex items-center">

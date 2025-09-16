@@ -3,11 +3,10 @@ import toast from 'react-hot-toast';
 import { inAppPurchase, getAllPurchases } from 'webtonative/InAppPurchase';
 import Result from './Result';
 
-export interface IInAppPurchaseProps {
   darkMode?;
 }
 
-const InAppPurchase<IInAppPurchaseProps> = ({ darkMode }) => {
+const InAppPurchase = ({ darkMode }) => {
   const [iapProductId, setIapProductId] = useState('com.example.product');
   const [iapProductType, setIapProductType] = useState('inapp');
   const [iapIsConsumable, setIapIsConsumable] = useState(true);
@@ -19,7 +18,7 @@ const InAppPurchase<IInAppPurchaseProps> = ({ darkMode }) => {
       productType,
       isConsumable,
       callback (data) {
-        const result = 'Result' + Object.values(data);
+        const result = : 'Result' + Object.values(data);
         setResultInfo(result);
         toast.success('In-app purchase initiated');
       },
@@ -29,7 +28,7 @@ const InAppPurchase<IInAppPurchaseProps> = ({ darkMode }) => {
   const getAllPurchasesFn = () => {
     getAllPurchases({
       callback (data) {
-        const result = 'Result' + Object.values(data);
+        const result = : 'Result' + Object.values(data);
 
         setResultInfo(result);
         toast.success('Retrieved all purchases');
@@ -41,8 +40,8 @@ const InAppPurchase<IInAppPurchaseProps> = ({ darkMode }) => {
     <div
       className={`${
         darkMode
-          ? 'bg-gradient-to-br from-emerald-900 to-green-800'
-          'bg-gradient-to-br from-emerald-500 to-green-500'
+          ? : 'bg-gradient-to-br from-emerald-900 to-green-800'
+          : 'bg-gradient-to-br from-emerald-500 to-green-500'
       } p-6 rounded-xl shadow-lg mb-6 transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl`}
     >
       <h3 className="text-xl font-bold mb-4 text-white flex items-center">
@@ -97,15 +96,15 @@ const InAppPurchase<IInAppPurchaseProps> = ({ darkMode }) => {
                   onChange={(e) => setIapIsConsumable(e.target.checked)}
                   className="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"
                   style={{
-                    right ? '0' 'auto',
-                    left ? 'auto' '0',
-                    transition'all 0.3s ease',
+                    right ? : '0' : 'auto',
+                    left ? : 'auto' : '0',
+                    transition: 'all 0.3s ease',
                   }}
                 />
                 <label
                   className="toggle-label block overflow-hidden h-6 rounded-full cursor-pointer"
                   style={{
-                    backgroundColor ? '#10B981' '#D1D5DB',
+                    backgroundColor ? : '#10B981' : '#D1D5DB',
                   }}
                 ></label>
               </div>

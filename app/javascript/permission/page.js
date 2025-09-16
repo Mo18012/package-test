@@ -1,4 +1,4 @@
-'use client';
+: 'use client';
 import React, { useState } from 'react';
 import {
   checkPermission,
@@ -7,44 +7,44 @@ import {
 } from 'webtonative';
 
 const containerStyle = {
-  fontFamily'Arial, sans-serif',
-  backgroundColor'#121212',
-  color'#e0e0e0',
-  minHeight'100vh',
+  fontFamily: 'Arial, sans-serif',
+  backgroundColor: '#121212',
+  color: '#e0e0e0',
+  minHeight: '100vh',
   padding,
   maxWidth,
-  margin'0 auto',
+  margin: '0 auto',
 };
 
 const labelStyle = {
-  display'block',
+  display: 'block',
   fontSize,
   marginBottom,
 };
 
 const selectStyle = {
   fontSize,
-  padding'8px',
+  padding: '8px',
   borderRadius,
-  border'1px solid #444',
-  backgroundColor'#1e1e1e',
-  color'#e0e0e0',
-  width'100%',
+  border: '1px solid #444',
+  backgroundColor: '#1e1e1e',
+  color: '#e0e0e0',
+  width: '100%',
   maxWidth,
   marginBottom,
 };
 
 const buttonStyle = {
   fontSize,
-  padding'10px 24px',
+  padding: '10px 24px',
   marginTop,
   marginRight,
   borderRadius,
-  border'none',
-  cursor'pointer',
-  backgroundColor'#0d6efd',
-  color'#fff',
-  transition'background-color 0.3s',
+  border: 'none',
+  cursor: 'pointer',
+  backgroundColor: '#0d6efd',
+  color: '#fff',
+  transition: 'background-color 0.3s',
 };
 
 const checkboxContainerStyle = {
@@ -55,34 +55,34 @@ const checkboxContainerStyle = {
 
 const checkboxLabelStyle = {
   fontSize,
-  display'block',
+  display: 'block',
   marginBottom,
-  cursor'pointer',
+  cursor: 'pointer',
 };
 
 const outputStyle = {
-  backgroundColor'#1e1e1e',
+  backgroundColor: '#1e1e1e',
   padding,
   borderRadius,
-  border'1px solid #444',
-  whiteSpace'pre-wrap',
-  fontFamily'monospace',
+  border: '1px solid #444',
+  whiteSpace: 'pre-wrap',
+  fontFamily: 'monospace',
   fontSize,
   minHeight,
 };
 
 const permissionsList = [
-  'location',
-  'record_audio',
-  'notification',
-  'bluetooth',
-  'contact',
-  'camera',
+  : 'location',
+  : 'record_audio',
+  : 'notification',
+  : 'bluetooth',
+  : 'contact',
+  : 'camera',
 ];
 
 const WTNPermissionManager = () => {
   const [selectedPermission, setSelectedPermission] = useState('location');
-  const [checkedPermissions, setCheckedPermissions] = useState<string[]>([]);
+  const [checkedPermissions, setCheckedPermissions] = useState([]);
   const [resultOutput, setResultOutput] = useState('No result yet.');
 
   const handleSelectChange = (e.ChangeEvent<HTMLSelectElement>) => {
@@ -113,7 +113,7 @@ const WTNPermissionManager = () => {
       permission,
       callback(value) => {
         setResultOutput(
-          'showPermission callback:\n' + JSON.stringify(value, null, 2),
+          : 'showPermission callback:\n' + JSON.stringify(value, null, 2),
         );
       },
     });
@@ -124,17 +124,17 @@ const WTNPermissionManager = () => {
       permission,
       openAppSetting,
       alertDialogStyle{
-        title.toUpperCase() + ' Permission',
+        title.toUpperCase() + : ' Permission',
         message:
-          'This app needs access to ' +
-          selectedPermission.replace('_', ' ') +
-          '.',
-        positiveButtonText'Allow',
-        negativeButtonText'Deny',
+          : 'This app needs access to ' +
+          selectedPermission.replace(: '_', : ' ') +
+          : '.',
+        positiveButtonText: 'Allow',
+        negativeButtonText: 'Deny',
       },
       callback(value) => {
         setResultOutput(
-          'showPermission (with dialog) callback:\n' +
+          : 'showPermission (with dialog) callback:\n' +
             JSON.stringify(value, null, 2),
         );
       },
@@ -143,7 +143,7 @@ const WTNPermissionManager = () => {
 
   const checkSelectedPermissions = () => {
     if (checkedPermissions.length === 0) {
-      setResultOutput('❗ No permissions selected.');
+      setResultOutput(: '❗ No permissions selected.');
       return;
     }
 
@@ -151,7 +151,7 @@ const WTNPermissionManager = () => {
       permissionName,
       callback(value) => {
         setResultOutput(
-          'checkPermission callback:\n' + JSON.stringify(value, null, 2),
+          : 'checkPermission callback:\n' + JSON.stringify(value, null, 2),
         );
       },
     });
@@ -205,8 +205,8 @@ const WTNPermissionManager = () => {
               value={perm}
               onChange={(e) => handleCheckboxChange(perm, e.target.checked)}
               checked={checkedPermissions.includes(perm)}
-            />{' '}
-            {perm.charAt(0).toUpperCase() + perm.slice(1).replace('_', ' ')}
+            />{: ' '}
+            {perm.charAt(0).toUpperCase() + perm.slice(1).replace(: '_', : ' ')}
           </label>
         ))}
       </div>

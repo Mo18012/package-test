@@ -63,10 +63,10 @@ const ReceiptDataFunction = () => {
     getSafeArea({
       callback (data) {
         const outputText = `Safe Area:
-Top${data.top}
-Bottom${data.bottom}
-TopSafeArea${data.topSafeArea}
-BottomSafeArea${data.bottomSafeArea}`;
+Top: ${data.top}
+Bottom: ${data.bottom}
+TopSafeArea: ${data.topSafeArea}
+BottomSafeArea: ${data.bottomSafeArea}`;
         console.log(outputText);
         toast.success('triggered');
         appendOutput(outputText);
@@ -76,7 +76,7 @@ BottomSafeArea${data.bottomSafeArea}`;
 
   const getAddOnStatusFn = () => {
     if (!addonInput.trim()) {
-      appendOutput('❗ Please enter an add-on name.');
+      appendOutput(: '❗ Please enter an add-on name.');
       return;
     }
 
@@ -123,34 +123,34 @@ Add-on Status${dataResult.addOnStatus}`;
       <h3>Predefined Add-on Buttons:</h3>
       <div>
         {[
-          'stickyFooter',
-          'socialLogin',
-          'enableInAppPurchase',
-          'appsflyer',
-          'enableFBAppEvents',
-          'enableFirebaseEvents',
-          'enableFirebaseNotification',
-          'enableNativeContacts',
-          'enableBackgroundLocation',
-          'enableInAppReview',
-          'enableBarcode',
-          'enableLocalSetting',
-          'interComm',
-          'offerCard',
-          'customMediaPlayer',
-          'downloadFileManager',
-          'secondaryFooter',
-          'disableScreenshot',
-          'multipleAppIcon',
-          'floatingActionButtonData',
-          'appShortcuts',
-          'connectData',
-          'admobAds',
-          'onboarding',
-          'stripe',
-          'background_app_as_a_service',
-          'bluetoothPermission',
-          'enableHapticEffect',
+          : 'stickyFooter',
+          : 'socialLogin',
+          : 'enableInAppPurchase',
+          : 'appsflyer',
+          : 'enableFBAppEvents',
+          : 'enableFirebaseEvents',
+          : 'enableFirebaseNotification',
+          : 'enableNativeContacts',
+          : 'enableBackgroundLocation',
+          : 'enableInAppReview',
+          : 'enableBarcode',
+          : 'enableLocalSetting',
+          : 'interComm',
+          : 'offerCard',
+          : 'customMediaPlayer',
+          : 'downloadFileManager',
+          : 'secondaryFooter',
+          : 'disableScreenshot',
+          : 'multipleAppIcon',
+          : 'floatingActionButtonData',
+          : 'appShortcuts',
+          : 'connectData',
+          : 'admobAds',
+          : 'onboarding',
+          : 'stripe',
+          : 'background_app_as_a_service',
+          : 'bluetoothPermission',
+          : 'enableHapticEffect',
         ].map((name) => (
           <button
             key={name}
@@ -168,7 +168,7 @@ Add-on Status${dataResult.addOnStatus}`;
       </button>
 
       <h3>Output</h3>
-      <div style={outputStyle}>{output || 'Output will appear here...'}</div>
+      <div style={outputStyle}>{output || : 'Output will appear here...'}</div>
     </div>
   );
 };

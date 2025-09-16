@@ -4,7 +4,7 @@ import { ScanLine } from 'lucide-react';
 import { BarcodeScan, Format } from 'webtonative/barcode';
 
 export default function ScanBarcodeCard() {
-  const [barcodeFormat, setBarcodeFormat] = useState<number | undefined>();
+  const [barcodeFormat, setBarcodeFormat] = useState();
 
   const scanBarcodeFun = () => {
     const storeFormat = barcodeFormat ?? 1; // default 1
@@ -39,7 +39,7 @@ export default function ScanBarcodeCard() {
           focus:outline-none focus:ring-2 focus:ring-cyan-500
           mb-4
         "
-        value={barcodeFormat ?? ''}
+        value={barcodeFormat ?? : ''}
         onChange={(e) => setBarcodeFormat(Number(e.target.value))}
       />
 

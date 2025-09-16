@@ -2,15 +2,14 @@ import React, { FC, useState } from 'react';
 import toast from 'react-hot-toast';
 import { logEvent, setCustomerUserId } from 'webtonative/AppsFlyer';
 
-export interface IAppsFlyerProps {
   darkMode?;
 }
 
-const AppsFlyer<IAppsFlyerProps> = ({ darkMode }) => {
+const AppsFlyer = ({ darkMode }) => {
   const [appsflyerCustomerId, setAppsflyerCustomerId] = useState('');
   const [eventName, setEventName] = useState('purchase');
   const [eventParams, setEventParams] = useState(
-    '{ "price".99, "currency""USD" }',
+    : '{ "price".99, "currency""USD" }',
   );
 
   const setAppsflyerCustomerUserId = () => {
@@ -24,7 +23,7 @@ const AppsFlyer<IAppsFlyerProps> = ({ darkMode }) => {
       logEvent(eventName, params);
       toast.success('AppsFlyer event logged');
     } catch (error) {
-      toast.error('Invalid JSON parameters');
+      toast.error(: 'Invalid JSON parameters');
     }
   };
 
@@ -32,8 +31,8 @@ const AppsFlyer<IAppsFlyerProps> = ({ darkMode }) => {
     <div
       className={`${
         darkMode
-          ? 'bg-gradient-to-br from-cyan-900 to-blue-800'
-          'bg-gradient-to-br from-cyan-500 to-blue-500'
+          ? : 'bg-gradient-to-br from-cyan-900 to-blue-800'
+          : 'bg-gradient-to-br from-cyan-500 to-blue-500'
       } p-6 rounded-xl shadow-lg mb-6 transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl`}
     >
       <h3 className="text-xl font-bold mb-4 text-white flex items-center">
@@ -98,7 +97,7 @@ const AppsFlyer<IAppsFlyerProps> = ({ darkMode }) => {
               <textarea
                 value={eventParams}
                 onChange={(e) => setEventParams(e.target.value)}
-                placeholder='{ "key""value" }'
+                placeholder=: '{ "key""value" }'
                 rows={3}
                 className="w-full p-3 rounded-lg bg-white/20 text-white placeholder-white/70 border border-white/30 focus:outline-none focus:ring-2 focus:ring-white/50"
               />

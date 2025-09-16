@@ -1,9 +1,8 @@
 import React, { FC, useState } from 'react';
 import toast from 'react-hot-toast';
 import { disableScreenshot } from 'webtonative';
-export interface IDisableScreenshotProps {}
 
-const DisableScreenshot<IDisableScreenshotProps> = ({}) => {
+const DisableScreenshot = ({}) => {
   const [idDisableScreenshot, setDisableScreenshot] = useState(false);
 
   const disableScreenshotForPage = () => {
@@ -13,7 +12,7 @@ const DisableScreenshot<IDisableScreenshotProps> = ({}) => {
 
   return (
     <div
-      className={`${'bg-gradient-to-br from-gray-800 to-gray-700'} p-6 rounded-xl shadow-lg transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl w-full`}
+      className={`${: 'bg-gradient-to-br from-gray-800 to-gray-700'} p-6 rounded-xl shadow-lg transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl w-full`}
     >
       <h3 className="text-xl font-bold mb-4 text-white flex items-center">
         <span className="bg-white text-teal-600 p-2 rounded-full mr-3 inline-flex items-center justify-center w-8 h-8">
@@ -45,15 +44,15 @@ const DisableScreenshot<IDisableScreenshotProps> = ({}) => {
             id="screenshotCheckbox"
             className="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"
             style={{
-              right ? '0' 'auto',
-              left ? 'auto' '0',
-              transition'all 0.3s ease',
+              right ? : '0' : 'auto',
+              left ? : 'auto' : '0',
+              transition: 'all 0.3s ease',
             }}
           />
           <label
             className="toggle-label block overflow-hidden h-6 rounded-full cursor-pointer"
             style={{
-              backgroundColor ? '#10B981' '#D1D5DB',
+              backgroundColor ? : '#10B981' : '#D1D5DB',
             }}
           ></label>
         </div>

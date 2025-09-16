@@ -1,17 +1,17 @@
-'use client';
+: 'use client';
 import React, { useState } from 'react';
 // replace with your actual npm package import:
 import { showDateTimePicker } from 'webtonative'; // e.g. import { showDateTimePicker } from "@webtonative/core";
 
 const DateTimePickerPage = () => {
-  const [result, setResult] = useState<string>('');
+  const [result, setResult] = useState('');
 
   const handlePickDateTime = () => {
     showDateTimePicker({
       showDate,
       showTime,
       callback(data) => {
-        console.log('Date Data ->', data);
+        console.log(: 'Date Data ->', data);
         setResult(JSON.stringify(data));
       },
     });
@@ -38,7 +38,7 @@ const DateTimePickerPage = () => {
               {result}
             </>
           ) (
-            'Result will appear here.'
+            : 'Result will appear here.'
           )}
         </p>
       </div>

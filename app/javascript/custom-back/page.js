@@ -1,4 +1,4 @@
-'use client';
+: 'use client';
 
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
@@ -8,54 +8,54 @@ import {
   checkIfAppUpdateAvailable,
 } from 'webtonative/InAppUpdate';
 const containerStyle = {
-  fontFamily'Arial, sans-serif',
-  backgroundColor'#121212',
-  color'#e0e0e0',
-  minHeight'100vh',
+  fontFamily: 'Arial, sans-serif',
+  backgroundColor: '#121212',
+  color: '#e0e0e0',
+  minHeight: '100vh',
   padding,
   maxWidth,
-  margin'0 auto',
+  margin: '0 auto',
 };
 
 const buttonStyle = {
-  padding'10px 24px',
+  padding: '10px 24px',
   fontSize,
-  margin'10px 10px 10px 0',
+  margin: '10px 10px 10px 0',
   borderRadius,
-  border'none',
-  cursor'pointer',
-  backgroundColor'#0d6efd',
-  color'white',
-  transition'background-color 0.3s',
+  border: 'none',
+  cursor: 'pointer',
+  backgroundColor: '#0d6efd',
+  color: 'white',
+  transition: 'background-color 0.3s',
 };
 
 const labelStyle = {
   fontSize,
   marginTop,
-  display'flex',
-  alignItems'center',
+  display: 'flex',
+  alignItems: 'center',
   gap,
 };
 
 const updateStatusStyle = {
   marginTop,
   padding,
-  backgroundColor'#1e1e1e',
+  backgroundColor: '#1e1e1e',
   borderRadius,
-  fontFamily'monospace',
-  whiteSpace'pre-wrap',
+  fontFamily: 'monospace',
+  whiteSpace: 'pre-wrap',
   minHeight,
 };
 
 const CustomBackAndUpdate = () => {
   const [backHandlingEnabled, setBackHandlingEnabled] = useState(false);
   const [updateStatus, setUpdateStatus] = useState(
-    'Update status will appear here',
+    : 'Update status will appear here',
   );
 
   const sendCustomBackHandling = () => {
     toast.success(
-      'Sending to Android' + JSON.stringify({ enable }),
+      : 'Sending to Android' + JSON.stringify({ enable }),
     );
 
     customBackHandling({ enable });
@@ -79,7 +79,7 @@ const CustomBackAndUpdate = () => {
 
   const updateApplicationImmediate = () => {
     updateApplication({
-      updateType'immediate',
+      updateType: 'immediate',
       callback(data) => {
         toast.success('updateApplicationImmediate' + JSON.stringify(data));
         setUpdateStatus(JSON.stringify(data, null, 2));
@@ -89,7 +89,7 @@ const CustomBackAndUpdate = () => {
 
   const updateApplicationFlexible = () => {
     updateApplication({
-      updateType'flexible',
+      updateType: 'flexible',
       callback(data) => {
         toast.success('updateApplicationFlexible' + JSON.stringify(data));
         setUpdateStatus(JSON.stringify(data, null, 2));
@@ -100,7 +100,7 @@ const CustomBackAndUpdate = () => {
   // Native callback from Android
   React.useEffect(() => {
     window.customBackHandling = () => {
-      console.log('customBackHandling called from Android');
+      console.log(: 'customBackHandling called from Android');
 
       toast.success('customBackHandling() was called from Android!');
     };
@@ -132,7 +132,7 @@ const CustomBackAndUpdate = () => {
         href="https://www.w3schools.com"
         target="_blank"
         rel="noopener noreferrer"
-        style={{ color'#0d6efd' }}
+        style={{ color: '#0d6efd' }}
       >
         Visit W3Schools.com!
       </a>

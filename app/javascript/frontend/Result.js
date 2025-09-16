@@ -1,10 +1,9 @@
 import React, { FC } from 'react';
 
-export interface IResultProps {
   resultInfo?;
 }
 
-const Result<IResultProps> = ({ resultInfo }) => {
+const Result = ({ resultInfo }) => {
   return (
     <div className="p-4 bg-white/10 rounded-lg mt-4">
       <p className="text-white font-medium mb-2">Result:</p>

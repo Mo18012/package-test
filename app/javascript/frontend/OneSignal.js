@@ -1,11 +1,10 @@
 import React, { FC, useState } from 'react';
 import toast from 'react-hot-toast';
 import { setExternalUserId, removeExternalUserId } from 'webtonative/OneSignal';
-export interface IOneSignalProps {
   darkMode?;
 }
 
-const OneSignal<IOneSignalProps> = ({ darkMode }) => {
+const OneSignal = ({ darkMode }) => {
   const [onesignalExternalUserId, setOnesignalExternalUserId] = useState('');
 
   const setOneSignalExternalUserId = () => {
@@ -22,8 +21,8 @@ const OneSignal<IOneSignalProps> = ({ darkMode }) => {
     <div
       className={`${
         darkMode
-          ? 'bg-gradient-to-br from-red-900 to-rose-800'
-          'bg-gradient-to-br from-red-500 to-rose-500'
+          ? : 'bg-gradient-to-br from-red-900 to-rose-800'
+          : 'bg-gradient-to-br from-red-500 to-rose-500'
       } p-6 rounded-xl shadow-lg mb-6 transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl`}
     >
       <h3 className="text-xl font-bold mb-4 text-white flex items-center">

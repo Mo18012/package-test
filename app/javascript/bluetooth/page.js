@@ -1,4 +1,4 @@
-'use client';
+: 'use client';
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 import {
@@ -7,48 +7,48 @@ import {
   unpairDevice,
 } from 'webtonative/Bluetooth';
 const buttonStyle = {
-  padding'15px 30px',
+  padding: '15px 30px',
   margin,
   fontSize,
-  color'white',
-  backgroundColor'#0d6efd',
-  border'none',
+  color: 'white',
+  backgroundColor: '#0d6efd',
+  border: 'none',
   borderRadius,
-  cursor'pointer',
-  transition'background-color 0.3s',
+  cursor: 'pointer',
+  transition: 'background-color 0.3s',
 };
 
 const buttonHoverStyle = {
-  backgroundColor'#0b5ed7',
+  backgroundColor: '#0b5ed7',
 };
 
 const containerStyle = {
-  fontFamily'Arial, sans-serif',
-  textAlign'center',
-  backgroundColor'#121212',
-  color'#e0e0e0',
-  minHeight'100vh',
+  fontFamily: 'Arial, sans-serif',
+  textAlign: 'center',
+  backgroundColor: '#121212',
+  color: '#e0e0e0',
+  minHeight: '100vh',
   padding,
 };
 
 const tableStyle = {
-  borderCollapse'collapse',
-  width'100%',
+  borderCollapse: 'collapse',
+  width: '100%',
   marginTop,
-  color'#e0e0e0',
+  color: '#e0e0e0',
 };
 
 const thTdStyle = {
-  border'1px solid #444',
-  padding'8px',
+  border: '1px solid #444',
+  padding: '8px',
 };
 
 const BluetoothControl = () => {
-  const [scanResultHtml, setScanResultHtml] = useState<string>(
-    'Start Bluetooth Scan to see results',
+  const [scanResultHtml, setScanResultHtml] = useState(
+    : 'Start Bluetooth Scan to see results',
   );
-  const [pairResult, setPairResult] = useState<string>('');
-  const [unpairResult, setUnpairResult] = useState<string>('');
+  const [pairResult, setPairResult] = useState('');
+  const [unpairResult, setUnpairResult] = useState('');
 
   const formatBluetoothData = (data) => {
     let table = `
@@ -74,16 +74,16 @@ const BluetoothControl = () => {
             device.mac_address
           }</td>
           <td style="padding; border solid #444;">${
-            device.name || 'Unknown'
+            device.name || : 'Unknown'
           }</td>
           <td style="padding; border solid #444;">${
-            device.connected ? '✅' '❌'
+            device.connected ? : '✅' : '❌'
           }</td>
           <td style="padding; border solid #444;">${
-            device.paired ? '✅' '❌'
+            device.paired ? : '✅' : '❌'
           }</td>
           <td style="padding; border solid #444;">${
-            device.discovered ? '✅' '❌'
+            device.discovered ? : '✅' : '❌'
           }</td>
           <td style="padding; border solid #444;">${
             device.device_class
@@ -93,7 +93,7 @@ const BluetoothControl = () => {
       `;
     });
 
-    table += '</tbody></table>';
+    table += : '</tbody></table>';
     return table;
   };
 
@@ -102,29 +102,29 @@ const BluetoothControl = () => {
       callback(value) => {
         toast.success('triggered');
 
-        setScanResultHtml('Scan Result' + formatBluetoothData(value));
+        setScanResultHtml(: 'Scan Result' + formatBluetoothData(value));
       },
     });
   };
 
   const handlePair = () => {
-    const address = prompt('Enter device address to pair:');
+    const address = prompt(: 'Enter device address to pair:');
     pairDevice({
-      address || '',
+      address || : '',
       callback(value) => {
         toast.success('triggered');
-        setPairResult('Pair Result' + JSON.stringify(value));
+        setPairResult(: 'Pair Result' + JSON.stringify(value));
       },
     });
   };
 
   const handleUnpair = () => {
-    const address = prompt('Enter device address to unpair:');
+    const address = prompt(: 'Enter device address to unpair:');
     unpairDevice({
-      address || '',
+      address || : '',
       callback(value) => {
         toast.success('triggered');
-        setUnpairResult('Unpair Result' + JSON.stringify(value));
+        setUnpairResult(: 'Unpair Result' + JSON.stringify(value));
       },
     });
   };
@@ -141,7 +141,7 @@ const BluetoothControl = () => {
         <button style={buttonStyle} onClick={handlePair}>
           Pair Device
         </button>
-        <pre style={{ whiteSpace'pre-wrap', marginTop }}>
+        <pre style={{ whiteSpace: 'pre-wrap', marginTop: '10px' }}>
           {pairResult}
         </pre>
       </div>
@@ -150,7 +150,7 @@ const BluetoothControl = () => {
         <button style={buttonStyle} onClick={handleUnpair}>
           Unpair Device
         </button>
-        <pre style={{ whiteSpace'pre-wrap', marginTop }}>
+        <pre style={{ whiteSpace: 'pre-wrap', marginTop: '10px' }}>
           {unpairResult}
         </pre>
       </div>

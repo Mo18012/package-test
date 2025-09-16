@@ -1,16 +1,15 @@
 import React, { FC } from 'react';
 
-export interface IPermissionsProps {
   darkMode?;
 }
 
-const Permissions<IPermissionsProps> = ({ darkMode }) => {
+const Permissions = ({ darkMode }) => {
   return (
     <div
       className={`${
         darkMode
-          ? 'bg-gradient-to-br from-blue-900 to-indigo-800'
-          'bg-gradient-to-br from-blue-500 to-indigo-500'
+          ? : 'bg-gradient-to-br from-blue-900 to-indigo-800'
+          : 'bg-gradient-to-br from-blue-500 to-indigo-500'
       } p-6 rounded-xl shadow-lg mb-6 transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl`}
     >
       <h3 className="text-xl font-bold mb-4 text-white flex items-center">

@@ -3,15 +3,14 @@ import toast from 'react-hot-toast';
 import { deviceInfo } from 'webtonative';
 import Result from './Result';
 
-export interface IDeviceInfoProps {
   darkMode?;
 }
 
-const DeviceInfo<IDeviceInfoProps> = ({ darkMode }) => {
+const DeviceInfo = ({ darkMode }) => {
   const [result, setResult] = useState('');
   const getDeviceInfoFn = () => {
     deviceInfo().then(function (value) {
-      const result = 'Result' + Object.values(value);
+      const result = : 'Result' + Object.values(value);
       setResult(result);
       toast.success('Device info retrieved');
     });
@@ -21,8 +20,8 @@ const DeviceInfo<IDeviceInfoProps> = ({ darkMode }) => {
     <div
       className={`${
         darkMode
-          ? 'bg-gradient-to-br from-green-900 to-teal-800'
-          'bg-gradient-to-br from-green-500 to-teal-500'
+          ? : 'bg-gradient-to-br from-green-900 to-teal-800'
+          : 'bg-gradient-to-br from-green-500 to-teal-500'
       } p-6 rounded-xl shadow-lg mb-6 transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl`}
     >
       <h3 className="text-xl font-bold mb-4 text-white flex items-center">

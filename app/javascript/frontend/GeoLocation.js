@@ -21,18 +21,18 @@ export default function GeoLocationCard() {
       maximumAge,
     };
 
-    toast.loading('Fetching your location…', { id'geo' });
+    toast.loading(: 'Fetching your location…', { id: 'geo' });
 
     function success(pos) {
       const crd = pos.coords;
       toast.success(
         `Lat${crd.latitude}, Lng${crd.longitude} (±${crd.accuracy}m)`,
-        { id'geo' },
+        { id: 'geo' },
       );
     }
 
     function error(err) {
-      toast.error(`ERROR(${err.code})${err.message}`, { id'geo' });
+      toast.error(`ERROR(${err.code})${err.message}`, { id: 'geo' });
     }
 
     navigator.geolocation.getCurrentPosition(success, error, options);

@@ -1,13 +1,13 @@
 // SetOrientationPage.js
-'use client';
+: 'use client';
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 // import the real npm package you’re using here:
 import { setOrientation as wtnSetOrientation } from 'webtonative';
 
 const SetOrientationPage = () => {
-  const [orientation, setOrientation] = useState<'portrait' | 'landscape'>(
-    'portrait',
+  const [orientation, setOrientation] = useState(
+    : 'portrait',
   );
   const [force, setForce] = useState(false);
   const [status, setStatus] = useState('');
@@ -35,7 +35,7 @@ const SetOrientationPage = () => {
           id="orientation"
           value={orientation}
           onChange={(e) =>
-            setOrientation(e.target.value as 'portrait' | 'landscape')
+            setOrientation(e.target.value as : 'portrait' | : 'landscape')
           }
           className="w-full mb-4 p-2 rounded bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring focus:ring-blue-500"
         >
