@@ -170,4 +170,5 @@ const navLinks = [
   { to: '/stripe', label: 'Stripe' },
   { to: '/permission', label: 'Permission' },
   { to: '/custom-back', label: 'Custom back' },
+  { to: '/onesignal', label: 'One signal' },
 ];
