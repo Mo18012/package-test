@@ -1,31 +1,32 @@
-import React, { FC, useState } from 'react';
-import toast from 'react-hot-toast';
-import { statusBar } from 'webtonative';
+import React, { FC, useState } from "react";
+import toast from "react-hot-toast";
+import { statusBar } from "webtonative";
 export interface IStatusbarProps {
   darkMode?: boolean;
 }
 
 const Statusbar: FC<IStatusbarProps> = ({ darkMode }) => {
   const [statusBarDarkMode, setStatusBarDarkMode] = useState(true);
-  const [statusBarColor, setStatusBarColor] = useState('#1D1B1B');
+  const [statusBarColor, setStatusBarColor] = useState("#1D1B1B");
+  const [overlay, setOverlay] = useState<boolean>(false); // ✅ overlay state
 
   const setStatusBarColorFn = () => {
-    const theme = statusBarDarkMode ? 'dark' : 'light';
-    console.log('statusBarColor', statusBarColor, theme);
+    const theme = statusBarDarkMode ? "dark" : "light";
+    console.log("statusBarColor", statusBarColor, theme);
     statusBar({
       style: theme,
       color: statusBarColor,
-      overlay: false, //only true if 8 digit for opacity
+      overlay: overlay, //only true if 8 digit for opacity
     });
-    toast.success('trigger Statusbar');
+    toast.success("trigger Statusbar");
   };
 
   return (
     <div
       className={`${
         darkMode
-          ? 'bg-gradient-to-br from-pink-900 to-rose-800'
-          : 'bg-gradient-to-br from-pink-500 to-rose-500'
+          ? "bg-gradient-to-br from-pink-900 to-rose-800"
+          : "bg-gradient-to-br from-pink-500 to-rose-500"
       } p-6 rounded-xl shadow-lg mb-6 transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl`}
     >
       <h3 className="text-xl font-bold mb-4 text-white flex items-center">
@@ -59,7 +60,7 @@ const Statusbar: FC<IStatusbarProps> = ({ darkMode }) => {
           />
 
           <div className="flex gap-2 items-center">
-            Dark Mode{' '}
+            Dark Mode{" "}
             <div className="relative inline-block w-12 align-middle select-none transition duration-200 ease-in ">
               <input
                 type="checkbox"
@@ -67,20 +68,31 @@ const Statusbar: FC<IStatusbarProps> = ({ darkMode }) => {
                 onChange={(e) => setStatusBarDarkMode(e.target.checked)}
                 className="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"
                 style={{
-                  right: statusBarDarkMode ? '0' : 'auto',
-                  left: statusBarDarkMode ? 'auto' : '0',
-                  transition: 'all 0.3s ease',
+                  right: statusBarDarkMode ? "0" : "auto",
+                  left: statusBarDarkMode ? "auto" : "0",
+                  transition: "all 0.3s ease",
                 }}
               />
               <label
                 className="toggle-label block overflow-hidden h-6 rounded-full cursor-pointer"
                 style={{
-                  backgroundColor: statusBarDarkMode ? '#EC4899' : '#D1D5DB',
+                  backgroundColor: statusBarDarkMode ? "#EC4899" : "#D1D5DB",
                 }}
               ></label>
             </div>
           </div>
-
+          {/* Overlay Dropdown */}
+          <div className="flex gap-2 items-center">
+            <label className="text-white font-medium">Overlay:</label>
+            <select
+              value={overlay.toString()}
+              onChange={(e) => setOverlay(e.target.value === "true")}
+              className="px-3 py-2 rounded-lg border bg-white text-gray-700"
+            >
+              <option value="false">False</option>
+              <option value="true">True</option>
+            </select>
+          </div>
           <button
             onClick={() => {
               setStatusBarColorFn();
