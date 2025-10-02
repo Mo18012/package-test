@@ -60,7 +60,7 @@ export default function FrontendPage() {
 
       <div className="max-w-6xl mx-auto">
         <div className="flex justify-between items-center mb-8">
-          <h1 className="text-3xl font-bold">WebToNative Demo</h1>
+          <h1 className="text-3xl font-bold">WebToNative TS Demo</h1>
           <button
             onClick={() => setDarkMode(!darkMode)}
             className={`p-3 rounded-full ${
