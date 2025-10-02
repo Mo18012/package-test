@@ -51,7 +51,7 @@ export default function HomePage() {
               </button>
             </a>
 
-            <a target="_blank" href="https://webtonetive.netlify.app">
+            <a href="https://webtonetive.netlify.app">
               <button className="px-10 py-3 rounded-xl bg-blue-600 text-white font-semibold shadow-md hover:opacity-80 transition">
                 Go to html website Demo
               </button>
@@ -81,7 +81,7 @@ export default function HomePage() {
       </section>
 
       {/* Features Section */}
-      <section className="py-16 px-6 max-w-6xl mx-auto grid gap-12 md:grid-cols-3">
+      {/* <section className="py-16 px-6 max-w-6xl mx-auto grid gap-12 md:grid-cols-3">
         {[
           {
             title: 'Fast Performance',
@@ -104,14 +104,14 @@ export default function HomePage() {
             <p className="text-gray-400">{feature.desc}</p>
           </div>
         ))}
-      </section>
+      </section> */}
 
       {/* Call-to-Action */}
       <section className="py-20 px-6 text-center">
-        <h2 className="text-3xl font-bold mb-4">Ready to get started?</h2>
-        <p className="mb-6 text-gray-400">
+        <h2 className="text-3xl font-bold mb-4">Pages</h2>
+        {/* <p className="mb-6 text-gray-400">
           Join thousands of developers building with modern tools.
-        </p>
+        </p> */}
         <div className="flex flex-col gap-6">
           <div className="flex gap-4 flex-col items-start">
             <p className="text-xl font-medium">Ts Links</p>
