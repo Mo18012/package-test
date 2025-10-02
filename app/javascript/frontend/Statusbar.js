@@ -5,6 +5,7 @@ import { statusBar } from 'webtonative';
 const Statusbar = ({ darkMode }) => {
   const [statusBarDarkMode, setStatusBarDarkMode] = useState(true);
   const [statusBarColor, setStatusBarColor] = useState('#1D1B1B');
+  const [overlay, setOverlay] = useState(false); // <-- new state
 
   const setStatusBarColorFn = () => {
     const theme = statusBarDarkMode ? 'dark' : 'light';
