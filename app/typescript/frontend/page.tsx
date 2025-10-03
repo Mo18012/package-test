@@ -100,7 +100,7 @@ export default function FrontendPage() {
         <FileDownload darkMode={darkMode} />
 
         {/* In-App Purchase */}
-        <InAppPurchase darkMode={darkMode} onResult={handleResultUpdate} />
+        <InAppPurchase darkMode={darkMode}  />
 
         {/* AppsFlyer Integration */}
         <AppsFlyer darkMode={darkMode} />
@@ -130,6 +130,7 @@ export default function FrontendPage() {
         <FirebaseNotificationCard />
 
         <HapticFeedbackCard />
+
         < AdMobCard/>
 
         {/* Results Display */}
