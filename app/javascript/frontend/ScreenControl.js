@@ -1,13 +1,16 @@
-import { Monitor } from 'lucide-react';
 import React, { useState } from 'react';
+import { Monitor } from 'lucide-react';
 import { keepScreenNormal, keepScreenOn } from 'webtonative/Screen';
+
 const ScreenControlCard = () => {
   const [screenOn, setScreenOn] = useState(false);
 
   const screenControlFun = () => {
     if (screenOn) {
+      // If checkbox is ON, keep screen awake
       keepScreenOn();
     } else {
+      // If checkbox is OFF, revert to normal
       keepScreenNormal();
     }
   };
