@@ -40,25 +40,30 @@ const darkTheme = createTheme({
   components: {
     MuiTextField: {
       defaultProps: {
-        variant: 'filled',
+        variant: 'outlined',
       },
-    },
-    MuiInputBase: {
       styleOverrides: {
         root: {
-          color: '#FFFFFF',
-          backgroundColor: '#1E1E1E',
-        },
-        input: {
-          color: '#FFFFFF',
-        },
-      },
-    },
-    MuiInputLabel: {
-      styleOverrides: {
-        root: {
-          color: '#AAAAAA',
-          '&.Mui-focused': {
+          '& .MuiOutlinedInput-root': {
+            color: '#fff',
+            backgroundColor: '#1E1E1E',
+            '& fieldset': {
+              borderColor: '#333',
+            },
+            '&:hover fieldset': {
+              borderColor: '#BB86FC',
+            },
+            '&.Mui-focused fieldset': {
+              borderColor: '#BB86FC',
+            },
+          },
+          '& .MuiInputBase-input': {
+            color: '#fff',
+          },
+          '& .MuiInputLabel-root': {
+            color: '#aaa',
+          },
+          '& .MuiInputLabel-root.Mui-focused': {
             color: '#BB86FC',
           },
         },
@@ -69,6 +74,15 @@ const darkTheme = createTheme({
         root: {
           color: '#FFFFFF',
           backgroundColor: '#1E1E1E',
+          '& .MuiOutlinedInput-notchedOutline': {
+            borderColor: '#333',
+          },
+          '&:hover .MuiOutlinedInput-notchedOutline': {
+            borderColor: '#BB86FC',
+          },
+          '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+            borderColor: '#BB86FC',
+          },
         },
         icon: {
           color: '#FFFFFF',
