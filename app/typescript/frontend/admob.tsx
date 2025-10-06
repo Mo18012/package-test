@@ -10,6 +10,7 @@ const AdMobCard: React.FC = () => {
 
   const showBannerAd = () => {
     bannerAd({ adId: bannerId });
+
     setStatus("Banner Ad shown.");
   };
 
@@ -18,7 +19,9 @@ const AdMobCard: React.FC = () => {
       adId: fullScreenId,
       fullScreenAdCallback: (value: any) => {
         console.log("Full screen ad callback:", value);
-        setStatus("Full screen ad shown.");
+        setStatus(`Full screen ad shown. Callback value: ${JSON.stringify(value)}`);
+
+        // setStatus("Full screen ad shown.");
       },
     });
   };
@@ -28,7 +31,9 @@ const AdMobCard: React.FC = () => {
       adId: rewardsId,
       rewardsAdCallback: (value: any) => {
         console.log("Rewards ad callback:", value);
-        setStatus("Rewards ad shown.");
+        setStatus(`Rewards ad shown. Callback value: ${JSON.stringify(value)}`);
+
+        // setStatus("Rewards ad shown.");
       },
     });
   };
