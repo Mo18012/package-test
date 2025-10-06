@@ -18,7 +18,7 @@ const ClipboardCard = () => {
 
   const setDataIntoClipBoard = () => {
     set({
-      data,
+      data:clipText,
     });
   };
 

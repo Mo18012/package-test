@@ -18,6 +18,7 @@ const labelStyle = {
   fontWeight: '600',
 };
 
+
 const inputStyle = {
   width: '100%',
   padding: '8px',

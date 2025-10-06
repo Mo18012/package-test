@@ -5,6 +5,7 @@ import { statusBar } from 'webtonative';
 const Statusbar = ({ darkMode }) => {
   const [statusBarDarkMode, setStatusBarDarkMode] = useState(true);
   const [statusBarColor, setStatusBarColor] = useState('#1D1B1B');
+  const [overlay, setOverlay] = useState(false); // <-- new state
 
   const setStatusBarColorFn = () => {
     const theme = statusBarDarkMode ? 'dark' : 'light';
@@ -13,7 +14,7 @@ const Statusbar = ({ darkMode }) => {
     statusBar({
       style: theme,
       color: statusBarColor,
-      overlay: false, //only true if 8 digit for opacity
+      overlay: overlay, //only true if 8 digit for opacity
     });
   };
 
@@ -77,7 +78,18 @@ const Statusbar = ({ darkMode }) => {
               ></label>
             </div>
           </div>
-
+ {/* Overlay Dropdown */}
+          <div className="flex gap-2 items-center">
+            <label className="text-white font-medium">Overlay:</label>
+            <select
+              value={overlay}
+              onChange={(e) => setOverlay(e.target.value === 'true')}
+              className="px-3 py-2 rounded-lg border bg-white text-gray-700"
+            >
+              <option value="false">False</option>
+              <option value="true">True</option>
+            </select>
+          </div>
           <button
             onClick={() => {
               setStatusBarColorFn();

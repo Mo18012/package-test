@@ -26,6 +26,7 @@ import MediaPlayerCard from './MediaPlayerCard';
 import HideBottomNavCard from './BottomNavCard';
 import FirebaseNotificationCard from './NotificationCard';
 import HapticFeedbackCard from './HapticFeedbackCard';
+import AdMobCard from './admob';
 
 export default function FrontendPage() {
   // State variables
@@ -60,7 +61,7 @@ export default function FrontendPage() {
 
       <div className="max-w-6xl mx-auto">
         <div className="flex justify-between items-center mb-8">
-          <h1 className="text-3xl font-bold">WebToNative Demo</h1>
+          <h1 className="text-3xl font-bold">WebToNative TS Demo</h1>
           <button
             onClick={() => setDarkMode(!darkMode)}
             className={`p-3 rounded-full ${
@@ -99,7 +100,7 @@ export default function FrontendPage() {
         <FileDownload darkMode={darkMode} />
 
         {/* In-App Purchase */}
-        <InAppPurchase darkMode={darkMode} onResult={handleResultUpdate} />
+        <InAppPurchase darkMode={darkMode}  />
 
         {/* AppsFlyer Integration */}
         <AppsFlyer darkMode={darkMode} />
@@ -129,6 +130,8 @@ export default function FrontendPage() {
         <FirebaseNotificationCard />
 
         <HapticFeedbackCard />
+
+        < AdMobCard/>
 
         {/* Results Display */}
         <div
