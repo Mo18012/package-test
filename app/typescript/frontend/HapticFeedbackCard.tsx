@@ -9,8 +9,8 @@ export default function HapticFeedbackCard() {
 
   return (
     <div className="bg-gradient-to-r from-[#1b2735] to-[#243b55] border-l-4 border-cyan-400 rounded-2xl p-6 mb-6 mx-auto shadow-lg">
-      <h3 className="text-lg font-semibold text-white mb-4">Haptic Feedback</h3>
-      <div className="flex gap-3">
+  <h3 className="text-lg font-semibold text-white mb-4">Haptic Feedback</h3>
+  <div className="flex flex-col sm:flex-row gap-3">
         <input
           type="text"
           value={effect}

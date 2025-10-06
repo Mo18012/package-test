@@ -25,6 +25,7 @@ const darkTheme = createTheme({
     },
     text: {
       primary: '#FFFFFF',
+      secondary: '#AAAAAA',
     },
     primary: {
       main: '#BB86FC',
@@ -35,6 +36,45 @@ const darkTheme = createTheme({
   },
   typography: {
     fontFamily: 'Roboto, sans-serif',
+  },
+  components: {
+    MuiTextField: {
+      defaultProps: {
+        variant: 'filled',
+      },
+    },
+    MuiInputBase: {
+      styleOverrides: {
+        root: {
+          color: '#FFFFFF',
+          backgroundColor: '#1E1E1E',
+        },
+        input: {
+          color: '#FFFFFF',
+        },
+      },
+    },
+    MuiInputLabel: {
+      styleOverrides: {
+        root: {
+          color: '#AAAAAA',
+          '&.Mui-focused': {
+            color: '#BB86FC',
+          },
+        },
+      },
+    },
+    MuiSelect: {
+      styleOverrides: {
+        root: {
+          color: '#FFFFFF',
+          backgroundColor: '#1E1E1E',
+        },
+        icon: {
+          color: '#FFFFFF',
+        },
+      },
+    },
   },
 });
 
@@ -62,8 +102,8 @@ const OfferCard = () => {
     addToSiri({
       action: 'addToSiri',
       data: {
-        actionUrl,
-        suggestedPhrase,
+        actionUrl: siriUrl,
+        suggestedPhrase: phrase,
         title,
       },
     });
@@ -75,28 +115,28 @@ const OfferCard = () => {
       action: 'showOfferCard',
       data: {
         action: {
-          url,
+          url: actionUrl,
           button: {
             url: '',
-            text,
-            textColor,
-            bgColor,
+            text: btnText,
+            textColor: btnTextColor,
+            bgColor: btnBgColor,
           },
         },
         card: {
           size,
           position,
-          bgColor,
+          bgColor: cardBgColor,
           content: {
-            type,
-            url,
+            type: cardContentType,
+            url: cardContentUrl,
           },
         },
         schedule: {
           duration: duration || null,
           unit: unit || null,
         },
-        id: id || null,
+        id: offerCardId || null,
       },
     });
     toast.success('loadOfferCard Triggered');
@@ -159,7 +199,7 @@ const OfferCard = () => {
           margin="normal"
         />
 
-        <Box display="flex" gap={2} mt={2}>
+        <Box display="flex" gap={2} mt={2} alignItems="center">
           <input
             type="color"
             value={btnTextColor}
@@ -167,7 +207,8 @@ const OfferCard = () => {
           />
           <Typography>Button Text Color</Typography>
         </Box>
-        <Box display="flex" gap={2} mt={2}>
+
+        <Box display="flex" gap={2} mt={2} alignItems="center">
           <input
             type="color"
             value={btnBgColor}
@@ -196,7 +237,7 @@ const OfferCard = () => {
           </Select>
         </FormControl>
 
-        <Box display="flex" gap={2} mt={2}>
+        <Box display="flex" gap={2} mt={2} alignItems="center">
           <input
             type="color"
             value={cardBgColor}

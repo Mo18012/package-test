@@ -83,10 +83,7 @@ export default function FrontendPage() {
         </div>
 
         {/* Biometric Authentication */}
-        <BiometricAuthentication
-          darkMode={darkMode}
-          onResult={handleResultUpdate}
-        />
+        <BiometricAuthentication        />
 
         {/* Permission Screens */}
         <Permissions darkMode={darkMode} />
