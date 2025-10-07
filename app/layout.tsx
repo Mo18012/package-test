@@ -41,8 +41,6 @@ export default function RootLayout({
               overflowWrap: 'break-word',
               whiteSpace: 'pre-wrap',
               maxWidth: '90vw',
-              overflow: 'visible',       
-      display: 'block', 
             },
           }}
         />

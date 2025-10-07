@@ -53,7 +53,7 @@ const CustomBackAndUpdate = () => {
     'Update status will appear here',
   );
 
-  const sendCustomBackHandling = () => {
+  const sendCustomBackHandling = (enable) => {
     toast.success('Sending to Android' + JSON.stringify({ enable }));
 
     customBackHandling({ enable });
@@ -119,7 +119,7 @@ const CustomBackAndUpdate = () => {
           checked={backHandlingEnabled}
           onChange={(e) => {
             setBackHandlingEnabled(e.target.checked);
-            setTimeout(sendCustomBackHandling, 0);
+            setTimeout(() => sendCustomBackHandling(e.target.checked), 0);
           }}
         />
         Enable Custom Back Handling
