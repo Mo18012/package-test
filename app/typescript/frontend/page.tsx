@@ -184,9 +184,23 @@ export default function FrontendPage() {
           Close App{' '}
         </button>
       </div>
-      <a href="data:text/calendar;charset=utf-8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0AURL:https://www.webtonative.com/%0ADTSTART:20251210T120000%0ADTEND:20251210T122500%0ASUMMARY:Webtonative%20Event%0ADESCRIPTION:Webtonative%20Party%0AEND:VEVENT%0AEND:VCALENDAR">
-    Add Event
+      <a
+  href={`data:text/calendar;charset=utf-8,${encodeURIComponent(`BEGIN:VCALENDAR
+VERSION:2.0
+BEGIN:VEVENT
+URL:https://www.webtonative.com/
+DTSTART:20251210T120000
+DTEND:20251210T122500
+SUMMARY:Webtonative Event
+DESCRIPTION:Webtonative Party
+END:VEVENT
+END:VCALENDAR`)}`}
+  download="webtonative-event.ics"
+  className="mt-6 inline-block bg-green-600 hover:bg-green-700 text-white font-medium px-5 py-3 rounded-lg transition-colors duration-300 shadow-md"
+>
+  Add Event
 </a>
+
     </div>
   );
 }
