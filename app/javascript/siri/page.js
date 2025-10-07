@@ -5,15 +5,15 @@ import { addToSiri } from 'webtonative';
 const SiriPage = () => {
   const [url, setUrl] = useState('');
   const [text, setText] = useState('');
-  const [platform, setPlatform] = useState('iOS');
+  const [suggestTest, setSuggestTest] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     addToSiri({
-      title,
-      suggestedPhrase,
-      actionUrl,
+      title: text,
+      suggestedPhrase: suggestTest,
+      actionUrl: url,
     });
     toast.success('Added to Siri');
   };
@@ -48,18 +48,18 @@ const SiriPage = () => {
             />
           </div>
 
-          <div>
-            <label className="block text-sm font-medium mb-1">Platform</label>
-            <select
-              value={platform}
-              onChange={(e) => setPlatform(e.target.value)}
-              className="w-full px-3 py-2 rounded-md bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-            >
-              <option value="iOS">iOS</option>
-              <option value="Android">Android</option>
-              <option value="Web">Web</option>
-            </select>
+        
+         <div>
+            <label className="block text-sm font-medium mb-1">suggestTest</label>
+             <input
+              type="text"
+              value={text}
+              onChange={(e) => setSuggestTest(e.target.value)}
+              placeholder="Enter suggest text"
+              className="w-full px-3 py-2 rounded-md bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
           </div>
+
 
           <button
             type="submit"
