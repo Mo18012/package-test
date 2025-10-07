@@ -36,6 +36,12 @@ export default function RootLayout({
         <Toaster
           toastOptions={{
             position: 'bottom-center',
+             style: {
+              wordWrap: 'break-word',
+              overflowWrap: 'break-word',
+              whiteSpace: 'pre-wrap',
+              maxWidth: '90vw',
+            },
           }}
         />
         {children}

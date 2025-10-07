@@ -25,6 +25,7 @@ const darkTheme = createTheme({
     },
     text: {
       primary: '#FFFFFF',
+      secondary: '#AAAAAA',
     },
     primary: {
       main: '#BB86FC',
@@ -36,9 +37,62 @@ const darkTheme = createTheme({
   typography: {
     fontFamily: 'Roboto, sans-serif',
   },
+  components: {
+    MuiTextField: {
+      defaultProps: {
+        variant: 'outlined',
+      },
+      styleOverrides: {
+        root: {
+          '& .MuiOutlinedInput-root': {
+            color: '#fff',
+            backgroundColor: '#1E1E1E',
+            '& fieldset': {
+              borderColor: '#333',
+            },
+            '&:hover fieldset': {
+              borderColor: '#BB86FC',
+            },
+            '&.Mui-focused fieldset': {
+              borderColor: '#BB86FC',
+            },
+          },
+          '& .MuiInputBase-input': {
+            color: '#fff',
+          },
+          '& .MuiInputLabel-root': {
+            color: '#aaa',
+          },
+          '& .MuiInputLabel-root.Mui-focused': {
+            color: '#BB86FC',
+          },
+        },
+      },
+    },
+    MuiSelect: {
+      styleOverrides: {
+        root: {
+          color: '#FFFFFF',
+          backgroundColor: '#1E1E1E',
+          '& .MuiOutlinedInput-notchedOutline': {
+            borderColor: '#333',
+          },
+          '&:hover .MuiOutlinedInput-notchedOutline': {
+            borderColor: '#BB86FC',
+          },
+          '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+            borderColor: '#BB86FC',
+          },
+        },
+        icon: {
+          color: '#FFFFFF',
+        },
+      },
+    },
+  },
 });
 
-const OfferCard: React.FC = () => {
+const OfferCard = () => {
   // Siri States
   const [siriUrl, setSiriUrl] = useState('');
   const [title, setTitle] = useState('');
@@ -134,7 +188,7 @@ const OfferCard: React.FC = () => {
         <Button
           variant="contained"
           color="primary"
-          sx={{ mt: 2, mb: 4 }}
+          sx={{ mt: 5, mb: 8 }}
           onClick={handleAddToSiri}
         >
           Add To Siri
@@ -159,7 +213,7 @@ const OfferCard: React.FC = () => {
           margin="normal"
         />
 
-        <Box display="flex" gap={2} mt={2}>
+        <Box display="flex" gap={2} mt={2} alignItems="center">
           <input
             type="color"
             value={btnTextColor}
@@ -167,7 +221,8 @@ const OfferCard: React.FC = () => {
           />
           <Typography>Button Text Color</Typography>
         </Box>
-        <Box display="flex" gap={2} mt={2}>
+
+        <Box display="flex" gap={2} mt={2} alignItems="center">
           <input
             type="color"
             value={btnBgColor}
@@ -196,7 +251,7 @@ const OfferCard: React.FC = () => {
           </Select>
         </FormControl>
 
-        <Box display="flex" gap={2} mt={2}>
+        <Box display="flex" gap={2} mt={2} alignItems="center">
           <input
             type="color"
             value={cardBgColor}
@@ -251,7 +306,7 @@ const OfferCard: React.FC = () => {
         <Button
           variant="contained"
           color="secondary"
-          sx={{ mt: 2 }}
+          sx={{ mt: 5 }}
           onClick={handleOfferCard}
         >
           Load Offer Card

@@ -171,4 +171,5 @@ const navLinks = [
   { to: '/permission', label: 'Permission' },
   { to: '/custom-back', label: 'Custom back' },
   { to: '/onesignal', label: 'One signal' },
+  { to: '/bgloc',label: 'bg loc'},
 ];
