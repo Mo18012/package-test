@@ -29,6 +29,7 @@ import HapticFeedbackCard from './HapticFeedbackCard';
 import AdMobCard from './admob';
 import NativeContactsCard from './Nativecontact';
 
+
 export default function FrontendPage() {
   // State variables
   const [darkMode, setDarkMode] = useState(true);

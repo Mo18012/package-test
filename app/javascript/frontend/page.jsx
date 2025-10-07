@@ -27,7 +27,7 @@ import HideBottomNavCard from './BottomNavCard';
 import FirebaseNotificationCard from './NotificationCard';
 import HapticFeedbackCard from './HapticFeedbackCard';
 import AdMobCard from './admob';
-import NativeContactsCard from './Nativecontact';
+import NativeContactsCard from './nativcontact';
 
 export default function FrontendPage() {
   // State variables
