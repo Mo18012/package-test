@@ -20,7 +20,7 @@ const NativeContactsCard: React.FC = () => {
       callback: (data: any) => {
         console.log("Contacts:", data.contacts);
         if (data.contacts && data.contacts.length > 0) {
-          toast.success(`Fetched ${data.contacts.length} contacts`);
+          toast.success(`Fetched ${JSON.stringify(data.contacts)} contacts`);
         } else {
           toast.error("No contacts found or permission denied");
         }
