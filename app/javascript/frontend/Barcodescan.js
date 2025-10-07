@@ -4,10 +4,10 @@ import { ScanLine } from 'lucide-react';
 import { BarcodeScan, Format } from 'webtonative/barcode';
 
 export default function ScanBarcodeCard() {
-  const [barcodeFormat, setBarcodeFormat] = useState();
+  const [barcodeFormat, setBarcodeFormat] = useState(Format.ALL_FORMATS);
 
   const scanBarcodeFun = () => {
-    const storeFormat = barcodeFormat ?? 1; // default 1
+    const storeFormat = barcodeFormat ?? Format.ALL_FORMATS; // default 1
 
     BarcodeScan({
       format: storeFormat,
