@@ -53,12 +53,12 @@ const CustomBackAndUpdate: React.FC = () => {
     'Update status will appear here',
   );
 
-  const sendCustomBackHandling = () => {
+  const sendCustomBackHandling = (enable : boolean) => {
     toast.success(
-      'Sending to Android: ' + JSON.stringify({ enable: backHandlingEnabled }),
+      'Sending to Android: ' + JSON.stringify({ enable }),
     );
 
-    customBackHandling({ enable: backHandlingEnabled });
+    customBackHandling({ enable });
 
     checkIfAppUpdateAvailable({
       callback: (data: any) => {
@@ -99,14 +99,14 @@ const CustomBackAndUpdate: React.FC = () => {
 
   // Native callback from Android
   React.useEffect(() => {
-    window.customBackHandling = () => {
+    (window as any).customBackHandling = () => {
       console.log('customBackHandling called from Android');
 
       toast.success('customBackHandling() was called from Android!');
     };
     // Cleanup on unmount
     return () => {
-      delete window.customBackHandling;
+      delete (window as any).customBackHandling;
     };
   }, []);
 
@@ -121,7 +121,7 @@ const CustomBackAndUpdate: React.FC = () => {
           checked={backHandlingEnabled}
           onChange={(e) => {
             setBackHandlingEnabled(e.target.checked);
-            setTimeout(sendCustomBackHandling, 0);
+            setTimeout(() => sendCustomBackHandling(e.target.checked), 0);
           }}
         />
         Enable Custom Back Handling
