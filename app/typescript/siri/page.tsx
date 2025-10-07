@@ -52,7 +52,7 @@ const SiriPage: React.FC = () => {
             <label className="block text-sm font-medium mb-1">suggestTest</label>
              <input
               type="text"
-              value={text}
+              value={suggestTest}
               onChange={(e) => setSuggestTest(e.target.value)}
               placeholder="Enter suggest text"
               className="w-full px-3 py-2 rounded-md bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
