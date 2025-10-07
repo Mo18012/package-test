@@ -2,11 +2,14 @@ import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 import { ScanLine } from 'lucide-react';
 import { BarcodeScan, Format } from 'webtonative/barcode';
+import Result from './Result';
 
 const ScanBarcodeCard: React.FC = () => {
   const [barcodeFormat, setBarcodeFormat] = useState<number | undefined>(
     Format.ALL_FORMATS,
   );
+  
+  const [result,setResult]=useState("")
 
   const scanBarcodeFun = () => {
     const storeFormat = barcodeFormat ?? Format.ALL_FORMATS; // Default to 1 if not provided
@@ -14,6 +17,7 @@ const ScanBarcodeCard: React.FC = () => {
     BarcodeScan({
       format: storeFormat,
       onBarcodeSearch: (value: string) => {
+        setResult(value)
         console.log('Scanned value:', value);
         toast.success(`Scanned Barcode: ${value}`);
       },
@@ -46,6 +50,8 @@ const ScanBarcodeCard: React.FC = () => {
         <ScanLine className="w-4 h-4" />
         Scan
       </button>
+
+      <Result resultInfo={result}/>
     </div>
   );
 };
