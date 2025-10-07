@@ -6,7 +6,7 @@ const MediaPlayerCard = () => {
   const [imageUrl, setImageUrl] = useState('');
 
   const mediaPlayerStart = () => {
-    mediaPlayer.playMedia({ url, imageUrl });
+    mediaPlayer.playMedia({ url:mediaUrl, imageUrl });
   };
   const mediaPlayerPause = () => {
     mediaPlayer.pauseMedia();
