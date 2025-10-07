@@ -1,82 +1,172 @@
-import React, { FC, useState } from 'react';
-import toast from 'react-hot-toast';
-import { setUserId } from 'webtonative/Firebase/Analytics';
-export interface IFirebaseProps {
-  darkMode?: boolean;
-}
+"use client";
 
-const Firebase: FC<IFirebaseProps> = ({ darkMode }) => {
-  const [firebaseUserId, setFirebaseUserId] = useState('');
+import React, { useState } from "react";
+import {
+  setCollection,
+  setUserId,
+  setDefaultEventParameters,
+  setUserProperty,
+  logEvent,
+  logScreen,
+} from "webtonative/Firebase/Analytics";
+import toast from "react-hot-toast";
 
-  const handleSetFirebaseUserId = () => {
-    setUserId({ userId: firebaseUserId });
-    toast.success('Firebase user ID set');
+export default function FirebaseAnalyticsPage() {
+  const [collectionEnabled, setCollectionEnabled] = useState(false);
+  const [userId, setUserIdValue] = useState("");
+  const [propertyKey, setPropertyKey] = useState("");
+  const [propertyValue, setPropertyValue] = useState("");
+  const [levelName, setLevelName] = useState("");
+  const [difficulty, setDifficulty] = useState<number | "">("");
+  const [eventName, setEventName] = useState("");
+  const [screenName, setScreenName] = useState("");
+  const [screenClass, setScreenClass] = useState("");
+
+  const handleSetCollection = () => {
+    setCollection({ enabled: collectionEnabled });
+    toast.success(`Collection set to ${collectionEnabled}`);
+  };
+
+  const handleSetUserId = () => {
+    setUserId({ userId });
+    toast.success(`User ID set: ${userId}`);
+  };
+
+  const handleSetUserProperty = () => {
+    setUserProperty({ key: propertyKey, value: propertyValue });
+    toast.success(`Property set: ${propertyKey} = ${propertyValue}`);
+  };
+
+  const handleSetDefaultParams = () => {
+    const diff = difficulty || 4;
+    setDefaultEventParameters({
+      parameters: { level_name: levelName, level_difficulty: diff },
+    });
+    toast.success("Default event parameters set");
+  };
+
+  const handleLogEvent = () => {
+    const diff = difficulty || 4;
+    logEvent({
+      eventName,
+      parameters: { level_name: levelName, level_difficulty: diff },
+    });
+    toast.success(`Event '${eventName}' logged`);
+  };
+
+  const handleLogScreen = () => {
+    logScreen({ screenName, screenClass });
+    toast.success(`Screen logged: ${screenName}`);
   };
 
   return (
-    <div
-      className={`${
-        darkMode
-          ? 'bg-gradient-to-br from-yellow-900 to-amber-800'
-          : 'bg-gradient-to-br from-yellow-500 to-amber-500'
-      } p-6 rounded-xl shadow-lg mb-6 transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl`}
-    >
-      <h3 className="text-xl font-bold mb-4 text-white flex items-center">
-        <span className="bg-white text-yellow-600 p-2 rounded-full mr-3 inline-flex items-center justify-center w-8 h-8">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            className="w-5 h-5"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-            />
-          </svg>
-        </span>
+    <div className="p-6 border rounded-lg bg-yellow-100 border-gray-400">
+      <h3 className="text-center mb-4 text-xl font-semibold">
         Firebase Analytics
       </h3>
 
-      <div className="bg-white/10 p-4 rounded-lg mb-4">
-        <p className="text-white/80 mb-4">
-          Set Firebase user ID for analytics tracking and user identification.
-        </p>
-        <div className="flex flex-col md:flex-row gap-4">
-          <input
-            type="text"
-            value={firebaseUserId}
-            onChange={(e) => setFirebaseUserId(e.target.value)}
-            placeholder="Enter Firebase User ID"
-            className="flex-grow p-3 rounded-lg bg-white/20 text-white placeholder-white/70 border border-white/30 focus:outline-none focus:ring-2 focus:ring-white/50"
-          />
-          <button
-            onClick={handleSetFirebaseUserId}
-            className="bg-white text-yellow-600 font-bold px-5 py-3 rounded-lg hover:bg-opacity-90 transition-all duration-300 shadow-md flex items-center justify-center gap-2 whitespace-nowrap"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              className="w-5 h-5"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
-              />
-            </svg>
-            Set User ID
-          </button>
-        </div>
+      <div className="mb-4">
+        <label className="block mb-2 font-medium">Enable Data Collection</label>
+        <input
+          type="checkbox"
+          checked={collectionEnabled}
+          onChange={(e) => setCollectionEnabled(e.target.checked)}
+        />
+        <button onClick={handleSetCollection} className="ml-3 bg-blue-400 px-3 py-1 rounded text-white">
+          Set Collection
+        </button>
+      </div>
+
+      <div className="mb-4">
+        <label className="block mb-2 font-medium">User ID</label>
+        <input
+          type="text"
+          value={userId}
+          onChange={(e) => setUserIdValue(e.target.value)}
+          placeholder="Enter User ID"
+          className="border p-1 rounded w-full"
+        />
+        <button onClick={handleSetUserId} className="mt-2 bg-blue-400 px-3 py-1 rounded text-white">
+          Set User ID
+        </button>
+      </div>
+
+      <div className="mb-4">
+        <label className="block mb-2 font-medium">User Property</label>
+        <input
+          type="text"
+          value={propertyKey}
+          onChange={(e) => setPropertyKey(e.target.value)}
+          placeholder="Key"
+          className="border p-1 rounded w-full mb-2"
+        />
+        <input
+          type="text"
+          value={propertyValue}
+          onChange={(e) => setPropertyValue(e.target.value)}
+          placeholder="Value"
+          className="border p-1 rounded w-full"
+        />
+        <button onClick={handleSetUserProperty} className="mt-2 bg-blue-400 px-3 py-1 rounded text-white">
+          Set Property
+        </button>
+      </div>
+
+      <div className="mb-4">
+        <label className="block mb-2 font-medium">Default Event Params</label>
+        <input
+          type="text"
+          value={levelName}
+          onChange={(e) => setLevelName(e.target.value)}
+          placeholder="Level Name"
+          className="border p-1 rounded w-full mb-2"
+        />
+        <input
+          type="number"
+          value={difficulty}
+          onChange={(e) => setDifficulty(Number(e.target.value))}
+          placeholder="Difficulty (default 4)"
+          className="border p-1 rounded w-full"
+        />
+        <button onClick={handleSetDefaultParams} className="mt-2 bg-blue-400 px-3 py-1 rounded text-white">
+          Set Defaults
+        </button>
+      </div>
+
+      <div className="mb-4">
+        <label className="block mb-2 font-medium">Log Event</label>
+        <input
+          type="text"
+          value={eventName}
+          onChange={(e) => setEventName(e.target.value)}
+          placeholder="Event Name"
+          className="border p-1 rounded w-full mb-2"
+        />
+        <button onClick={handleLogEvent} className="mt-2 bg-blue-400 px-3 py-1 rounded text-white">
+          Log Event
+        </button>
+      </div>
+
+      <div>
+        <label className="block mb-2 font-medium">Screen View</label>
+        <input
+          type="text"
+          value={screenName}
+          onChange={(e) => setScreenName(e.target.value)}
+          placeholder="Screen Name"
+          className="border p-1 rounded w-full mb-2"
+        />
+        <input
+          type="text"
+          value={screenClass}
+          onChange={(e) => setScreenClass(e.target.value)}
+          placeholder="Screen Class"
+          className="border p-1 rounded w-full"
+        />
+        <button onClick={handleLogScreen} className="mt-2 bg-blue-400 px-3 py-1 rounded text-white">
+          Log Screen
+        </button>
       </div>
     </div>
   );
-};
-
-export default Firebase;
+}
