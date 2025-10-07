@@ -172,4 +172,5 @@ const navLinks = [
   { to: '/custom-back', label: 'Custom back' },
   { to: '/onesignal', label: 'One signal' },
   { to: '/bgloc',label: 'bg loc'},
+   { to: '/socialaddon',label: 'Social Login'},
 ];
