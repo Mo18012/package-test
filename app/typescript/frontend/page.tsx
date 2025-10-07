@@ -27,6 +27,7 @@ import HideBottomNavCard from './BottomNavCard';
 import FirebaseNotificationCard from './NotificationCard';
 import HapticFeedbackCard from './HapticFeedbackCard';
 import AdMobCard from './admob';
+import NativeContactsCard from './Nativecontact';
 
 export default function FrontendPage() {
   // State variables
@@ -129,6 +130,7 @@ export default function FrontendPage() {
         <HapticFeedbackCard />
 
         < AdMobCard/>
+        <NativeContactsCard />
 
         {/* Results Display */}
         <div
