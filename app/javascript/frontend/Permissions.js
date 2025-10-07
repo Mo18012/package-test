@@ -108,7 +108,7 @@ const Permissions = ({ darkMode }) => {
           </button>
         </a>
 
-        <a href=" w2n://permission-notification" className="w-full">
+        <a href="w2n://permission-notification" className="w-full">
           <button className="bg-white w-full text-blue-600 font-bold px-5 py-3 rounded-lg hover:bg-opacity-90 transition-all duration-300 shadow-md flex items-center justify-center gap-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"

@@ -1,18 +1,20 @@
-import React, { useState } from "react";
-import toast from "react-hot-toast";
-import { ScanLine } from "lucide-react";
-import { BarcodeScan } from "webtonative/barcode";
+import React, { useState } from 'react';
+import toast from 'react-hot-toast';
+import { ScanLine } from 'lucide-react';
+import { BarcodeScan, Format } from 'webtonative/barcode';
 
 const ScanBarcodeCard: React.FC = () => {
-  const [barcodeFormat, setBarcodeFormat] = useState<number | undefined>();
+  const [barcodeFormat, setBarcodeFormat] = useState<number | undefined>(
+    Format.ALL_FORMATS,
+  );
 
   const scanBarcodeFun = () => {
-    const storeFormat = barcodeFormat ?? 1; // Default to 1 if not provided
+    const storeFormat = barcodeFormat ?? Format.ALL_FORMATS; // Default to 1 if not provided
 
     BarcodeScan({
       format: storeFormat,
       onBarcodeSearch: (value: string) => {
-        console.log("Scanned value:", value);
+        console.log('Scanned value:', value);
         toast.success(`Scanned Barcode: ${value}`);
       },
     });
@@ -30,7 +32,7 @@ const ScanBarcodeCard: React.FC = () => {
       <input
         id="barcodeFormatBox"
         type="number"
-        value={barcodeFormat ?? ""}
+        value={barcodeFormat ?? ''}
         onChange={(e) => setBarcodeFormat(Number(e.target.value))}
         placeholder="Barcode Format e.g. 1 (optional)"
         className="w-full px-4 py-2 mb-4 rounded-lg bg-cyan-950 text-cyan-100 placeholder-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-500"
