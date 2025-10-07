@@ -105,7 +105,7 @@ export default function FrontendPage() {
         <AppsFlyer darkMode={darkMode} />
 
         {/* Firebase Analytics */}
-        <Firebase darkMode={darkMode} />
+        <Firebase  />
 
         {/* OneSignal Integration */}
         <OneSignal darkMode={darkMode} />
