@@ -33,7 +33,7 @@ export default function RootLayout({
           src="https://unpkg.com/webtonative@1.0.75-beta.5/webtonative.min.js"
           strategy="beforeInteractive" // ensures it's available before app runs
         />
-        <Toaster
+          <Toaster
           toastOptions={{
             position: 'bottom-center',
              style: {
@@ -41,6 +41,8 @@ export default function RootLayout({
               overflowWrap: 'break-word',
               whiteSpace: 'pre-wrap',
               maxWidth: '90vw',
+              overflow: 'visible',       
+      display: 'block', 
             },
           }}
         />

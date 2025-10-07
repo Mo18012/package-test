@@ -8,8 +8,8 @@ const DateTimePickerPage = () => {
 
   const handlePickDateTime = () => {
     showDateTimePicker({
-      showDate,
-      showTime,
+      showDate: true,
+      showTime: true,
       callback: (data) => {
         console.log('Date Data ->', data);
         setResult(JSON.stringify(data));
