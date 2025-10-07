@@ -173,4 +173,5 @@ const navLinks = [
   { to: '/onesignal', label: 'One signal' },
   { to: '/bgloc',label: 'bg loc'},
    { to: '/socialaddon',label: 'Social Login'},
+   { to: '/date',label: 'Date picker'},
 ];
