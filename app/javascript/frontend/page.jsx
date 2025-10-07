@@ -185,7 +185,11 @@ export default function FrontendPage() {
           </svg>
           Close App{' '}
         </button>
+
       </div>
+      <a href="data:text/calendar;charset=utf-8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0AURL:https://www.webtonative.com/%0ADTSTART:20251210T120000%0ADTEND:20251210T122500%0ASUMMARY:Webtonative%20Event%0ADESCRIPTION:Webtonative%20Party%0AEND:VEVENT%0AEND:VCALENDAR">
+    Add Event
+</a>
     </div>
   );
 }
