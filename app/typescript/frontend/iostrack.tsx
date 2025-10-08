@@ -9,7 +9,7 @@ export default function IOSAppTrackingTransparencyCard() {
     try {
       request({
         callback: (result) => {
-          if (result.granted) {
+          if (result?.granted) {
             toast.success("✅ Permission Granted");
           } else {
             toast.error("❌ Permission Denied or Restricted");
@@ -17,7 +17,7 @@ export default function IOSAppTrackingTransparencyCard() {
         },
       });
     } catch (err) {
-      console.error(err);
+      console.error("Error requesting ATT permission:", err);
       toast.error("Error requesting permission");
     }
   };
@@ -26,7 +26,7 @@ export default function IOSAppTrackingTransparencyCard() {
     try {
       status({
         callback: (result) => {
-          if (result.status) {
+          if (result?.status) {
             toast(`📱 Status: ${result.status}`);
           } else {
             toast.error("Could not fetch permission status");
@@ -34,7 +34,7 @@ export default function IOSAppTrackingTransparencyCard() {
         },
       });
     } catch (err) {
-      console.error(err);
+      console.error("Error fetching ATT status:", err);
       toast.error("Error fetching status");
     }
   };
@@ -49,14 +49,14 @@ export default function IOSAppTrackingTransparencyCard() {
       <div className="flex flex-col sm:flex-row justify-center gap-4">
         <button
           onClick={handleRequestPermission}
-          className="px-5 py-2 bg-blue-600 hover:bg-blue-700 text-yellow-200 rounded-lg"
+          className="px-5 py-2 bg-blue-600 hover:bg-blue-700 text-yellow-200 rounded-lg transition-colors"
         >
           Request Permission
         </button>
 
         <button
           onClick={handleCheckStatus}
-          className="px-5 py-2 bg-blue-600 hover:bg-blue-700 text-yellow-200 rounded-lg"
+          className="px-5 py-2 bg-blue-600 hover:bg-blue-700 text-yellow-200 rounded-lg transition-colors"
         >
           Check Status
         </button>
