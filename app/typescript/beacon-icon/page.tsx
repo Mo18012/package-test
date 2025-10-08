@@ -74,11 +74,11 @@ export default function BeaconIntegration() {
     };
 
     setBeaconData(updatedData);
-    initBeaconData({
-      beaconData: updatedData,
-      callback: (data: any) => {
-        console.log("Beacon added & initialized:", data);
-        toast.success("✅ Beacon added & initialized!");
+initBeaconData({
+  beaconData: updatedData,
+  callback: (data: any) => {
+    console.log("Beacon added & initialized:", data);
+    toast.success(`✅ Beacon added & initialized! ${JSON.stringify(data)}`);
       },
     });
   };
