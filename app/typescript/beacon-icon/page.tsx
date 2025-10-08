@@ -1,236 +1,121 @@
-'use client';
+"use client";
+import React, { useState } from "react";
+import toast from "react-hot-toast";
+import { initBeaconData } from "webtonative/Beacon"; // ✅ Correct import
 
-import React, { useState } from 'react';
-import { initBeaconData } from 'webtonative/Beacon'; // your npm package
-
-interface BeaconData {
-  uuid: string;
-  major: string;
-  minor: string;
-  entryNotification: boolean;
-  exitNotification: boolean;
-  interval: string;
-  source: string;
-  enterNotificationTitle: string;
-  enterNotificationDescription: string;
-  exitNotificationTitle: string;
-  exitNotificationDescription: string;
-  webhookUrl: string;
-  userInfo: string;
-}
-
-const InitBeaconDataPage: React.FC = () => {
-  const [beacon, setBeacon] = useState<BeaconData>({
-    uuid: '',
-    major: '',
-    minor: '',
-    entryNotification: false,
-    exitNotification: false,
-    interval: '',
-    source: '',
-    enterNotificationTitle: '',
-    enterNotificationDescription: '',
-    exitNotificationTitle: '',
-    exitNotificationDescription: '',
-    webhookUrl: '',
-    userInfo: '',
+export default function BeaconIntegration() {
+  const [form, setForm] = useState({
+    uuid: "",
+    major: "",
+    minor: "",
+    entry: "true",
+    exit: "true",
+    interval: "0",
+    source: "PRE_DEFINED",
   });
 
-  const [addedBeacons, setAddedBeacons] = useState<BeaconData[]>([]);
-  const [message, setMessage] = useState('');
+  const [beaconData, setBeaconData] = useState({
+    beaconConfig: [] as any[],
+    userInfo: {
+      userId: "user123",
+      userName: "Ravi Saharan",
+      userEmail: "ravi.saharan@orufy.com",
+    },
+  });
 
-  const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-    >,
-  ) => {
-    const { name, value, type, checked } = e.target;
-    setBeacon({
-      ...beacon,
-      [name]: type === 'checkbox' ? checked : value,
-    });
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    setForm({ ...form, [e.target.id]: e.target.value });
   };
 
-  const handleAddBeacon = () => {
-    if (!beacon.uuid || !beacon.major || !beacon.minor) {
-      setMessage('UUID, Major, and Minor are required');
-      return;
-    }
-    setAddedBeacons([...addedBeacons, beacon]);
-    setBeacon({
-      uuid: '',
-      major: '',
-      minor: '',
-      entryNotification: false,
-      exitNotification: false,
-      interval: '',
-      source: '',
-      enterNotificationTitle: '',
-      enterNotificationDescription: '',
-      exitNotificationTitle: '',
-      exitNotificationDescription: '',
-      webhookUrl: '',
-      userInfo: '',
-    });
-    setMessage('Beacon added to list');
-  };
-
-  const handleInitBeaconData = async () => {
+  const initBeacons = () => {
     try {
       initBeaconData({
-        beaconData: beacon,
-        callback: function (data) {
-          console.log(Object.values(data));
-          alert('Beacon initialized:\n' + JSON.stringify(data, null, 2));
+        beaconData,
+        callback: (data: any) => {
+          console.log("Beacon initialized:", data);
+          toast.success("✅ Beacon initialized successfully!");
         },
       });
-      setMessage('Beacon data initialized successfully!');
     } catch (err) {
       console.error(err);
-      setMessage('Error initializing beacon data');
+      toast.error("Beacon initialization failed.");
     }
+  };
+
+  const addBeacon = () => {
+    const newBeacon = {
+      uuid: form.uuid,
+      major: parseInt(form.major),
+      minor: parseInt(form.minor),
+      settings: {
+        showNotificationOnEntry: form.entry === "true",
+        showNotificationOnExit: form.exit === "true",
+        notificationInterval: parseInt(form.interval),
+        notificationContentSource: form.source,
+        defaultNotificationEnterData: {
+          title: "Device Connected",
+          image: "https://webtonetive.netlify.app/img2.png",
+          body: "Beacon connected!",
+          deepLink: "https://orufy.com/",
+        },
+        defaultNotificationExitData: {
+          title: "Device Disconnected",
+          image: "https://webtonetive.netlify.app/img1.png",
+          body: "Beacon disconnected!",
+          deepLink: "https://www.webtonative.com/",
+        },
+      },
+      webhookUrl: "https://hdioigjkfdkdngdds.free.beeceptor.com",
+    };
+
+    const updatedData = {
+      ...beaconData,
+      beaconConfig: [...beaconData.beaconConfig, newBeacon],
+    };
+
+    setBeaconData(updatedData);
+    initBeaconData({
+      beaconData: updatedData,
+      callback: (data: any) => {
+        console.log("Beacon added & initialized:", data);
+        toast.success("✅ Beacon added & initialized!");
+      },
+    });
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-6">
-      <div className="bg-gray-900 text-white rounded-2xl shadow-xl p-6">
-        <h2 className="text-2xl font-bold mb-4">Init Beacon Data</h2>
+    <div className="bg-white border-2 border-blue-400 rounded-2xl p-6 shadow-md mb-6">
+      <h3 className="text-xl font-semibold text-center text-blue-700 mb-4">
+        🛰️ Webtonative Beacon Integration
+      </h3>
 
-        <div className="grid grid-cols-1 gap-4">
-          <input
-            name="uuid"
-            placeholder="UUID"
-            className="p-2 rounded bg-gray-800 border border-gray-700"
-            value={beacon.uuid}
-            onChange={handleChange}
-          />
-          <div className="grid grid-cols-2 gap-4">
-            <input
-              name="major"
-              placeholder="Major"
-              className="p-2 rounded bg-gray-800 border border-gray-700"
-              value={beacon.major}
-              onChange={handleChange}
-            />
-            <input
-              name="minor"
-              placeholder="Minor"
-              className="p-2 rounded bg-gray-800 border border-gray-700"
-              value={beacon.minor}
-              onChange={handleChange}
-            />
-          </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+        <input id="uuid" value={form.uuid} onChange={handleChange} placeholder="UUID" className="border p-2 rounded-lg w-full" />
+        <input id="major" type="number" value={form.major} onChange={handleChange} placeholder="Major" className="border p-2 rounded-lg w-full" />
+        <input id="minor" type="number" value={form.minor} onChange={handleChange} placeholder="Minor" className="border p-2 rounded-lg w-full" />
+        <select id="entry" value={form.entry} onChange={handleChange} className="border p-2 rounded-lg w-full">
+          <option value="true">Show Notification on Entry: true</option>
+          <option value="false">false</option>
+        </select>
+        <select id="exit" value={form.exit} onChange={handleChange} className="border p-2 rounded-lg w-full">
+          <option value="true">Show Notification on Exit: true</option>
+          <option value="false">false</option>
+        </select>
+        <input id="interval" type="number" value={form.interval} onChange={handleChange} placeholder="Interval (sec)" className="border p-2 rounded-lg w-full" />
+        <select id="source" value={form.source} onChange={handleChange} className="border p-2 rounded-lg w-full">
+          <option value="PRE_DEFINED">PRE_DEFINED</option>
+          <option value="API_FETCHED">API_FETCHED</option>
+        </select>
+      </div>
 
-          <label className="flex items-center gap-2">
-            <input
-              type="checkbox"
-              name="entryNotification"
-              checked={beacon.entryNotification}
-              onChange={handleChange}
-              className="accent-blue-500"
-            />
-            Entry Notification
-          </label>
-          <label className="flex items-center gap-2">
-            <input
-              type="checkbox"
-              name="exitNotification"
-              checked={beacon.exitNotification}
-              onChange={handleChange}
-              className="accent-blue-500"
-            />
-            Exit Notification
-          </label>
-
-          <input
-            name="interval"
-            placeholder="Interval"
-            className="p-2 rounded bg-gray-800 border border-gray-700"
-            value={beacon.interval}
-            onChange={handleChange}
-          />
-          <input
-            name="source"
-            placeholder="Source"
-            className="p-2 rounded bg-gray-800 border border-gray-700"
-            value={beacon.source}
-            onChange={handleChange}
-          />
-
-          <input
-            name="enterNotificationTitle"
-            placeholder="Enter Notification Title"
-            className="p-2 rounded bg-gray-800 border border-gray-700"
-            value={beacon.enterNotificationTitle}
-            onChange={handleChange}
-          />
-          <textarea
-            name="enterNotificationDescription"
-            placeholder="Enter Notification Description"
-            className="p-2 rounded bg-gray-800 border border-gray-700"
-            value={beacon.enterNotificationDescription}
-            onChange={handleChange}
-          />
-
-          <input
-            name="exitNotificationTitle"
-            placeholder="Exit Notification Title"
-            className="p-2 rounded bg-gray-800 border border-gray-700"
-            value={beacon.exitNotificationTitle}
-            onChange={handleChange}
-          />
-          <textarea
-            name="exitNotificationDescription"
-            placeholder="Exit Notification Description"
-            className="p-2 rounded bg-gray-800 border border-gray-700"
-            value={beacon.exitNotificationDescription}
-            onChange={handleChange}
-          />
-
-          <input
-            name="webhookUrl"
-            placeholder="Webhook URL"
-            className="p-2 rounded bg-gray-800 border border-gray-700"
-            value={beacon.webhookUrl}
-            onChange={handleChange}
-          />
-          <textarea
-            name="userInfo"
-            placeholder="User Info JSON"
-            className="p-2 rounded bg-gray-800 border border-gray-700"
-            value={beacon.userInfo}
-            onChange={handleChange}
-          />
-        </div>
-
-        <div className="flex gap-4 mt-6">
-          <button
-            onClick={handleAddBeacon}
-            className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg"
-          >
-            Add Beacon
-          </button>
-          <button
-            onClick={handleInitBeaconData}
-            className="bg-green-600 hover:bg-green-700 px-4 py-2 rounded-lg"
-          >
-            Initialize Data
-          </button>
-        </div>
-
-        {message && <p className="mt-4 text-sm">{message}</p>}
-
-        {addedBeacons.length > 0 && (
-          <div className="mt-6 bg-gray-800 p-4 rounded-lg">
-            <h3 className="text-lg font-semibold mb-2">Beacons List</h3>
-            <pre className="text-xs overflow-x-auto">
-              {JSON.stringify(addedBeacons, null, 2)}
-            </pre>
-          </div>
-        )}
+      <div className="flex justify-center gap-4">
+        <button onClick={addBeacon} className="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700">
+          ➕ Add Beacon
+        </button>
+        <button onClick={initBeacons} className="bg-green-600 text-white px-5 py-2 rounded-lg hover:bg-green-700">
+          🚀 Init Beacons
+        </button>
       </div>
     </div>
   );
-};
-
-export default InitBeaconDataPage;
+}

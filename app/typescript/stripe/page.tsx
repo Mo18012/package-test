@@ -1,145 +1,89 @@
-'use client';
-import React, { useEffect, useState } from 'react';
-import toast from 'react-hot-toast';
-import { makeTapToPay } from 'webtonative/Stripe';
-const containerStyle: React.CSSProperties = {
-  fontFamily: 'Arial, sans-serif',
-  backgroundColor: '#121212',
-  color: '#e0e0e0',
-  minHeight: '100vh',
-  padding: 20,
-  maxWidth: 600,
-  margin: '0 auto',
-};
+"use client";
+import React, { useState } from "react";
+import toast from "react-hot-toast";
+import { makeTapToPay } from "webtonative/Stripe"; // ✅ Correct import
 
-const labelStyle: React.CSSProperties = {
-  display: 'block',
-  marginBottom: 6,
-  fontWeight: '600',
-};
-
-const inputStyle: React.CSSProperties = {
-  width: '100%',
-  padding: '8px',
-  fontSize: 16,
-  borderRadius: 6,
-  border: '1px solid #444',
-  backgroundColor: '#1e1e1e',
-  color: '#e0e0e0',
-  marginBottom: 20,
-};
-
-const buttonStyle: React.CSSProperties = {
-  padding: '10px 24px',
-  fontSize: 16,
-  backgroundColor: '#0d6efd',
-  color: 'white',
-  border: 'none',
-  borderRadius: 6,
-  cursor: 'pointer',
-  transition: 'background-color 0.3s',
-};
-
-const callbackBoxStyle: React.CSSProperties = {
-  marginTop: 20,
-  backgroundColor: '#1e1e1e',
-  padding: 12,
-  borderRadius: 6,
-  whiteSpace: 'pre-wrap',
-  minHeight: 80,
-  fontFamily: 'monospace',
-};
-
-const StripeTapToPayDemo: React.FC = () => {
-  const [connectionToken, setConnectionToken] =
-    useState<string>('Fetching token...');
-  const [clientSecret, setClientSecret] = useState<string>('');
-  const [stripeLocationId, setStripeLocationId] =
-    useState<string>('tml_GD4XLAIu9ajhoD');
-  const [callbackData, setCallbackData] = useState<string>(
-    'Callback data will appear here.',
+const StripeTapToPay: React.FC = () => {
+  const [connectionToken, setConnectionToken] = useState("");
+  const [clientSecret, setClientSecret] = useState(
+    "pi_3RxMj9F5uCWG6brT0qB0DjHO_secret_Qak2kSCzTO0fUXFseD7ZhRGil"
   );
-
-  useEffect(() => {
-    // Fetch connection token on mount
-    async function fetchConnectionToken() {
-      try {
-        const response = await fetch(
-          'http://192.168.1.40:4242/connection_token',
-          {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-          },
-        );
-        if (!response.ok) throw new Error('Failed to fetch token');
-        const data = await response.json();
-        setConnectionToken(data.secret);
-        console.log('Fetched connection token:', data.secret);
-      } catch (error) {
-        console.error('Error fetching connection token:', error);
-        setConnectionToken('Error fetching token');
-      }
-    }
-    fetchConnectionToken();
-  }, []);
+  const [stripeLocationId, setStripeLocationId] = useState(
+    "tml_GD4XLAIu9ajhoD"
+  );
+  const [callbackData, setCallbackData] = useState<any>(null);
 
   const makePayment = () => {
-    console.log(
-      'ConnectionToken:',
-      connectionToken,
-      'ClientSecret:',
-      clientSecret,
-      'LocationId:',
-      stripeLocationId,
-    );
+    if (!connectionToken || !clientSecret || !stripeLocationId) {
+      toast.error("⚠️ Please fill all fields before continuing!");
+      return;
+    }
 
-    makeTapToPay({
-      connectionToken,
-      stripeLocationId,
-      clientSecret,
-      isSimulated: true,
-      amount: 100,
-      currency: 'INR',
-      callback: (data: any) => {
-        const jsonData = JSON.stringify(data, null, 2);
-        setCallbackData(jsonData);
-        alert(jsonData);
-      },
-    });
-    toast.success('stripe tap to pay');
+    try {
+      makeTapToPay({
+  connectionToken,
+  stripeLocationId,
+  clientSecret,
+  isSimulated: true,
+  amount: 1000,        // Amount in cents, e.g., $10.00
+  currency: "usd",     // Currency code
+  callback: (data) => {
+    console.log("Stripe callback:", data);
+    setCallbackData(data);
+    toast.success("✅ Payment completed!");
+  },
+});
+
+    } catch (error) {
+      console.error("Payment initialization failed:", error);
+      toast.error("❌ Payment initialization failed.");
+    }
   };
 
   return (
-    <div style={containerStyle}>
-      <h2>Stripe Tap to Pay Demo</h2>
+    <div className="bg-white border-2 border-purple-500 rounded-2xl p-6 shadow-md">
+      <h2 className="text-xl font-semibold text-center mb-4 text-purple-700">
+        💳 Stripe Tap To Pay (Webtonative)
+      </h2>
 
-      <label style={labelStyle}>Connection Token:</label>
-      <input type="text" value={connectionToken} readOnly style={inputStyle} />
+      <div className="flex flex-col gap-3">
+        <input
+          type="text"
+          placeholder="Connection Token"
+          value={connectionToken}
+          onChange={(e) => setConnectionToken(e.target.value)}
+          className="border p-2 rounded-lg"
+        />
+        <input
+          type="text"
+          placeholder="Client Secret"
+          value={clientSecret}
+          onChange={(e) => setClientSecret(e.target.value)}
+          className="border p-2 rounded-lg"
+        />
+        <input
+          type="text"
+          placeholder="Stripe Location ID"
+          value={stripeLocationId}
+          onChange={(e) => setStripeLocationId(e.target.value)}
+          className="border p-2 rounded-lg"
+        />
+      </div>
 
-      <label style={labelStyle}>Client Secret:</label>
-      <input
-        type="text"
-        value={clientSecret}
-        onChange={(e) => setClientSecret(e.target.value)}
-        style={inputStyle}
-        placeholder="Enter client secret"
-      />
-
-      <label style={labelStyle}>Stripe Location ID:</label>
-      <input
-        type="text"
-        value={stripeLocationId}
-        onChange={(e) => setStripeLocationId(e.target.value)}
-        style={inputStyle}
-      />
-
-      <button style={buttonStyle} onClick={makePayment}>
-        Pay Mohit
+      <button
+        onClick={makePayment}
+        className="bg-purple-600 text-white px-5 py-2 rounded-lg hover:bg-purple-700 mt-4 w-full"
+      >
+        💰 Pay Mohit
       </button>
 
-      <div style={callbackBoxStyle}>{callbackData}</div>
+      {callbackData && (
+        <pre className="mt-4 bg-gray-100 p-3 rounded-lg text-sm break-words">
+          {JSON.stringify(callbackData, null, 2)}
+        </pre>
+      )}
     </div>
   );
 };
 
-export default StripeTapToPayDemo;
+export default StripeTapToPay;
