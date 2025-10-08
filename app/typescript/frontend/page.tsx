@@ -28,6 +28,7 @@ import FirebaseNotificationCard from './NotificationCard';
 import HapticFeedbackCard from './HapticFeedbackCard';
 import AdMobCard from './admob';
 import NativeContactsCard from './Nativecontact';
+import IOSAppTrackingTransparencyCard from './iostrack';
 
 
 export default function FrontendPage() {
@@ -132,6 +133,7 @@ export default function FrontendPage() {
 
         < AdMobCard/>
         <NativeContactsCard />
+      <IOSAppTrackingTransparencyCard />
 
         {/* Results Display */}
         <div
