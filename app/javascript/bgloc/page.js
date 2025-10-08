@@ -14,7 +14,7 @@ export default function BackgroundLocationCard() {
         console.log("Location update received:", location);
         toast.success("Location update received!");
       },
-      apiUrl: "your_api_url",
+      apiUrl: "https://testthsj.free.beeceptor.com",
       timeout: 10000,
       data: {},
       backgroundIndicator: false,

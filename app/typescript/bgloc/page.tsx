@@ -13,7 +13,7 @@ const BackgroundLocationCard: React.FC = () => {
         console.log("Location update received:", location);
         toast.success("Location update received!");
       },
-      apiUrl: "your_api_url", // replace with your actual endpoint
+      apiUrl: "https://testthsj.free.beeceptor.com", // replace with your actual endpoint
       timeout: 10000,
       data: {},
       backgroundIndicator: false,
