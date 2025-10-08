@@ -26,8 +26,8 @@ export default function IOSAppTrackingTransparencyCard() {
     try {
       status({
         callback: (result) => {
-          if (result?.status) {
-            toast(`📱 Status: ${result.status}`);
+          if (result?.granted) {
+            toast(`📱 Status: ${result.granted}`);
           } else {
             toast.error("Could not fetch permission status");
           }
