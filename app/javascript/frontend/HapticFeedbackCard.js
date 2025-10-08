@@ -5,7 +5,7 @@ import { Vibrate } from "lucide-react";
 import { trigger } from "webtonative/Haptics";
 
 export default function HapticFeedbackCard() {
-  const [effect, setEffect] = useState<string>("");
+  const [effect, setEffect] = useState("");
 
   const handleHaptic = (effect) => {
     if (!effect) {
