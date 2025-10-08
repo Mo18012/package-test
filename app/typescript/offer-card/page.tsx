@@ -147,7 +147,7 @@ const OfferCard = () => {
           },
         },
         schedule: {
-          duration: duration || null,
+          duration: duration ? parseInt(duration, 10) : null,
           unit: unit || null,
         },
         id: offerCardId || null,
@@ -280,6 +280,7 @@ const OfferCard = () => {
         />
         <TextField
           fullWidth
+          type='number'
           label="Duration"
           value={duration}
           onChange={(e) => setDuration(e.target.value)}
