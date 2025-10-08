@@ -2,7 +2,7 @@
 import React from "react";
 import toast from "react-hot-toast";
 import { Eye } from "lucide-react";
-import { request, getStatus } from "webtonative/ATTConsent";
+import { request, status } from "webtonative/ATTConsent";
 
 export default function IOSAppTrackingTransparencyCard() {
   const handleRequestPermission = () => {
@@ -24,7 +24,7 @@ export default function IOSAppTrackingTransparencyCard() {
 
   const handleCheckStatus = () => {
     try {
-      getStatus({
+      status({
         callback: (result) => {
           if (result.status) {
             toast(`📱 Status: ${result.status}`);

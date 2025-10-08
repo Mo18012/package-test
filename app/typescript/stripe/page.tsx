@@ -6,7 +6,7 @@ import { makeTapToPay } from "webtonative/Stripe"; // ✅ Correct import
 const StripeTapToPay: React.FC = () => {
   const [connectionToken, setConnectionToken] = useState("");
   const [clientSecret, setClientSecret] = useState(
-    "pi_3RxMj9F5uCWG6brT0qB0DjHO_secret_Qak2kSCzTO0fUXFseD7ZhRGil"
+    "pi_3SFs2CF5uCWG6brT0mJyFyhZ_secret_8NsWQTHjLD0oqnT6GtefuBmK8"
   );
   const [stripeLocationId, setStripeLocationId] = useState(
     "tml_GD4XLAIu9ajhoD"
