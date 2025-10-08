@@ -34,6 +34,7 @@ export default function BeaconIntegration() {
         callback: (data) => {
           console.log("Beacon initialized:", data);
     toast.success(`✅ Beacon added & initialized! ${JSON.stringify(data)}`);
+    alert(`✅ Beacon :${JSON.stringify(data)}`);
         },
       });
     } catch (err) {
