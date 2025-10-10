@@ -4,7 +4,9 @@ import React from 'react';
 import toast from 'react-hot-toast';
 import { Facebook, Apple, Chrome } from 'lucide-react';
 import { socialLogin } from 'webtonative/SocialLogin';
-import { login as loginGoogle } from 'webtonative/SocialLogin/google';
+
+//@ts-ignore
+import { login as loginGoogle } from 'webtonative/SocialLogin/google.js';
 
 const { apple, facebook, google } = socialLogin || {};
 
