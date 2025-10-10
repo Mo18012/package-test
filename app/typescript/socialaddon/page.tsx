@@ -5,9 +5,6 @@ import toast from 'react-hot-toast';
 import { Facebook, Apple, Chrome } from 'lucide-react';
 import { socialLogin } from 'webtonative/SocialLogin';
 
-//@ts-ignore
-import { login as loginGoogle } from 'webtonative/SocialLogin/google.js';
-
 const { apple, facebook, google } = socialLogin || {};
 
 const SocialLoginCard: React.FC = () => {
@@ -19,14 +16,14 @@ const SocialLoginCard: React.FC = () => {
       },
     });
   };
-  const handleGoogleLoginold = () => {
-    loginGoogle({
-      callback: (value: any) => {
-        console.log(value);
-        toast.success(`Google Login: ${Object.values(value)}`);
-      },
-    });
-  };
+  // const handleGoogleLoginold = () => {
+  //   loginGoogle({
+  //     callback: (value: any) => {
+  //       console.log(value);
+  //       toast.success(`Google Login: ${Object.values(value)}`);
+  //     },
+  //   });
+  // };
 
   const handleGoogleLogout = () => {
     google.logout({
@@ -74,12 +71,6 @@ const SocialLoginCard: React.FC = () => {
           className="flex items-center justify-center gap-2 bg-red-600 hover:bg-red-500 text-white py-2 rounded-lg font-medium transition-colors"
         >
           <Chrome className="w-4 h-4" /> Google Login
-        </button>
-        <button
-          onClick={handleGoogleLoginold}
-          className="flex items-center justify-center gap-2 bg-red-600 hover:bg-red-500 text-white py-2 rounded-lg font-medium transition-colors"
-        >
-          <Chrome className="w-4 h-4" /> Google Login old
         </button>
 
         <button
