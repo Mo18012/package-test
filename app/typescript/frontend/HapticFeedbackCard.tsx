@@ -1,15 +1,15 @@
-"use client";
-import React, { useState } from "react";
-import toast from "react-hot-toast";
-import { Vibrate } from "lucide-react";
-import { trigger } from "webtonative/Haptics";
+'use client';
+import React, { useState } from 'react';
+import toast from 'react-hot-toast';
+import { Vibrate } from 'lucide-react';
+import { trigger } from 'webtonative/Haptics';
 
 export default function HapticFeedbackCard() {
-  const [effect, setEffect] = useState<string>("");
+  const [effect, setEffect] = useState<string>('');
 
   const handleHaptic = (effect: string) => {
     if (!effect) {
-      toast.error("Please enter a haptic effect type.");
+      toast.error('Please enter a haptic effect type.');
       return;
     }
     try {
@@ -17,7 +17,7 @@ export default function HapticFeedbackCard() {
       toast.success(`Triggered haptic effect: ${effect}`);
     } catch (error) {
       console.error(error);
-      toast.error("Failed to trigger haptic feedback.");
+      toast.error('Failed to trigger haptic feedback.');
     }
   };
 

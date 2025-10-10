@@ -1,13 +1,15 @@
-"use client";
+'use client';
 
-import React from "react";
-import toast from "react-hot-toast";
-import { Facebook, Apple, Chrome } from "lucide-react";
+import React from 'react';
+import toast from 'react-hot-toast';
+import { Facebook, Apple, Chrome } from 'lucide-react';
+import { socialLogin } from 'webtonative/SocialLogin';
+
+const { apple, facebook, google } = socialLogin || {};
 
 const SocialLoginCard: React.FC = () => {
   const handleGoogleLogin = () => {
-    const { google } = (window as any).WTN.socialLogin;
-    google.login({
+    facebook.login({
       callback: (value: any) => {
         console.log(value);
         toast.success(`Google Login: ${Object.values(value)}`);
@@ -16,17 +18,15 @@ const SocialLoginCard: React.FC = () => {
   };
 
   const handleGoogleLogout = () => {
-    const { google } = (window as any).WTN.socialLogin;
     google.logout({
       callback: (value: any) => {
         console.log(value);
-        toast(`Google Logout: ${Object.values(value)}`, { icon: "👋" });
+        toast(`Google Logout: ${Object.values(value)}`, { icon: '👋' });
       },
     });
   };
 
   const handleFacebookLogin = () => {
-    const { facebook } = (window as any).WTN.socialLogin;
     facebook.login({
       callback: (value: any) => {
         console.log(value);
@@ -36,17 +36,15 @@ const SocialLoginCard: React.FC = () => {
   };
 
   const handleFacebookLogout = () => {
-    const { facebook } = (window as any).WTN.socialLogin;
     facebook.logout({
       callback: (value: any) => {
         console.log(value);
-        toast(`Facebook Logout: ${Object.values(value)}`, { icon: "👋" });
+        toast(`Facebook Logout: ${Object.values(value)}`, { icon: '👋' });
       },
     });
   };
 
   const handleAppleLogin = () => {
-    const { apple } = (window as any).WTN.socialLogin;
     apple.login({
       callback: (value: any) => {
         console.log(value);
