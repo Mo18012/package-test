@@ -17,7 +17,7 @@
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-hot-toast": "^2.6.0",
-    "webtonative": "^1.0.75-beta.6"
+    "webtonative": "^1.0.75-beta.7"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
