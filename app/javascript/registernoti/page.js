@@ -3,8 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { registerNotification } from 'webtonative';
 
 export default function NotificationPermission() {
-  const [platform, setPlatform] = useState < string > 'unknown';
-  const [output, setOutput] = useState < string > '⏳ Waiting for action...';
+  const [platform, setPlatform] = useState('unknows');
+  const [output, setOutput] = useState('waiting');
 
   // detect platform
   useEffect(() => {
