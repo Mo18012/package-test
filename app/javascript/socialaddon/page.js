@@ -1,6 +1,5 @@
 'use client';
 
-import React from 'react';
 import toast from 'react-hot-toast';
 
 import {
@@ -12,6 +11,7 @@ import {
   logout as logoutGoogle,
 } from 'webtonative/SocialLogin/google';
 import { login as loginApple } from 'webtonative/SocialLogin/apple';
+import { Apple, Chrome, Facebook } from 'lucide-react';
 
 export default function SocialLoginCard() {
   const handleGoogleLogin = () => {
