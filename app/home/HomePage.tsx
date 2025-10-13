@@ -175,5 +175,6 @@ const navLinks = [
    { to: '/socialaddon',label: 'Social Login'},
    { to: '/date',label: 'Date picker'},
    { to: '/Nativedata',label: 'Native data store'},
+   { to: '/registernoti',label: 'Resgiter Notification'},
 
 ];
