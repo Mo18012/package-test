@@ -1,13 +1,21 @@
-"use client";
+'use client';
 
-import React from "react";
-import toast from "react-hot-toast";
-import { Facebook, Apple, Chrome } from "lucide-react";
+import React from 'react';
+import toast from 'react-hot-toast';
+
+import {
+  login as loginFacebook,
+  logout as logoutFacebook,
+} from 'webtonative/SocialLogin/facebook';
+import {
+  login as loginGoogle,
+  logout as logoutGoogle,
+} from 'webtonative/SocialLogin/google';
+import { login as loginApple } from 'webtonative/SocialLogin/apple';
 
 export default function SocialLoginCard() {
   const handleGoogleLogin = () => {
-    const { google } = window.WTN.socialLogin;
-    google.login({
+    loginGoogle({
       callback: (value) => {
         console.log(value);
         toast.success(`Google Login: ${Object.values(value)}`);
@@ -16,18 +24,16 @@ export default function SocialLoginCard() {
   };
 
   const handleGoogleLogout = () => {
-    const { google } = window.WTN.socialLogin;
-    google.logout({
+    logoutGoogle({
       callback: (value) => {
         console.log(value);
-        toast(`Google Logout: ${Object.values(value)}`, { icon: "👋" });
+        toast(`Google Logout: ${Object.values(value)}`, { icon: '👋' });
       },
     });
   };
 
   const handleFacebookLogin = () => {
-    const { facebook } = window.WTN.socialLogin;
-    facebook.login({
+    loginFacebook({
       callback: (value) => {
         console.log(value);
         toast.success(`Facebook Login: ${Object.values(value)}`);
@@ -36,18 +42,16 @@ export default function SocialLoginCard() {
   };
 
   const handleFacebookLogout = () => {
-    const { facebook } = window.WTN.socialLogin;
-    facebook.logout({
+    logoutFacebook({
       callback: (value) => {
         console.log(value);
-        toast(`Facebook Logout: ${Object.values(value)}`, { icon: "👋" });
+        toast(`Facebook Logout: ${Object.values(value)}`, { icon: '👋' });
       },
     });
   };
 
   const handleAppleLogin = () => {
-    const { apple } = window.WTN.socialLogin;
-    apple.login({
+    loginApple({
       callback: (value) => {
         console.log(value);
         toast.success(`Apple Login: ${Object.values(value)}`);
