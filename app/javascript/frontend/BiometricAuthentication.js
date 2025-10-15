@@ -1,69 +1,75 @@
-import React, { useState } from "react";
-import toast from "react-hot-toast";
-import { Fingerprint } from "lucide-react";
+import React, { useState } from 'react';
+import toast from 'react-hot-toast';
+import { Fingerprint } from 'lucide-react';
 import {
   show,
   saveSecret,
   deleteSecret,
   checkStatus,
   biometricAuthWithDismissOnCancel,
-} from "webtonative/Biometric";
+} from 'webtonative/Biometric';
+import Result from './Result';
 
 export default function BiometricAuthCard() {
-  const [prompt, setPrompt] = useState("");
-  const [secret, setSecret] = useState("");
-  const [dismissPrompt, setDismissPrompt] = useState("");
+  const [prompt, setPrompt] = useState('');
+  const [secret, setSecret] = useState('');
+  const [dismissPrompt, setDismissPrompt] = useState('');
   const [result, setResult] = useState('');
 
   const showBiometricFun = () => {
     show({
       prompt,
-callback: (data) => {
+      callback: (data) => {
         toast.success(`Result: ${JSON.stringify(data)}`);
         setResult(JSON.stringify(data)); // ✅ properly set state here
-      },    });
+      },
+    });
   };
 
   const saveSecretFun = () => {
     saveSecret({
       secret,
-callback: (data) => {
+      callback: (data) => {
         toast.success(`Result: ${JSON.stringify(data)}`);
         setResult(JSON.stringify(data)); // ✅ properly set state here
-      },    });
+      },
+    });
   };
 
   const deleteSecretFun = () => {
     deleteSecret({
-callback: (data) => {
+      callback: (data) => {
         toast.success(`Result: ${JSON.stringify(data)}`);
         setResult(JSON.stringify(data)); // ✅ properly set state here
-      },    });
+      },
+    });
   };
 
   const checkStatusFun = () => {
     checkStatus({
-callback: (data) => {
+      callback: (data) => {
         toast.success(`Result: ${JSON.stringify(data)}`);
         setResult(JSON.stringify(data)); // ✅ properly set state here
-      },    });
+      },
+    });
   };
 
   const biometricAuthWithDismissFun = () => {
     biometricAuthWithDismissOnCancel({
-      prompt: dismissPrompt || "Default Prompt",
+      prompt: dismissPrompt || 'Default Prompt',
       isAuthenticationOptional: true,
-callback: (data) => {
+      callback: (data) => {
         toast.success(`Result: ${JSON.stringify(data)}`);
         setResult(JSON.stringify(data)); // ✅ properly set state here
       },
-        });
+    });
   };
 
   return (
     <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 border border-gray-700 rounded-xl p-6 mb-6 shadow-lg text-white">
       <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-        <Fingerprint className="w-5 h-5 text-cyan-400" /> Biometric Authentication
+        <Fingerprint className="w-5 h-5 text-cyan-400" /> Biometric
+        Authentication
       </h3>
 
       <input
@@ -121,8 +127,7 @@ callback: (data) => {
       >
         Auth With Dismiss
       </button>
-        <Result resultInfo={result} />
-
+      <Result resultInfo={result} />
     </div>
   );
 }

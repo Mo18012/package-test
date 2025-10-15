@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import React from "react";
-import toast from "react-hot-toast";
-import { Phone, User } from "lucide-react";
-import { getPermissionStatus, getAll } from "webtonative/NativeContacts";
+import React from 'react';
+import toast from 'react-hot-toast';
+import { Phone, User } from 'lucide-react';
+import { getPermissionStatus, getAll } from 'webtonative/NativeContacts';
 
-const NativeContactsCard: React.FC = () => {
+export default function NativeContactsCard() {
   const getPermissionStatusFun = () => {
     getPermissionStatus({
-      callback: (data: any) => {
-        console.log("Permission Status:", data.status);
+      callback: (data) => {
+        console.log('Permission Status:', data.status);
         toast.success(`Permission: ${Object.values(data.status)}`);
       },
     });
@@ -17,12 +17,12 @@ const NativeContactsCard: React.FC = () => {
 
   const getAllContactsFun = () => {
     getAll({
-      callback: (data: any) => {
-        console.log("Contacts:", data.contacts);
+      callback: (data) => {
+        console.log('Contacts:', data.contacts);
         if (data.contacts && data.contacts.length > 0) {
-          toast.success(`Fetched ${JSON.stringify(data.contacts)} contacts`);
+          toast.success(`Fetched ${data.contacts.length} contacts`);
         } else {
-          toast.error("No contacts found or permission denied");
+          toast.error('No contacts found or permission denied');
         }
       },
     });
@@ -51,6 +51,4 @@ const NativeContactsCard: React.FC = () => {
       </div>
     </div>
   );
-};
-
-export default NativeContactsCard;
+}

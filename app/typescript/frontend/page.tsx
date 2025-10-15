@@ -27,9 +27,8 @@ import HideBottomNavCard from './BottomNavCard';
 import FirebaseNotificationCard from './NotificationCard';
 import HapticFeedbackCard from './HapticFeedbackCard';
 import AdMobCard from './admob';
-import NativeContactsCard from './Nativecontact';
+import NativeContactsCard from './NativeContactsCard';
 import IOSAppTrackingTransparencyCard from './iostrack';
-
 
 export default function FrontendPage() {
   // State variables
@@ -86,7 +85,7 @@ export default function FrontendPage() {
         </div>
 
         {/* Biometric Authentication */}
-        <BiometricAuthentication        />
+        <BiometricAuthentication />
 
         {/* Permission Screens */}
         <Permissions darkMode={darkMode} />
@@ -100,13 +99,13 @@ export default function FrontendPage() {
         <FileDownload darkMode={darkMode} />
 
         {/* In-App Purchase */}
-        <InAppPurchase darkMode={darkMode}  />
+        <InAppPurchase darkMode={darkMode} />
 
         {/* AppsFlyer Integration */}
         <AppsFlyer darkMode={darkMode} />
 
         {/* Firebase Analytics */}
-        <Firebase  />
+        <Firebase />
 
         {/* OneSignal Integration */}
         <OneSignal darkMode={darkMode} />
@@ -131,9 +130,9 @@ export default function FrontendPage() {
 
         <HapticFeedbackCard />
 
-        < AdMobCard/>
+        <AdMobCard />
         <NativeContactsCard />
-      <IOSAppTrackingTransparencyCard />
+        <IOSAppTrackingTransparencyCard />
 
         {/* Results Display */}
         <div
@@ -187,7 +186,7 @@ export default function FrontendPage() {
         </button>
       </div>
       <a
-  href={`data:text/calendar;charset=utf-8,${encodeURIComponent(`BEGIN:VCALENDAR
+        href={`data:text/calendar;charset=utf-8,${encodeURIComponent(`BEGIN:VCALENDAR
 VERSION:2.0
 BEGIN:VEVENT
 URL:https://www.webtonative.com/
@@ -197,12 +196,11 @@ SUMMARY:Webtonative Event
 DESCRIPTION:Webtonative Party
 END:VEVENT
 END:VCALENDAR`)}`}
-  download="webtonative-event.ics"
-  className="mt-6 inline-block bg-green-600 hover:bg-green-700 text-white font-medium px-5 py-3 rounded-lg transition-colors duration-300 shadow-md"
->
-  Add Event
-</a>
-
+        download="webtonative-event.ics"
+        className="mt-6 inline-block bg-green-600 hover:bg-green-700 text-white font-medium px-5 py-3 rounded-lg transition-colors duration-300 shadow-md"
+      >
+        Add Event
+      </a>
     </div>
   );
 }
