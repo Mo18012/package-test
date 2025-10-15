@@ -8,12 +8,12 @@ import {
   checkStatus,
   biometricAuthWithDismissOnCancel,
 } from "webtonative/Biometric";
-  const [result, setResult] = useState('');
 
 export default function BiometricAuthCard() {
   const [prompt, setPrompt] = useState("");
   const [secret, setSecret] = useState("");
   const [dismissPrompt, setDismissPrompt] = useState("");
+  const [result, setResult] = useState('');
 
   const showBiometricFun = () => {
     show({
