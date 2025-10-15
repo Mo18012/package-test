@@ -8,6 +8,8 @@ import {
   checkStatus,
   biometricAuthWithDismissOnCancel,
 } from "webtonative/Biometric";
+import Result from "./Result";
+const [result,setResult]=useState("")
 
 const BiometricAuthCard: React.FC = () => {
   const [prompt, setPrompt] = useState("");
@@ -17,26 +19,38 @@ const BiometricAuthCard: React.FC = () => {
   const showBiometricFun = () => {
     show({
       prompt,
-      callback: (data: any) => toast.success(`Result: ${JSON.stringify(data)}`),
+      callback: (data: any) => {
+        toast.success(`Result: ${JSON.stringify(data)}`);
+        setResult(JSON.stringify(data)); // ✅ properly set state here
+      },
     });
   };
 
   const saveSecretFun = () => {
     saveSecret({
       secret,
-      callback: (data: any) => toast.success(`Result: ${JSON.stringify(data)}`),
+     callback: (data: any) => {
+        toast.success(`Result: ${JSON.stringify(data)}`);
+        setResult(JSON.stringify(data)); // ✅ properly set state here
+      },
     });
   };
 
   const deleteSecretFun = () => {
     deleteSecret({
-      callback: (data: any) => toast.success(`Result: ${JSON.stringify(data)}`),
+      callback: (data: any) => {
+        toast.success(`Result: ${JSON.stringify(data)}`);
+        setResult(JSON.stringify(data)); // ✅ properly set state here
+      },
     });
   };
 
   const checkStatusFun = () => {
     checkStatus({
-      callback: (data: any) => toast.success(`Result: ${JSON.stringify(data)}`),
+       callback: (data: any) => {
+        toast.success(`Result: ${JSON.stringify(data)}`);
+        setResult(JSON.stringify(data)); // ✅ properly set state here
+      },
     });
   };
 
@@ -44,7 +58,10 @@ const BiometricAuthCard: React.FC = () => {
     biometricAuthWithDismissOnCancel({
       prompt: dismissPrompt || "Default Prompt",
       isAuthenticationOptional: true,
-      callback: (data: any) => toast.success(`Result: ${JSON.stringify(data)}`),
+       callback: (data: any) => {
+        toast.success(`Result: ${JSON.stringify(data)}`);
+        setResult(JSON.stringify(data)); // ✅ properly set state here
+      },
     });
   };
 
@@ -114,6 +131,8 @@ const BiometricAuthCard: React.FC = () => {
       >
         Auth With Dismiss
       </button>
+            <Result resultInfo={result}/>
+
     </div>
   );
 };

@@ -8,6 +8,7 @@ import {
   checkStatus,
   biometricAuthWithDismissOnCancel,
 } from "webtonative/Biometric";
+  const [result, setResult] = useState('');
 
 export default function BiometricAuthCard() {
   const [prompt, setPrompt] = useState("");
@@ -17,35 +18,46 @@ export default function BiometricAuthCard() {
   const showBiometricFun = () => {
     show({
       prompt,
-      callback: (data) => toast.success(`Result: ${JSON.stringify(data)}`),
-    });
+callback: (data) => {
+        toast.success(`Result: ${JSON.stringify(data)}`);
+        setResult(JSON.stringify(data)); // ✅ properly set state here
+      },    });
   };
 
   const saveSecretFun = () => {
     saveSecret({
       secret,
-      callback: (data) => toast.success(`Result: ${JSON.stringify(data)}`),
-    });
+callback: (data) => {
+        toast.success(`Result: ${JSON.stringify(data)}`);
+        setResult(JSON.stringify(data)); // ✅ properly set state here
+      },    });
   };
 
   const deleteSecretFun = () => {
     deleteSecret({
-      callback: (data) => toast.success(`Result: ${JSON.stringify(data)}`),
-    });
+callback: (data) => {
+        toast.success(`Result: ${JSON.stringify(data)}`);
+        setResult(JSON.stringify(data)); // ✅ properly set state here
+      },    });
   };
 
   const checkStatusFun = () => {
     checkStatus({
-      callback: (data) => toast.success(`Result: ${JSON.stringify(data)}`),
-    });
+callback: (data) => {
+        toast.success(`Result: ${JSON.stringify(data)}`);
+        setResult(JSON.stringify(data)); // ✅ properly set state here
+      },    });
   };
 
   const biometricAuthWithDismissFun = () => {
     biometricAuthWithDismissOnCancel({
       prompt: dismissPrompt || "Default Prompt",
       isAuthenticationOptional: true,
-      callback: (data) => toast.success(`Result: ${JSON.stringify(data)}`),
-    });
+callback: (data) => {
+        toast.success(`Result: ${JSON.stringify(data)}`);
+        setResult(JSON.stringify(data)); // ✅ properly set state here
+      },
+        });
   };
 
   return (
@@ -109,6 +121,8 @@ export default function BiometricAuthCard() {
       >
         Auth With Dismiss
       </button>
+        <Result resultInfo={result} />
+
     </div>
   );
 }
