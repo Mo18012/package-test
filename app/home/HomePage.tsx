@@ -176,5 +176,7 @@ const navLinks = [
    { to: '/date',label: 'Date picker'},
    { to: '/Nativedata',label: 'Native data store'},
    { to: '/registernoti',label: 'Resgiter Notification'},
+   { to: '/bottom-drawer',label: 'Bottom drawer'},
+
 
 ];
