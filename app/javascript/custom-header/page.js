@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 
 const CustomHeader = () => {
-  const [headersData, setHeadersData] = useState < any > null;
+  const [headersData, setHeadersData] = useState(null);
 
   const fetchHeaders = async () => {
     const res = await fetch("/api/custom-header", { method: "GET" });
