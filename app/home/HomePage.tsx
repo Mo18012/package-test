@@ -1,4 +1,4 @@
-'use client';
+"use client";
 export default function HomePage() {
   return (
     <div className="min-h-screen flex flex-col bg-background/60 text-foreground transition-colors">
@@ -117,7 +117,7 @@ export default function HomePage() {
             <p className="text-xl font-medium">Ts Links</p>
             <div className="flex gap-4 items-center flex-wrap text-nowrap">
               {navLinks.map(({ to, label }) => (
-                <a key={to} href={'/typescript' + to}>
+                <a key={to} href={"/typescript" + to}>
                   <button
                     className="px-6 py-3 rounded-xl bg-foreground text-background font-semibold shadow-md hover:opacity-80 transition focus:outline-none focus:ring-2 focus:ring-primary"
                     type="button"
@@ -132,7 +132,7 @@ export default function HomePage() {
             <p className="text-xl font-medium">Js links</p>
             <div className="flex gap-4 items-center flex-wrap text-nowrap">
               {navLinks.map(({ to, label }) => (
-                <a key={to} href={'/javascript' + to}>
+                <a key={to} href={"/javascript" + to}>
                   <button
                     className="px-6 py-3 rounded-xl bg-foreground text-background font-semibold shadow-md hover:opacity-80 transition focus:outline-none focus:ring-2 focus:ring-primary"
                     type="button"
@@ -157,26 +157,28 @@ export default function HomePage() {
 }
 
 const navLinks = [
-  { to: '/orientation', label: 'Orientation' },
-  { to: '/app-open', label: 'App Open' },
-  { to: '/date', label: 'Date' },
-  { to: '/beacon-icon', label: 'Beacon Icon' },
-  { to: '/beacon-load', label: 'Beacon on load' },
-  { to: '/siri', label: 'Siri' },
-  { to: '/offer-card', label: 'Offer Card' },
-  { to: '/dynamic-icon', label: 'Dynamic Icon' },
-  { to: '/bluetooth', label: 'Bluetooth Control' },
-  { to: '/addon-safearea', label: 'Addon safearea' },
-  { to: '/stripe', label: 'Stripe' },
-  { to: '/permission', label: 'Permission' },
-  { to: '/custom-back', label: 'Custom back' },
-  { to: '/onesignal', label: 'One signal' },
-  { to: '/bgloc',label: 'bg loc'},
-   { to: '/socialaddon',label: 'Social Login'},
-   { to: '/date',label: 'Date picker'},
-   { to: '/Nativedata',label: 'Native data store'},
-   { to: '/registernoti',label: 'Resgiter Notification'},
-   { to: '/bottom-drawer',label: 'Bottom drawer'},
-
-
+  { to: "/orientation", label: "Orientation" },
+  { to: "/app-open", label: "App Open" },
+  { to: "/date", label: "Date" },
+  { to: "/beacon-icon", label: "Beacon Icon" },
+  { to: "/beacon-load", label: "Beacon on load" },
+  { to: "/siri", label: "Siri" },
+  { to: "/offer-card", label: "Offer Card" },
+  { to: "/dynamic-icon", label: "Dynamic Icon" },
+  { to: "/bluetooth", label: "Bluetooth Control" },
+  { to: "/addon-safearea", label: "Addon safearea" },
+  { to: "/stripe", label: "Stripe" },
+  { to: "/permission", label: "Permission" },
+  { to: "/custom-back", label: "Custom back" },
+  { to: "/onesignal", label: "One signal" },
+  { to: "/bgloc", label: "bg loc" },
+  { to: "/socialaddon", label: "Social Login" },
+  { to: "/date", label: "Date picker" },
+  { to: "/Nativedata", label: "Native data store" },
+  { to: "/registernoti", label: "Resgiter Notification" },
+  { to: "/bottom-drawer", label: "Bottom drawer" },
+  {
+    to: "/custom-header",
+    label: "Custom Header",
+  },
 ];
