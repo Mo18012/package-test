@@ -25,7 +25,7 @@ const CustomHeader = () => {
       <p>Check browser console for response JSON..</p>
 
       <h3>Headers Returned from API:</h3>
-      <pre className="text-sm bg-gray-100 p-2 mt-2">
+      <pre className="text-sm bg-black p-2 mt-2">
         {headersData ? JSON.stringify(headersData, null, 2) : "Loading..."}
       </pre>
     </div>
