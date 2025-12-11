@@ -22,7 +22,7 @@ const CustomHeader = () => {
     <div>
       <h2>CustomHeader</h2>
       <p>Check Vercel logs for request headers</p>
-      <p>Check browser console for response JSON</p>
+      <p>Check browser console for response JSON..</p>
 
       <h3>Headers Returned from API:</h3>
       <pre className="text-sm bg-gray-100 p-2 mt-2">
